@@ -1,0 +1,16 @@
+# Review artifacts and mockup packs
+_review_artifacts/
+web00_premium_mockups_final/
+
+# Recorded review media and archives
+*.zip
+*.webm
+*.mp4
+
+# Temporary recording scripts
+record_review.mjs
+record_*.mjs
+*_review*.mjs
+
+# Local dependency folders if tools are run manually
+node_modules/

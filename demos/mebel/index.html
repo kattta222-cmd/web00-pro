@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Мебельный магазин — demo</title>
+    <link rel="stylesheet" href="../demo.css">
+    <style>:root { --accent: #9a6a3d; --accent-2: #ef233c; }</style>
+  </head>
+  <body class="site-frame">
+    <header class="demo-header">
+      <div class="demo-container demo-nav">
+        <a class="brand" href="#"><span class="brand-mark">M</span>Мебельный магазин</a>
+        <nav class="nav-links"><a href="#catalog">Каталог</a><a href="#benefits">Преимущества</a><a href="#request">Расчёт</a></nav>
+      </div>
+    </header>
+    <main>
+      <section class="demo-container demo-hero">
+        <div class="hero-copy">
+          <span class="kicker">Мебель для дома и офиса</span>
+          <h1>Мебельный магазин с каталогом и заявкой на расчёт</h1>
+          <p class="lead">Покупатель выбирает категорию, сравнивает товары и отправляет заявку на подбор комплекта, доставку или индивидуальный размер.</p>
+          <div class="actions"><a class="btn btn-primary" href="#catalog">Смотреть каталог</a><a class="btn" href="#request">Получить расчёт</a></div>
+          <div class="trust-row"><span>Диваны</span><span>Шкафы</span><span>Столы</span><span>Кровати</span></div>
+        </div>
+        <div class="hero-mock">
+          <div class="mock-toolbar"><div class="mock-dots"><i></i><i></i><i></i></div><span class="mock-badge">Каталог · 48 товаров</span></div>
+          <div class="scene">
+            <h3 class="scene-title">Подбор мебели под интерьер</h3>
+            <p class="scene-note">Категории, карточки товаров, цена и заявка в один клик.</p>
+            <div class="floating-card" style="right:24px;top:42px"><strong>Диван Nord</strong><small>от 42 000 ₽</small></div>
+            <div class="floating-card" style="right:62px;bottom:30px"><strong>Заявка</strong><small>доставка + замер</small></div>
+            <div class="furniture-icon" style="position:absolute;left:44px;bottom:32px"><i></i><i></i><i></i><i></i></div>
+          </div>
+        </div>
+      </section>
+      <section class="demo-container section" id="catalog">
+        <div class="section-head"><h2>Категории и популярные товары</h2><p class="lead">Витрина помогает быстро найти нужный формат и оставить заявку без сложной корзины.</p></div>
+        <div class="chips"><span class="chip">Диваны</span><span class="chip">Шкафы</span><span class="chip">Столы</span><span class="chip">Кровати</span></div>
+        <div class="grid grid-4" style="margin-top:20px">
+          <article class="card catalog-card"><div class="card-media"><div class="furniture-icon"><i></i><i></i><i></i><i></i></div></div><h3>Диван Nord</h3><p>Ткань, 3 места, доставка по городу.</p><strong class="price">от 42 000 ₽</strong><a class="btn btn-primary" href="#request">Запросить</a></article>
+          <article class="card catalog-card"><div class="card-media"><div class="product-wall"><span class="product-mini"><em></em>Шкаф</span><span class="product-mini"><em></em>Комод</span></div></div><h3>Шкаф Line</h3><p>Раздвижные двери, замер, сборка.</p><strong class="price">от 36 000 ₽</strong><a class="btn btn-primary" href="#request">Запросить</a></article>
+          <article class="card catalog-card"><div class="card-media"><div class="product-wall"><span class="product-mini"><em></em>Стол</span><span class="product-mini"><em></em>Стул</span></div></div><h3>Стол Loft</h3><p>Массив, металл, размеры на заказ.</p><strong class="price">от 18 500 ₽</strong><a class="btn btn-primary" href="#request">Запросить</a></article>
+          <article class="card catalog-card"><div class="card-media"><div class="product-wall"><span class="product-mini"><em></em>Кровать</span><span class="product-mini"><em></em>Тумба</span></div></div><h3>Кровать Soft</h3><p>Основание, матрас, доставка.</p><strong class="price">от 31 900 ₽</strong><a class="btn btn-primary" href="#request">Запросить</a></article>
+        </div>
+      </section>
+      <section class="demo-container section" id="benefits">
+        <div class="split-section">
+          <article class="premium-panel"><h2>Почему удобно покупать</h2><ul class="feature-list"><li>Карточки товаров с ценами и условиями</li><li>Категории и быстрый подбор</li><li>Форма заявки на расчёт комплекта</li><li>Адаптивная витрина для телефона</li></ul></article>
+          <article class="premium-panel"><h2>Для владельца магазина</h2><p class="lead">Заявка приходит уже с интересом клиента: товар, размер, контакт и комментарий. Менеджер быстрее отвечает и закрывает продажу.</p><div class="stats-row"><span>+ каталог</span><span>+ заявка</span><span>+ доставка</span></div></article>
+        </div>
+      </section>
+      <section class="demo-container section" id="request">
+        <form class="form-card">
+          <h2>Получить расчёт мебели</h2>
+          <div class="form-grid"><label>Имя<input placeholder="Анна"></label><label>Телефон<input placeholder="+7 999 000-00-00"></label><label>Категория<select><option>Диван</option><option>Шкаф</option><option>Стол</option><option>Кровать</option></select></label><label>Бюджет<input placeholder="до 60 000 ₽"></label><label class="wide">Комментарий<textarea placeholder="Например: диван и стол в гостиную, нужна доставка"></textarea></label><button class="btn btn-primary wide" type="button">Отправить заявку</button></div>
+        </form>
+      </section>
+    </main>
+    <footer class="footer"><div class="demo-container">Мебельный магазин · каталог, заявка и подбор</div></footer>
+  </body>
+</html>

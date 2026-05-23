@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Цены - WEB00 Pro</title>
+    <meta name="description" content="Цены WEB00 Pro: мини-сайт от 7 000 ₽, лендинг от 12 000 ₽, каталог от 15 000 ₽, Telegram-бот от 3 000 ₽.">
+    <link rel="canonical" href="https://web00.pro/pricing.html">
+    <meta name="theme-color" content="#050812">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script defer src="assets/js/data.js?v=multi-page-1"></script>
+    <script defer src="assets/js/main.js?v=multi-page-1"></script>
+  </head>
+  <body data-page="pricing">
+    <header class="site-header" data-header>
+      <div class="container header__inner">
+        <a class="logo" href="index.html" aria-label="WEB00 Pro на главную"><span>WEB</span><b>00</b><small>Pro</small></a>
+        <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="site-nav" data-menu-toggle><span></span><span></span><span></span></button>
+        <nav class="nav" id="site-nav" data-nav>
+          <a href="index.html">Главная</a>
+          <a href="services.html">Услуги</a>
+          <a href="solutions.html">Готовые решения</a>
+          <a href="how-it-works.html">Как работает</a>
+          <a href="pricing.html">Цены</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contacts.html">Контакты</a>
+        </nav>
+        <button class="btn btn--primary header__cta" type="button" data-open-lead>Оставить заявку</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="screen-section" id="pricing" data-section="pricing">
+        <div class="container">
+          <div class="section-head">
+            <p class="ui-kicker"><span></span>WEB00 · цены</p>
+            <h1>Цены и форматы работы</h1>
+            <p>Прозрачные стартовые цены без скрытых платежей. Итог зависит от объёма, интеграций и сроков.</p>
+          </div>
+          <div class="pricing-grid" data-pricing-grid></div>
+          <div class="price-factors glow-panel">
+            <h2>Что влияет на цену</h2>
+            <div><span>Дизайн</span><span>Интеграции</span><span>Поддержка</span><span>Срок запуска</span><span>Показ демо до оплаты</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen-section calculator-section" id="calculator">
+        <div class="container calc-grid">
+          <div>
+            <div class="section-head">
+              <p class="ui-kicker"><span></span>WEB00 · калькулятор</p>
+              <h2>Калькулятор стоимости</h2>
+              <p>Рассчитайте ориентировочную стоимость и сроки создания сайта или Telegram-решения.</p>
+            </div>
+            <form class="calc-panel glow-panel" id="price-calculator">
+              <fieldset><legend>Тип проекта</legend><label><input type="radio" name="projectType" value="site" checked> Сайт</label><label><input type="radio" name="projectType" value="landing"> Лендинг</label><label><input type="radio" name="projectType" value="shop"> Мини-магазин</label><label><input type="radio" name="projectType" value="bot"> Telegram-бот</label></fieldset>
+              <label class="range-row">Количество страниц / разделов <input type="number" min="1" max="30" value="5" name="pages"></label>
+              <fieldset><legend>Интеграции</legend><label><input type="checkbox" name="integrations" value="form" checked> Форма заявок</label><label><input type="checkbox" name="integrations" value="crm"> CRM</label><label><input type="checkbox" name="integrations" value="payment"> Онлайн-оплата</label><label><input type="checkbox" name="integrations" value="analytics"> Аналитика</label></fieldset>
+              <fieldset><legend>Telegram-бот</legend><label><input type="radio" name="botLevel" value="none" checked> Не нужен</label><label><input type="radio" name="botLevel" value="simple"> Простой бот</label><label><input type="radio" name="botLevel" value="advanced"> Бот с админ-панелью</label></fieldset>
+              <fieldset><legend>Поддержка</legend><label><input type="radio" name="support" value="none" checked> Не требуется</label><label><input type="radio" name="support" value="1"> 1 месяц</label><label><input type="radio" name="support" value="3"> 3 месяца</label></fieldset>
+              <fieldset><legend>Срочность</legend><label><input type="radio" name="urgency" value="standard" checked> Стандартный</label><label><input type="radio" name="urgency" value="fast"> Срочный</label></fieldset>
+              <fieldset><legend>Сложность дизайна</legend><label><input type="radio" name="design" value="base" checked> Базовый</label><label><input type="radio" name="design" value="standard"> Стандартный</label><label><input type="radio" name="design" value="premium"> Премиум</label></fieldset>
+              <div class="calc-actions"><button class="btn btn--primary" type="submit">Рассчитать стоимость</button><button class="btn btn--secondary" type="button" data-open-lead data-service="Расчёт из калькулятора">Получить расчёт</button></div>
+            </form>
+          </div>
+          <aside class="calc-result glow-panel" data-calc-result>
+            <h3>Предварительная оценка</h3>
+            <p>Стоимость проекта <span>ориентировочно</span></p>
+            <strong>от 20 000 ₽ до 35 000 ₽</strong>
+            <p>Срок запуска: от 7 до 12 рабочих дней</p>
+            <ul><li>Проектирование и структура</li><li>Адаптивная вёрстка</li><li>Форма заявки</li><li>Базовая SEO-подготовка</li></ul>
+            <small>Расчёт ни к чему не обязывает. Итог фиксируется после обсуждения.</small>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <aside class="side-contact" aria-label="Быстрые контакты"><button type="button" data-open-lead><span aria-hidden="true"></span>Заявка</button><a href="https://t.me/GarantiyWeb00bot" target="_blank" rel="noopener"><span aria-hidden="true"></span>Telegram</a><a href="https://max.ru/u/f9LHodD0cOKyonoj-aP5RBGWocesp86479bRtc3lkiQ0qzWtqtXIEiV2tVs" target="_blank" rel="noopener"><span aria-hidden="true"></span>MAX</a><a href="https://vk.com/club231397496/" target="_blank" rel="noopener"><span aria-hidden="true"></span>VK</a><a href="tel:+79058615231"><span aria-hidden="true"></span>Позвонить</a><button class="rail-error" type="button" data-open-bug><span aria-hidden="true"></span>Ошибка</button></aside>
+    <nav class="mobile-cta" aria-label="Быстрые действия"><button type="button" data-open-lead>Заявка</button><a href="https://t.me/GarantiyWeb00bot" target="_blank" rel="noopener">Telegram</a><button type="button" data-open-bug>Ошибка</button></nav>
+    <footer class="footer"><div class="container footer__inner"><a class="logo logo--footer" href="index.html"><span>WEB</span><b>00</b><small>Pro</small></a><div class="footer__links"><a href="https://t.me/GarantiyWeb00bot" target="_blank" rel="noopener">Telegram</a><a href="https://vk.com/club231397496/" target="_blank" rel="noopener">VK</a><a href="https://max.ru/u/f9LHodD0cOKyonoj-aP5RBGWocesp86479bRtc3lkiQ0qzWtqtXIEiV2tVs" target="_blank" rel="noopener">Max</a><a href="privacy-policy.html">Политика конфиденциальности</a><a href="consent-personal-data.html">Согласие на обработку персональных данных</a><button type="button" data-open-bug>Ошибка</button></div></div></footer>
+    <div class="modal" data-modal="lead" aria-hidden="true"><div class="modal__overlay" data-close-modal></div><div class="modal__dialog modal__dialog--wide glow-panel" role="dialog" aria-modal="true" aria-labelledby="lead-title"><button class="modal__close" type="button" data-close-modal aria-label="Закрыть">×</button><div data-lead-modal-content></div></div></div>
+    <div class="modal" data-modal="bug" aria-hidden="true"><div class="modal__overlay" data-close-modal></div><div class="modal__dialog modal__dialog--wide glow-panel" role="dialog" aria-modal="true" aria-labelledby="bug-title"><button class="modal__close" type="button" data-close-modal aria-label="Закрыть">×</button><div data-bug-modal-content></div></div></div>
+  </body>
+</html>
