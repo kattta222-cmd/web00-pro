@@ -3,60 +3,237 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Мебельный магазин — demo</title>
-    <link rel="stylesheet" href="../demo.css">
-    <style>:root { --accent: #9a6a3d; --accent-2: #ef233c; }</style>
+    <title>Мебельный магазин</title>
+    <meta name="description" content="Демо сайта мебельного магазина с каталогом, акциями, доставкой, оплатой и формой заявки.">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="demo.js"></script>
   </head>
-  <body class="site-frame">
-    <header class="demo-header">
-      <div class="demo-container demo-nav">
-        <a class="brand" href="#"><span class="brand-mark">M</span>Мебельный магазин</a>
-        <nav class="nav-links"><a href="#catalog">Каталог</a><a href="#benefits">Преимущества</a><a href="#request">Расчёт</a></nav>
+  <body>
+    <header class="shop-header">
+      <div class="shop-container nav-shell">
+        <a class="brand" href="#home" aria-label="Мебельный магазин на главную">
+          <span class="brand-mark">М</span>
+          <span><b>Мебель</b><small>честная цена</small></span>
+        </a>
+        <nav class="shop-nav" aria-label="Навигация демо-магазина">
+          <a href="#home">Главная</a>
+          <a href="#catalog">Товары</a>
+          <a href="#sale">Товары по акции</a>
+          <a href="#delivery">Доставка</a>
+          <a href="#payment">Оплата, рассрочка, кредит</a>
+          <a href="#contacts">Контакты</a>
+        </nav>
+        <button class="nav-cta" type="button" data-scroll-target="#request">Оставить заявку</button>
       </div>
     </header>
+
     <main>
-      <section class="demo-container demo-hero">
-        <div class="hero-copy">
-          <span class="kicker">Мебель для дома и офиса</span>
-          <h1>Мебельный магазин с каталогом и заявкой на расчёт</h1>
-          <p class="lead">Покупатель выбирает категорию, сравнивает товары и отправляет заявку на подбор комплекта, доставку или индивидуальный размер.</p>
-          <div class="actions"><a class="btn btn-primary" href="#catalog">Смотреть каталог</a><a class="btn" href="#request">Получить расчёт</a></div>
-          <div class="trust-row"><span>Диваны</span><span>Шкафы</span><span>Столы</span><span>Кровати</span></div>
-        </div>
-        <div class="hero-mock">
-          <div class="mock-toolbar"><div class="mock-dots"><i></i><i></i><i></i></div><span class="mock-badge">Каталог · 48 товаров</span></div>
-          <div class="scene">
-            <h3 class="scene-title">Подбор мебели под интерьер</h3>
-            <p class="scene-note">Категории, карточки товаров, цена и заявка в один клик.</p>
-            <div class="floating-card" style="right:24px;top:42px"><strong>Диван Nord</strong><small>от 42 000 ₽</small></div>
-            <div class="floating-card" style="right:62px;bottom:30px"><strong>Заявка</strong><small>доставка + замер</small></div>
-            <div class="furniture-icon" style="position:absolute;left:44px;bottom:32px"><i></i><i></i><i></i><i></i></div>
+      <section class="hero" id="home">
+        <div class="shop-container hero-grid">
+          <div class="hero-copy">
+            <p class="kicker"><span></span>Мебель для дома и бизнеса</p>
+            <h1>Мебельный магазин с каталогом и заявкой на расчёт</h1>
+            <p class="lead">Диваны, шкафы, столы и кровати с доставкой по городу. Покупатель выбирает товар, уточняет условия и оставляет заявку без сложной корзины.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#catalog">Смотреть товары</a>
+              <button class="btn btn-ghost" type="button" data-scroll-target="#request">Оставить заявку</button>
+            </div>
+            <div class="trust-strip">
+              <span>48 товаров в каталоге</span>
+              <span>Доставка от 600 ₽</span>
+              <span>Рассрочка и кредит</span>
+            </div>
+          </div>
+
+          <div class="interior-card" aria-label="Визуал мебельного магазина">
+            <div class="room-scene">
+              <div class="window-shape"></div>
+              <div class="sofa"><i></i><i></i><i></i></div>
+              <div class="table"></div>
+              <div class="lamp"></div>
+              <div class="price-tag">
+                <span>Диван Nord</span>
+                <b>от 42 000 ₽</b>
+              </div>
+              <div class="stock-badge">в наличии</div>
+            </div>
           </div>
         </div>
       </section>
-      <section class="demo-container section" id="catalog">
-        <div class="section-head"><h2>Категории и популярные товары</h2><p class="lead">Витрина помогает быстро найти нужный формат и оставить заявку без сложной корзины.</p></div>
-        <div class="chips"><span class="chip">Диваны</span><span class="chip">Шкафы</span><span class="chip">Столы</span><span class="chip">Кровати</span></div>
-        <div class="grid grid-4" style="margin-top:20px">
-          <article class="card catalog-card"><div class="card-media"><div class="furniture-icon"><i></i><i></i><i></i><i></i></div></div><h3>Диван Nord</h3><p>Ткань, 3 места, доставка по городу.</p><strong class="price">от 42 000 ₽</strong><a class="btn btn-primary" href="#request">Запросить</a></article>
-          <article class="card catalog-card"><div class="card-media"><div class="product-wall"><span class="product-mini"><em></em>Шкаф</span><span class="product-mini"><em></em>Комод</span></div></div><h3>Шкаф Line</h3><p>Раздвижные двери, замер, сборка.</p><strong class="price">от 36 000 ₽</strong><a class="btn btn-primary" href="#request">Запросить</a></article>
-          <article class="card catalog-card"><div class="card-media"><div class="product-wall"><span class="product-mini"><em></em>Стол</span><span class="product-mini"><em></em>Стул</span></div></div><h3>Стол Loft</h3><p>Массив, металл, размеры на заказ.</p><strong class="price">от 18 500 ₽</strong><a class="btn btn-primary" href="#request">Запросить</a></article>
-          <article class="card catalog-card"><div class="card-media"><div class="product-wall"><span class="product-mini"><em></em>Кровать</span><span class="product-mini"><em></em>Тумба</span></div></div><h3>Кровать Soft</h3><p>Основание, матрас, доставка.</p><strong class="price">от 31 900 ₽</strong><a class="btn btn-primary" href="#request">Запросить</a></article>
+
+      <section class="shop-section" id="catalog">
+        <div class="shop-container">
+          <div class="section-head">
+            <p class="kicker"><span></span>Каталог</p>
+            <h2>Товары для быстрого выбора</h2>
+            <p>Категории помогают покупателю сразу перейти к нужной мебели и оставить заявку на подбор размера, цвета или доставки.</p>
+          </div>
+
+          <div class="category-tabs" aria-label="Категории товаров">
+            <button class="is-active" type="button" data-category="all">Все</button>
+            <button type="button" data-category="sofas">Диваны</button>
+            <button type="button" data-category="wardrobes">Шкафы</button>
+            <button type="button" data-category="tables">Столы</button>
+            <button type="button" data-category="beds">Кровати</button>
+          </div>
+
+          <div class="product-grid" data-products>
+            <article class="product-card" data-product-card data-category="sofas" data-product="nord">
+              <div class="product-visual product-visual--sofa"><span></span></div>
+              <div class="product-body">
+                <small>Диваны</small>
+                <h3>Диван Nord</h3>
+                <p>Прямой диван для гостиной, ткань, доставка и сборка.</p>
+                <div class="product-meta"><span>в наличии</span><b>от 42 000 ₽</b></div>
+                <button class="btn btn-ghost" type="button" data-product-open="nord">Подробнее</button>
+              </div>
+            </article>
+            <article class="product-card" data-product-card data-category="wardrobes" data-product="line">
+              <div class="product-visual product-visual--wardrobe"><span></span><span></span></div>
+              <div class="product-body">
+                <small>Шкафы</small>
+                <h3>Шкаф Line</h3>
+                <p>Шкаф-купе с замером, выбором фасада и сборкой.</p>
+                <div class="product-meta"><span>замер</span><b>от 36 000 ₽</b></div>
+                <button class="btn btn-ghost" type="button" data-product-open="line">Подробнее</button>
+              </div>
+            </article>
+            <article class="product-card" data-product-card data-category="tables" data-product="loft">
+              <div class="product-visual product-visual--table"><span></span></div>
+              <div class="product-body">
+                <small>Столы</small>
+                <h3>Стол Loft</h3>
+                <p>Обеденный стол из массива с выбором размера.</p>
+                <div class="product-meta"><span>на заказ</span><b>от 18 500 ₽</b></div>
+                <button class="btn btn-ghost" type="button" data-product-open="loft">Подробнее</button>
+              </div>
+            </article>
+            <article class="product-card" data-product-card data-category="beds" data-product="soft">
+              <div class="product-visual product-visual--bed"><span></span></div>
+              <div class="product-body">
+                <small>Кровати</small>
+                <h3>Кровать Soft</h3>
+                <p>Кровать с мягким изголовьем, матрасом и доставкой.</p>
+                <div class="product-meta"><span>комплект</span><b>от 31 900 ₽</b></div>
+                <button class="btn btn-ghost" type="button" data-product-open="soft">Подробнее</button>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
-      <section class="demo-container section" id="benefits">
-        <div class="split-section">
-          <article class="premium-panel"><h2>Почему удобно покупать</h2><ul class="feature-list"><li>Карточки товаров с ценами и условиями</li><li>Категории и быстрый подбор</li><li>Форма заявки на расчёт комплекта</li><li>Адаптивная витрина для телефона</li></ul></article>
-          <article class="premium-panel"><h2>Для владельца магазина</h2><p class="lead">Заявка приходит уже с интересом клиента: товар, размер, контакт и комментарий. Менеджер быстрее отвечает и закрывает продажу.</p><div class="stats-row"><span>+ каталог</span><span>+ заявка</span><span>+ доставка</span></div></article>
+
+      <section class="shop-section sale-section" id="sale">
+        <div class="shop-container sale-grid">
+          <article class="sale-card">
+            <p class="kicker"><span></span>Акции</p>
+            <h2>Готовые комплекты со скидкой</h2>
+            <p>В демо можно показать сезонные предложения, комплекты для гостиной и товары, которые нужно продать быстрее.</p>
+            <button class="btn btn-primary" type="button" data-scroll-target="#request">Узнать по акции</button>
+          </article>
+          <article class="sale-product">
+            <span class="discount">-15%</span>
+            <div class="product-visual product-visual--sofa"><span></span></div>
+            <h3>Комплект для гостиной</h3>
+            <p>Диван, стол и тумба под ТВ</p>
+            <b>от 68 000 ₽</b>
+          </article>
         </div>
       </section>
-      <section class="demo-container section" id="request">
-        <form class="form-card">
-          <h2>Получить расчёт мебели</h2>
-          <div class="form-grid"><label>Имя<input placeholder="Анна"></label><label>Телефон<input placeholder="+7 999 000-00-00"></label><label>Категория<select><option>Диван</option><option>Шкаф</option><option>Стол</option><option>Кровать</option></select></label><label>Бюджет<input placeholder="до 60 000 ₽"></label><label class="wide">Комментарий<textarea placeholder="Например: диван и стол в гостиную, нужна доставка"></textarea></label><button class="btn btn-primary wide" type="button">Отправить заявку</button></div>
-        </form>
+
+      <section class="shop-section" id="delivery">
+        <div class="shop-container info-grid">
+          <article class="info-card">
+            <span class="info-icon"></span>
+            <h2>Доставка</h2>
+            <p>По городу от 600 ₽. Отдалённые районы и край рассчитываются индивидуально по тарифам перевозчика.</p>
+            <ul>
+              <li>Доставка на следующий день при наличии на складе</li>
+              <li>Подъём на этаж от 100 ₽ за этаж</li>
+              <li>Сборка корпусной мебели 10-12% от стоимости</li>
+            </ul>
+          </article>
+          <article class="info-card" id="payment">
+            <span class="info-icon info-icon--credit"></span>
+            <h2>Оплата, рассрочка, кредит</h2>
+            <p>Покупатель видит условия заранее и может оставить заявку на удобный способ оплаты.</p>
+            <div class="payment-strip">
+              <span>Наличные</span>
+              <span>Карта</span>
+              <span>Рассрочка</span>
+              <span>Кредит</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="shop-section request-section" id="request">
+        <div class="shop-container request-grid">
+          <div>
+            <p class="kicker"><span></span>Заявка</p>
+            <h2>Рассчитать мебель под вашу задачу</h2>
+            <p class="lead">В реальном проекте заявка может уходить владельцу магазина в Telegram, таблицу или CRM.</p>
+            <div class="manager-note">
+              <b>Пример уведомления владельцу</b>
+              <span>Новая заявка: Анна, диван Nord, доставка + сборка</span>
+            </div>
+          </div>
+          <form class="request-form" data-demo-form>
+            <label>Имя<input name="name" type="text" placeholder="Анна"></label>
+            <label>Телефон<input name="phone" type="tel" placeholder="+7 999 000-00-00"></label>
+            <label>Категория<select name="category"><option>Диван</option><option>Шкаф</option><option>Стол</option><option>Кровать</option></select></label>
+            <label>Комментарий<textarea name="comment" rows="4" placeholder="Например: нужен диван в гостиную, доставка в субботу"></textarea></label>
+            <button class="btn btn-primary" type="submit">Отправить заявку</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="shop-section contacts-section" id="contacts">
+        <div class="shop-container contacts-card">
+          <div>
+            <h2>Контакты магазина</h2>
+            <p>г. Пермь, ул. Пермская, 17</p>
+          </div>
+          <div>
+            <b>+7 (999) 999-89-89</b>
+            <span>Ежедневно с 10:00 до 20:00</span>
+          </div>
+          <button class="btn btn-primary" type="button" data-scroll-target="#request">Оставить заявку</button>
+        </div>
       </section>
     </main>
-    <footer class="footer"><div class="demo-container">Мебельный магазин · каталог, заявка и подбор</div></footer>
+
+    <div class="product-modal" aria-hidden="true" data-product-modal>
+      <div class="product-modal__overlay" data-product-close></div>
+      <article class="product-modal__card">
+        <button class="product-modal__close" type="button" aria-label="Закрыть" data-product-close>×</button>
+        <div class="product-modal__visual" data-modal-visual></div>
+        <div>
+          <small data-modal-category>Диваны</small>
+          <h2 data-modal-title>Диван Nord</h2>
+          <p data-modal-text>Прямой диван для гостиной, ткань, доставка и сборка.</p>
+          <strong data-modal-price>от 42 000 ₽</strong>
+          <ul>
+            <li>Подбор цвета и размера</li>
+            <li>Доставка и подъём</li>
+            <li>Заявка без оплаты на сайте</li>
+          </ul>
+          <button class="btn btn-primary" type="button" data-demo-action>Оформить заявку</button>
+        </div>
+      </article>
+    </div>
+
+    <div class="demo-notice" aria-hidden="true" data-demo-notice>
+      <div class="demo-notice__overlay" data-notice-close></div>
+      <article class="demo-notice__card" role="dialog" aria-modal="true" aria-labelledby="notice-title">
+        <button class="demo-notice__close" type="button" aria-label="Закрыть" data-notice-close>×</button>
+        <span class="notice-mark"></span>
+        <h2 id="notice-title">Это демо-версия сайта.</h2>
+        <p>В реальном проекте эта форма будет отправлять заявку владельцу сайта. Сейчас данные не сохраняются и не отправляются.</p>
+        <div class="notice-actions">
+          <button class="btn btn-ghost" type="button" data-notice-close>Понятно</button>
+          <button class="btn btn-primary" type="button" data-web00-request>Хочу такой сайт</button>
+        </div>
+      </article>
+    </div>
   </body>
 </html>

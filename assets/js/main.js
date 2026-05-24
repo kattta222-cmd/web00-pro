@@ -32,7 +32,12 @@
   }
 
   function solutions() {
-    return DATA.SOLUTIONS.filter((item) => item.active !== false);
+    const seen = new Set();
+    return DATA.SOLUTIONS.filter((item) => {
+      if (item.active === false || seen.has(item.id)) return false;
+      seen.add(item.id);
+      return true;
+    });
   }
 
   function solutionFilter(solution) {
@@ -60,11 +65,29 @@
   }
 
   function solutionDemoUrl(solution) {
+    if (!solution || solution.demoMode === "none") return "";
+    if (solution.demoMode === "external-iframe" && solution.externalDemoUrl) return solution.externalDemoUrl;
     return solution.demoLocalUrl || "";
   }
 
   function solutionOriginalDemoUrl(solution) {
-    return solution.originalDemoUrl || solution.demoUrl || "";
+    return solution.originalDemoUrl || solution.externalDemoUrl || solution.demoUrl || "";
+  }
+
+  function solutionGallery(solution) {
+    const gallery = Array.isArray(solution?.galleryImages) ? solution.galleryImages.filter(Boolean) : [];
+    const fallback = solution?.previewImage ? [solution.previewImage] : [];
+    return [...new Set(gallery.length ? gallery : fallback)];
+  }
+
+  function modalIcon(type) {
+    const icons = {
+      launch: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c2.7-.5 4.9-1.8 6.7-3.8"/><path d="M11 13 8 10c1.7-3.7 4.4-5.9 8.1-6.7L20 3l-.3 3.9C18.9 10.6 16.7 13.3 13 15l-2-2Z"/><path d="M7 15l-2 4 4-2"/></svg>',
+      support: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 19 6v5c0 4.4-2.9 7.7-7 10-4.1-2.3-7-5.6-7-10V6l7-3Z"/><path d="m9 12 2 2 4-5"/></svg>',
+      demo: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.4-6 9.5-6 9.5 6 9.5 6-3.4 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="3"/></svg>',
+      payment: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18"/><path d="M7 15h5"/></svg>',
+    };
+    return icons[type] || icons.demo;
   }
 
   function externalLink(url, label, className = "btn btn--secondary btn--small") {
@@ -90,7 +113,15 @@
     if (!modal) return;
     modal.classList.toggle("is-open", open);
     modal.setAttribute("aria-hidden", String(!open));
-    document.body.classList.toggle("is-modal-open", open && Boolean($(".modal.is-open")));
+    const hasOpenModal = open && Boolean($(".modal.is-open"));
+    document.body.classList.toggle("is-modal-open", hasOpenModal);
+    document.documentElement.classList.toggle("is-modal-open", hasOpenModal);
+  }
+
+  function setDemoDialogMode(solution) {
+    const dialog = $("[data-modal=\"demo\"] .modal__dialog");
+    if (!dialog) return;
+    dialog.classList.toggle("modal__dialog--demo-2", solution?.demoMode === "external-iframe");
   }
 
   function closeModals() {
@@ -98,7 +129,9 @@
       modal.classList.remove("is-open");
       modal.setAttribute("aria-hidden", "true");
     });
+    $("[data-modal=\"demo\"] .modal__dialog")?.classList.remove("modal__dialog--demo-2");
     document.body.classList.remove("is-modal-open");
+    document.documentElement.classList.remove("is-modal-open");
   }
 
   function initShell() {
@@ -160,6 +193,17 @@
         openLeadModal({ service: "Вопрос или консультация" });
       }
     });
+
+    window.addEventListener("message", (event) => {
+      const payload = event.data || {};
+      if (payload.type !== "WEB00_DEMO_REQUEST") return;
+      const solutionId = String(payload.solutionId || "").trim();
+      if (!solutionId) return;
+      const solution = DATA.SOLUTIONS.find((item) => item.id === solutionId && item.active !== false);
+      if (!solution) return;
+      closeModals();
+      openLeadModal({ solution });
+    });
   }
 
   function renderSolutions() {
@@ -168,35 +212,26 @@
     grid.innerHTML = solutions().map((solution) => {
       const features = solutionFeatures(solution);
       return `
-      <article class="solution-card" data-solution-card data-category="${esc(solutionFilter(solution))}" data-solution-id="${esc(solution.id)}">
-        <button class="solution-card__hit" type="button" data-solution-detail="${esc(solution.id)}" aria-label="Открыть ${esc(solution.title)}"></button>
-        ${solutionPreview(solution)}
+      <article class="solution-card" data-solution-card data-category="${esc(solutionFilter(solution))}" data-solution-id="${esc(solution.id)}" role="button" tabindex="0" aria-label="Смотреть решение: ${esc(solution.title)}">
+        ${solutionPreview(solution, { card: true })}
         <div class="solution-card__body">
-          <span class="solution-card__category">${esc(solution.category)}</span>
           <h3>${esc(solution.title)}</h3>
           <p>${esc(solution.description || solutionAudience(solution))}</p>
-          <p class="solution-card__features">Входит: ${esc(features.slice(0, 3).join(", "))}</p>
+          <p class="solution-card__features"><span>Входит:</span> ${esc(features.slice(0, 3).join(", "))}</p>
           <div class="solution-card__meta"><span>${esc(solutionTime(solution))}</span><b>${esc(solutionPrice(solution))}</b></div>
-          <div class="card-actions">
-            <button class="btn btn--secondary btn--small" type="button" data-open-demo="${esc(solution.id)}">Посмотреть демо</button>
-            <button class="btn btn--primary btn--small" type="button" data-open-lead data-solution-id="${esc(solution.id)}">Хочу такой</button>
-          </div>
         </div>
       </article>
     `;
     }).join("");
 
-    $$("[data-solution-detail]", grid).forEach((button) => {
-      button.addEventListener("click", () => openSolutionModal(solutionById(button.dataset.solutionDetail)));
-    });
     $$(".solution-card", grid).forEach((card) => {
-      card.addEventListener("click", (event) => {
-        if (event.target.closest("[data-open-demo], [data-open-lead]")) return;
-        openSolutionModal(solutionById(card.dataset.solutionId));
+      const openCard = () => openSolutionModal(solutionById(card.dataset.solutionId));
+      card.addEventListener("click", openCard);
+      card.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        openCard();
       });
-    });
-    $$("[data-open-demo]", grid).forEach((button) => {
-      button.addEventListener("click", () => openDemoModal(solutionById(button.dataset.openDemo)));
     });
 
     $$("[data-filter]").forEach((button) => {
@@ -228,15 +263,22 @@
   function renderPricing() {
     const grid = $("[data-pricing-grid]");
     if (!grid) return;
-    grid.innerHTML = DATA.PRICING.map((item) => `
-      <article class="price-card ${item.tag === "Популярный" ? "price-card--accent" : ""}">
-        <span class="price-card__tag">${esc(item.tag)}</span>
-        <h3>${esc(item.title)}</h3>
-        <strong>${esc(item.price)}</strong>
-        <p>${esc(item.note)}</p>
-        <button class="btn btn--secondary btn--small" type="button" data-open-lead data-service="${esc(item.title)}">Получить расчёт</button>
-      </article>
-    `).join("");
+    grid.innerHTML = DATA.PRICING.map((item) => {
+      const features = item.features || [];
+      return `
+        <article class="price-card ${item.tag === "Популярный" ? "price-card--accent" : ""}">
+          <div class="price-card__top">
+            <span class="price-card__tag">${esc(item.tag)}</span>
+            ${item.tag === "Популярный" ? "<b>Лучший старт</b>" : ""}
+          </div>
+          <h3>${esc(item.title)}</h3>
+          <strong>${esc(item.price)}</strong>
+          <p>${esc(item.note)}</p>
+          <ul>${features.map((feature) => `<li>${esc(feature)}</li>`).join("")}</ul>
+          <button class="btn btn--secondary btn--small" type="button" data-open-lead data-service="${esc(item.title)}">Получить расчёт</button>
+        </article>
+      `;
+    }).join("");
   }
 
   function renderFaq(category = "all") {
@@ -269,27 +311,20 @@
     });
   }
 
-  function solutionPreview(solution) {
-    const time = solutionTime(solution);
+  function solutionPreview(solution, options = {}) {
     const type = solutionPreviewType(solution);
+    const viewButton = options.card ? '<span class="solution-card__view" aria-hidden="true">Смотреть</span>' : "";
     if (solution.previewImage) {
       return `
         <div class="solution-preview solution-preview--image solution-preview--${esc(type)}">
           <img src="${attr(solution.previewImage)}" alt="Превью решения: ${attr(solution.title)}" loading="lazy">
-          <div class="solution-preview__overlay">
-            <span>${esc(solution.category)}</span>
-            <i>${esc(time)}</i>
-          </div>
+          ${viewButton}
         </div>
       `;
     }
     return `
       <div class="solution-preview solution-preview--${esc(type)}">
         <div class="solution-preview__glow"></div>
-        <div class="solution-preview__top">
-          <span>${esc(solution.category)}</span>
-          <i>${esc(time)}</i>
-        </div>
         <div class="solution-preview__scene" aria-hidden="true">
           <div class="preview-window">
             <em></em><em></em><em></em>
@@ -304,6 +339,7 @@
           </div>
         </div>
         <strong>${esc(solution.title)}</strong>
+        ${viewButton}
       </div>
     `;
   }
@@ -314,46 +350,81 @@
     const features = solutionFeatures(solution);
     const price = solutionPrice(solution);
     const time = solutionTime(solution);
+    const hasDemo = Boolean(solutionDemoUrl(solution));
+    const gallery = solutionGallery(solution);
+    const activeImage = gallery[0] || solution.previewImage || "";
     target.innerHTML = `
-      <div class="solution-modal">
-        <div>
-          ${solutionPreview(solution)}
-          <div class="thumb-row"><span></span><span></span><span></span><span></span></div>
-          <div class="modal-benefits">
-            <article><span>⚡</span><strong>Запуск ${esc(time)}</strong><small>Без лишних задержек</small></article>
-            <article><span>◉</span><strong>Демо доступно</strong><small>Посмотрите перед запуском</small></article>
-            <article><span>▣</span><strong>Без подписок</strong><small>Единоразовая оплата</small></article>
+      <div class="solution-modal solution-modal--premium">
+        <section class="solution-gallery" aria-label="Галерея решения ${esc(solution.title)}">
+          <div class="solution-gallery__stage">
+            ${activeImage ? `<img data-solution-gallery-main src="${attr(activeImage)}" alt="${attr(solution.title)} - экран сайта">` : `<div class="solution-gallery__empty">Preview готовится</div>`}
           </div>
-        </div>
-        <div>
-          <span class="status-pill">Готов к запуску</span>
+          ${gallery.length > 1 ? `
+            <div class="solution-gallery__thumbs" role="list" aria-label="Экраны сайта">
+              ${gallery.map((image, index) => `
+                <button class="${index === 0 ? "is-active" : ""}" type="button" data-gallery-thumb data-gallery-image="${attr(image)}" aria-label="Показать экран ${index + 1}">
+                  <img src="${attr(image)}" alt="" loading="lazy">
+                </button>
+              `).join("")}
+            </div>
+          ` : ""}
+        </section>
+
+        <aside class="solution-detail">
+          <span class="solution-detail__tag">Готов к запуску</span>
           <h2 id="solution-title">${esc(solution.title)}</h2>
-          <div class="solution-meta-line"><strong>${esc(price)}</strong><span>${esc(time)}</span></div>
-          <p>${esc(solution.description)}</p>
-          <ul class="check-list">${features.map((item) => `<li>${esc(item)}</li>`).join("")}</ul>
-          <button class="btn btn--primary btn--full" type="button" data-open-lead data-solution-id="${esc(solution.id)}">Хочу такой сайт</button>
-          <button class="btn btn--secondary btn--full" type="button" data-open-demo="${esc(solution.id)}">Посмотреть демо</button>
+          <div class="solution-detail__meta"><strong>${esc(price)}</strong><i></i><span>${esc(time)}</span></div>
+          <p class="solution-detail__description">${esc(solution.description)}</p>
+          <ul class="check-list solution-detail__features">${features.map((item) => `<li>${esc(item)}</li>`).join("")}</ul>
+          <div class="solution-detail__actions">
+            <button class="btn btn--primary btn--full" type="button" data-open-lead data-solution-id="${esc(solution.id)}">${hasDemo ? "Хочу такой сайт" : "Оставить заявку"}</button>
+            ${hasDemo ? `<button class="btn btn--secondary btn--full" type="button" data-open-demo="${esc(solution.id)}">Посмотреть демо</button>` : ""}
+          </div>
+        </aside>
+
+        <div class="modal-benefits modal-benefits--premium">
+          <article><span>${modalIcon("launch")}</span><strong>Запуск ${esc(time)}</strong><small>Быстрый старт без лишних задержек</small></article>
+          <article><span>${modalIcon("support")}</span><strong>Поддержка 7 дней</strong><small>Поможем на старте и ответим на вопросы</small></article>
+          <article><span>${modalIcon("demo")}</span><strong>Демо доступно</strong><small>Посмотрите живой пример перед запуском</small></article>
+          <article><span>${modalIcon("payment")}</span><strong>Без подписок</strong><small>Единоразовая оплата без скрытых платежей</small></article>
         </div>
       </div>
     `;
-    $("[data-open-demo]", target).addEventListener("click", () => openDemoModal(solution));
+    $$("[data-gallery-thumb]", target).forEach((button) => {
+      button.addEventListener("click", () => {
+        const image = button.dataset.galleryImage;
+        const mainImage = $("[data-solution-gallery-main]", target);
+        if (!image || !mainImage) return;
+        mainImage.src = image;
+        mainImage.alt = `${solution.title} - экран сайта`;
+        $$("[data-gallery-thumb]", target).forEach((item) => item.classList.toggle("is-active", item === button));
+      });
+    });
+    $("[data-open-demo]", target)?.addEventListener("click", () => openDemoModal(solution));
     setModal("solution", true);
   }
 
   function openDemoModal(solution) {
+    const demoUrl = solutionDemoUrl(solution);
+    if (!demoUrl) {
+      closeModals();
+      openLeadModal({ solution });
+      return;
+    }
     activeSolution = solution;
+    const isExternalFrame = solution?.demoMode === "external-iframe";
+    setDemoDialogMode(solution);
     const target = $("[data-demo-modal-content]");
     const features = solutionFeatures(solution);
     const price = solutionPrice(solution);
     const time = solutionTime(solution);
-    const demoUrl = solutionDemoUrl(solution);
     const originalDemoUrl = solutionOriginalDemoUrl(solution);
     target.innerHTML = `
-      <div class="demo-modal">
+      <div class="demo-modal ${isExternalFrame ? "demo-modal--external" : ""}">
         <div class="demo-modal__head">
-          <div><h2 id="demo-title">Демо: ${esc(solution.title)}</h2><p>${demoUrl ? "Локальная демо-страница открывается внутри WEB00 Pro." : "Демо для этого решения готовится."}</p></div>
-          <div class="segmented"><button class="is-active" type="button" data-demo-device="desktop">Desktop</button><button type="button" data-demo-device="mobile">Mobile</button></div>
-          ${externalLink(originalDemoUrl, "Открыть оригинал")}
+          <div><h2 id="demo-title">${esc(isExternalFrame ? solution.title : `Демо: ${solution.title}`)}</h2><p>${isExternalFrame ? "Настоящий сайт открывается внутри demo viewer." : "Локальная демо-страница открывается внутри WEB00 Pro."}</p></div>
+          ${isExternalFrame ? "" : `<div class="segmented"><button class="is-active" type="button" data-demo-device="desktop">Desktop</button><button type="button" data-demo-device="mobile">Mobile</button></div>`}
+          ${externalLink(originalDemoUrl, isExternalFrame ? "Открыть отдельно" : "Открыть оригинал")}
           <button class="btn btn--primary btn--small" type="button" data-open-lead data-solution-id="${esc(solution.id)}">Хочу такой сайт</button>
         </div>
         <div class="demo-layout">
@@ -366,6 +437,14 @@
           <div class="demo-frame ${demoUrl ? "demo-frame--live" : ""}" data-demo-frame>
             ${demoUrl ? `
               <iframe data-demo-iframe src="${attr(demoUrl)}" title="Демо: ${attr(solution.title)}" loading="lazy"></iframe>
+              ${solution.demoMode === "external-iframe" ? `
+                <div class="demo-frame__external-fallback" data-demo-external-fallback hidden>
+                  <span>▤</span>
+                  <h3>Откройте демо в отдельном окне</h3>
+                  <p>Если сайт не отобразился внутри окна, откройте его отдельно.</p>
+                  ${externalLink(originalDemoUrl, "Открыть отдельно", "btn btn--primary btn--small")}
+                </div>
+              ` : ""}
             ` : `
               <div class="demo-frame__fallback">
                 <span>▤</span>
@@ -393,6 +472,16 @@
         $("[data-demo-frame]", target).classList.toggle("is-mobile", button.dataset.demoDevice === "mobile");
       });
     });
+    const iframe = $("[data-demo-iframe]", target);
+    const externalFallback = $("[data-demo-external-fallback]", target);
+    if (iframe && externalFallback) {
+      iframe.addEventListener("load", () => {
+        externalFallback.hidden = true;
+      });
+      iframe.addEventListener("error", () => {
+        externalFallback.hidden = false;
+      });
+    }
     setModal("demo", true);
   }
 
@@ -800,7 +889,7 @@
           <div class="status-current"><span class="status-dot status-dot--${esc(status.badge)}"></span><div><small>Текущий статус</small><h2 class="status-badge">${esc(status.label)}</h2><p>${esc(status.update)}</p></div></div>
           <ol class="status-progress">${statusSteps(status.progress)}</ol>
           <div class="status-note">${esc(status.clientAction)}</div>
-          <div class="modal-actions"><button class="btn btn--primary" type="button">${esc(status.action)}</button><button class="btn btn--secondary" type="button" data-open-bug>Сообщить об ошибке</button></div>
+          <div class="modal-actions"><button class="btn btn--primary" type="button">${esc(status.action)}</button></div>
         </div>
         <aside class="status-side">
           <article class="glass-card"><span>Выбранное решение</span><strong>${esc(displayLead.solution || "WEB00 проект")}</strong></article>
