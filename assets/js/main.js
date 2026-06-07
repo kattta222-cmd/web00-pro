@@ -101,6 +101,28 @@
     return solutions().find((item) => item.id === id) || solutions()[0] || DATA.SOLUTIONS[0];
   }
 
+  function solutionByIdStrict(id) {
+    const value = String(id || "").trim();
+    if (!value) return null;
+    return solutions().find((item) => item.id === value || item.title === value || item.legacyTitle === value) || null;
+  }
+
+  function pricingByTitle(title) {
+    const value = String(title || "").trim().toLowerCase();
+    if (!value) return null;
+    return (DATA.PRICING || []).find((item) => String(item.title || "").trim().toLowerCase() === value) || null;
+  }
+
+  function briefUrl(params = {}) {
+    const query = new URLSearchParams();
+    Object.entries(params).forEach(([key, value]) => {
+      if (value === undefined || value === null || value === "") return;
+      query.set(key, String(value));
+    });
+    const suffix = query.toString();
+    return `brief.html${suffix ? `?${suffix}` : ""}`;
+  }
+
   function normalizeSolutionTitle(value) {
     const title = String(value || "").trim();
     if (!title) return "";
@@ -212,17 +234,18 @@
     grid.innerHTML = solutions().map((solution) => {
       const features = solutionFeatures(solution);
       const hasDemo = Boolean(solutionDemoUrl(solution));
+      const tags = features.slice(0, 2);
       return `
       <article class="solution-card" data-solution-card data-category="${esc(solutionFilter(solution))}" data-solution-id="${esc(solution.id)}" role="button" tabindex="0" aria-label="Смотреть решение: ${esc(solution.title)}">
         ${solutionPreview(solution, { card: true })}
         <div class="solution-card__body">
+          <div class="solution-card__tags">${tags.map((tag) => `<span>${esc(tag)}</span>`).join("")}</div>
           <h3>${esc(solution.title)}</h3>
           <p>${esc(solution.description || solutionAudience(solution))}</p>
-          <p class="solution-card__features"><span>Входит:</span> ${esc(features.slice(0, 3).join(", "))}</p>
-          <div class="solution-card__meta"><span>${esc(solutionTime(solution))}</span><b>${esc(solutionPrice(solution))}</b></div>
+          <div class="solution-card__meta"><b>${esc(solutionPrice(solution))}</b><span>${esc(solutionTime(solution))}</span></div>
           <div class="solution-card__actions">
             <button class="solution-card__action solution-card__action--secondary" type="button" data-card-action="${hasDemo ? "demo" : "details"}">${hasDemo ? "Смотреть демо" : "Подробнее"}</button>
-            <button class="solution-card__action solution-card__action--primary" type="button" data-open-lead data-solution-id="${esc(solution.id)}">${hasDemo ? "Запустить" : "Оставить заявку"}</button>
+            <a class="solution-card__action solution-card__action--primary" href="${attr(briefUrl({ solution: solution.id }))}">${hasDemo ? "Запустить" : "Оставить заявку"}</a>
           </div>
         </div>
       </article>
@@ -271,7 +294,7 @@
           <h3>${esc(service.title)}</h3>
           <p>${esc(service.text)}</p>
         </div>
-        <button type="button" data-open-lead data-service="${esc(service.type)}" aria-label="${esc(service.title)}">→</button>
+        <a href="${attr(briefUrl({ service: service.type }))}" aria-label="${esc(service.title)}">→</a>
       </article>
     `).join("");
   }
@@ -280,18 +303,41 @@
     const grid = $("[data-pricing-grid]");
     if (!grid) return;
     grid.innerHTML = DATA.PRICING.map((item) => {
-      const features = item.features || [];
+      const rowsByTitle = {
+        Start: [
+          ["Срок запуска", "до 7 дней"],
+          ["Поддержка", "30 дней"],
+          ["Настройка контента", "Базовая"],
+          ["Интеграции", "Базовые"],
+          ["Количество страниц", "до 10"],
+        ],
+        Business: [
+          ["Срок запуска", "до 14 дней"],
+          ["Поддержка", "60 дней"],
+          ["Настройка контента", "Стандартная"],
+          ["Интеграции", "Расширенные"],
+          ["Количество страниц", "до 20"],
+        ],
+        Pro: [
+          ["Срок запуска", "до 21 дня"],
+          ["Поддержка", "90 дней"],
+          ["Настройка контента", "Индивидуальная"],
+          ["Интеграции", "Максимальные"],
+          ["Количество страниц", "до 50"],
+        ],
+      };
+      const rows = rowsByTitle[item.title] || (item.features || []).map((feature) => [feature, ""]);
+      const isRecommended = item.title === "Pro";
       return `
-        <article class="price-card ${item.tag === "Популярный" ? "price-card--accent" : ""}">
+        <article class="price-card ${isRecommended ? "price-card--accent" : ""}">
           <div class="price-card__top">
-            <span class="price-card__tag">${esc(item.tag)}</span>
-            ${item.tag === "Популярный" ? "<b>Лучший старт</b>" : ""}
+            ${isRecommended ? '<span class="price-card__tag">Рекомендуем</span>' : ""}
           </div>
           <h3>${esc(item.title)}</h3>
           <strong>${esc(item.price)}</strong>
           <p>${esc(item.note)}</p>
-          <ul>${features.map((feature) => `<li>${esc(feature)}</li>`).join("")}</ul>
-          <button class="btn btn--secondary btn--small" type="button" data-open-lead data-service="${esc(item.title)}">Получить расчёт</button>
+          <ul class="price-card__specs">${rows.map(([label, value]) => `<li><span>${esc(label)}</span><b>${esc(value)}</b></li>`).join("")}</ul>
+          <a class="btn btn--secondary btn--small" href="${attr(briefUrl({ tariff: item.title }))}">Выбрать тариф ${esc(item.title)}</a>
         </article>
       `;
     }).join("");
@@ -417,7 +463,7 @@
             </div>
             <ul class="check-list solution-detail__features">${features.map((item) => `<li>${esc(item)}</li>`).join("")}</ul>
             <div class="solution-detail__actions template-detail__actions">
-              <button class="btn btn--primary btn--full" type="button" data-open-lead data-solution-id="${esc(solution.id)}">Запустить этот сайт</button>
+              <a class="btn btn--primary btn--full" href="${attr(briefUrl({ solution: solution.id }))}">Запустить этот сайт</a>
               ${hasDemo ? `<button class="btn btn--secondary btn--full" type="button" data-open-demo="${esc(solution.id)}">Смотреть демо</button>` : `<p class="template-detail__demo-note">Демо подберём после короткого брифа.</p>`}
             </div>
           </aside>
@@ -481,7 +527,7 @@
           <div><h2 id="demo-title">${esc(isExternalFrame ? solution.title : `Демо: ${solution.title}`)}</h2><p>${isExternalFrame ? "Настоящий сайт открывается внутри demo viewer." : "Локальная демо-страница открывается внутри WEB00 Pro."}</p></div>
           ${isExternalFrame ? "" : `<div class="segmented"><button class="is-active" type="button" data-demo-device="desktop">Desktop</button><button type="button" data-demo-device="mobile">Mobile</button></div>`}
           ${externalLink(originalDemoUrl, isExternalFrame ? "Открыть отдельно" : "Открыть оригинал")}
-          <button class="btn btn--primary btn--small" type="button" data-open-lead data-solution-id="${esc(solution.id)}">Хочу такой сайт</button>
+          <a class="btn btn--primary btn--small" href="${attr(briefUrl({ solution: solution.id }))}">Хочу такой сайт</a>
         </div>
         <div class="demo-layout">
           <aside>
@@ -564,13 +610,36 @@
         </aside>
       `;
     }
+    const tariff = context.tariff;
+    if (tariff) {
+      const estimate = context.estimate || tariff.price || "";
+      return `
+        <aside class="lead-aside brief-summary">
+          <span class="brief-summary__eyebrow">Выбранный тариф</span>
+          <div class="service-selected"><span>WEB00</span><strong>${esc(tariff.title)}</strong></div>
+          <p>${esc(tariff.note || "Тариф для запуска сайта с понятным объёмом работ и поддержкой после старта.")}</p>
+          <div class="brief-summary__meta">
+            <article><span>Стоимость</span><strong>${esc(estimate)}</strong></article>
+            <article><span>Срок</span><strong>по тарифу</strong></article>
+          </div>
+          <ul class="check-list">${(tariff.features || []).slice(0, 5).map((item) => `<li>${esc(item)}</li>`).join("")}</ul>
+          <div class="brief-summary__trust">
+            <span>Персональный менеджер</span>
+            <span>Поддержка после запуска</span>
+            <span>Правки и доработки</span>
+            <span>Запуск и сопровождение</span>
+          </div>
+        </aside>
+      `;
+    }
     const service = context.service || "Сайт под ключ";
     const estimateMatch = service.match(/(\d[\d\s]*[–-]\d[\d\s]*\s*₽)/);
+    const estimate = context.estimate || estimateMatch?.[1] || "";
     return `
       <aside class="lead-aside brief-summary">
         <span class="brief-summary__eyebrow">Контекст заявки</span>
         <div class="service-selected"><span>WEB00</span><strong>${esc(service)}</strong></div>
-        ${estimateMatch ? `<div class="brief-summary__estimate"><span>Ориентир калькулятора</span><strong>${esc(estimateMatch[1])}</strong></div>` : ""}
+        ${estimate ? `<div class="brief-summary__estimate"><span>Ориентир</span><strong>${esc(estimate)}</strong></div>` : ""}
         <p>Опишите задачу, и мы предложим формат, срок и следующий шаг без лишней технической сложности.</p>
         <div class="brief-summary__meta">
           <article><span>Формат</span><strong>Подбор</strong></article>
@@ -590,14 +659,25 @@
     const solution = context.solution || null;
     activeSolution = solution || activeSolution;
     activeService = context.service || (solution ? "Готовое решение" : "Сайт под ключ");
-    renderLeadForm({ solution, service: activeService, errors: null });
+    renderLeadForm({ solution, service: activeService, tariff: context.tariff || null, estimate: context.estimate || "", mode: "modal", errors: null });
     setModal("lead", true);
   }
 
+  function leadTarget(context = {}) {
+    if (context.mode === "page") return $("[data-brief-page-content]");
+    return $("[data-lead-modal-content]");
+  }
+
   function renderLeadForm(context) {
-    const target = $("[data-lead-modal-content]");
+    const target = leadTarget(context);
+    if (!target) return;
+    const isPageMode = context.mode === "page";
     const hasErrors = Boolean(context.errors);
-    const rawTaskValue = context.solution ? "Запуск готового сайта" : context.service || "Сайт под заказ";
+    const rawTaskValue = context.solution
+      ? "Запуск готового сайта"
+      : context.tariff
+        ? "Запуск готового сайта"
+        : context.service || "Сайт под заказ";
     const taskValue = rawTaskValue.includes("Доработ")
       ? "Доработка сайта"
       : rawTaskValue.includes("Автомат") || rawTaskValue.includes("бот")
@@ -607,11 +687,15 @@
           : context.solution
             ? "Запуск готового сайта"
             : "Сайт под заказ";
-    const introComment = context.solution ? `Интересует решение: ${context.solution.title}` : "";
+    const introComment = context.solution
+      ? `Интересует решение: ${context.solution.title}`
+      : context.tariff
+        ? `Интересует тариф: ${context.tariff.title}`
+        : "";
     target.innerHTML = `
-      <div class="lead-modal brief-modal ${hasErrors ? "has-errors" : ""}">
+      <div class="${isPageMode ? "brief-page-ui" : "lead-modal"} brief-modal ${hasErrors ? "has-errors" : ""}">
         <form class="lead-form-ui brief-form" data-lead-form novalidate>
-          <div class="brief-modal__header">
+          ${isPageMode ? "" : `<div class="brief-modal__header">
             <span class="brief-kicker">WEB00 launch brief</span>
             <h2 id="lead-title">Бриф на запуск сайта</h2>
             <p>Расскажите о проекте — мы подготовим сайт, который привлечёт клиентов и поддержит ваш бренд.</p>
@@ -621,7 +705,7 @@
             <span><b>2</b> Данные</span>
             <span><b>3</b> Контент</span>
             <span><b>4</b> Подтверждение</span>
-          </div>
+          </div>`}
           ${hasErrors ? '<div class="alert alert--error">Пожалуйста, заполните обязательные поля</div>' : ""}
 
           <section class="brief-section">
@@ -689,8 +773,8 @@
           <section class="brief-section">
             <div class="brief-section__head"><span>04</span><h3>Материалы и комментарий</h3></div>
             <div class="brief-upload-grid" aria-label="Материалы для будущей загрузки">
-              <div class="brief-upload-placeholder"><strong>Логотип</strong><span>Прикрепление файлов подключим на backend-этапе</span></div>
-              <div class="brief-upload-placeholder"><strong>Фото / контент</strong><span>Пока можно описать материалы в комментарии</span></div>
+              <div class="brief-upload-placeholder"><strong>Логотип</strong><span>Файлы можно будет передать менеджеру после отправки брифа.</span></div>
+              <div class="brief-upload-placeholder"><strong>Фото / изображения</strong><span>Файлы можно будет передать менеджеру после отправки брифа.</span></div>
             </div>
             <label><span class="field-label">Комментарий</span><textarea name="comment" rows="5" maxlength="700" placeholder="Опишите пожелания, сроки, важные детали">${introComment}</textarea></label>
           </section>
@@ -698,9 +782,9 @@
           <label class="checkbox-row brief-consent"><input name="consent" type="checkbox" required> <span class="field-label">Согласие на обработку данных <b>*</b></span></label>
           <div class="brief-actions">
             <button class="btn btn--primary btn--full" type="submit">Отправить бриф</button>
-            <button class="btn btn--secondary btn--full" type="button" data-close-modal>Вернуться к выбору</button>
+            ${isPageMode ? '<a class="btn btn--secondary btn--full" href="solutions.html">Вернуться к выбору</a>' : '<button class="btn btn--secondary btn--full" type="button" data-close-modal>Вернуться к выбору</button>'}
           </div>
-          <small>Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности. Файлы сейчас не загружаются: это безопасный frontend-preview.</small>
+          <small>Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности. Файлы сейчас не загружаются: их можно будет передать менеджеру после отправки брифа.</small>
         </form>
         ${leadAside(context)}
       </div>
@@ -781,9 +865,12 @@
         leadChannels: formData.getAll("leadChannels"),
         blogNeeded: data.blogNeeded || "Позже",
         comment: data.comment?.trim() || "",
-        solution: context.solution?.title || context.service || data.taskType,
+        solution: context.solution?.title || context.tariff?.title || context.service || data.taskType,
         selectedSolutionId: context.solution?.id || "",
-        requestContext: context.service || (context.solution ? "Готовый шаблон" : data.taskType),
+        selectedTariff: context.tariff?.title || "",
+        requestContext: context.estimate
+          ? `${context.service || context.tariff?.title || data.taskType}: ${context.estimate}`
+          : context.service || (context.solution ? "Готовый шаблон" : context.tariff ? `Тариф ${context.tariff.title}` : data.taskType),
       });
       renderLeadSuccess(lead, context);
     } catch (error) {
@@ -792,9 +879,11 @@
   }
 
   function renderLeadSuccess(lead, context) {
-    const target = $("[data-lead-modal-content]");
+    const target = leadTarget(context);
+    if (!target) return;
+    const isPageMode = context.mode === "page";
     target.innerHTML = `
-      <div class="success-state">
+      <div class="success-state ${isPageMode ? "brief-page-success" : ""}">
         <div class="success-icon">✓</div>
         <h2>Бриф отправлен</h2>
         <p>Мы получили данные по проекту. Менеджер свяжется с вами, уточнит детали и подготовит следующий шаг.</p>
@@ -814,15 +903,16 @@
         </div>
         <div class="modal-actions">
           <a class="btn btn--primary" href="status.html?id=${encodeURIComponent(lead.id)}">Проверить статус заявки</a>
-          <button class="btn btn--secondary" type="button" data-close-modal>Вернуться к каталогу</button>
+          ${isPageMode ? '<a class="btn btn--secondary" href="solutions.html">Вернуться к каталогу</a>' : '<button class="btn btn--secondary" type="button" data-close-modal>Вернуться к каталогу</button>'}
         </div>
       </div>
     `;
-    $("[data-close-modal]", target).addEventListener("click", closeModals);
+    $("[data-close-modal]", target)?.addEventListener("click", closeModals);
   }
 
   function renderLeadFallback(context) {
-    const target = $("[data-lead-modal-content]");
+    const target = leadTarget(context);
+    if (!target) return;
     target.innerHTML = `
       <div class="fallback-state">
         <div class="warning-icon">!</div>
@@ -1030,6 +1120,33 @@
           window.location.href = `status.html?id=${encodeURIComponent(data.leadId || "")}&notFound=1`;
         }
       });
+    });
+  }
+
+  function readBriefDraftContext() {
+    try {
+      return JSON.parse(sessionStorage.getItem("WEB00_BRIEF_CONTEXT") || "{}");
+    } catch (error) {
+      return {};
+    }
+  }
+
+  function initBriefPage() {
+    const root = $("[data-brief-page-content]");
+    if (!root) return;
+    const params = new URLSearchParams(window.location.search);
+    const draft = readBriefDraftContext();
+    const solution = solutionByIdStrict(params.get("solution") || draft.solutionId);
+    const tariff = pricingByTitle(params.get("tariff") || draft.tariff);
+    const service = params.get("service") || draft.service || (tariff ? `Тариф ${tariff.title}` : "");
+    const estimate = params.get("estimate") || draft.estimate || "";
+    renderLeadForm({
+      mode: "page",
+      solution,
+      tariff,
+      service: service || (solution ? "Готовое решение" : "Сайт под заказ"),
+      estimate,
+      errors: null,
     });
   }
 
@@ -1295,6 +1412,8 @@
     if (page === "status") {
       renderStatusPage();
       initStatusLookup();
+    } else if (page === "brief") {
+      initBriefPage();
     } else {
       initHome();
     }

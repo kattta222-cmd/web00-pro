@@ -1278,3 +1278,1036 @@ body[data-page="solutions"] .template-detail__panel--process strong {
     grid-template-columns: 1fr;
   }
 }
+
+/* Sprint 9.1: visual reconciliation with the approved catalog mockup. */
+body[data-page="solutions"] .container,
+body[data-page="solutions"] .screen-section[data-section="solutions"] .container {
+  width: min(calc(100% - clamp(40px, 18vw, 220px)), 1040px);
+}
+
+body[data-page="solutions"] .header__inner {
+  min-height: 78px;
+}
+
+body[data-page="solutions"] .nav a[href*="popular-templates"]::after {
+  content: none;
+}
+
+body[data-page="solutions"] .screen-section[data-section="solutions"] {
+  padding: 28px 0 38px;
+}
+
+body[data-page="solutions"] .screen-section[data-section="solutions"] .container {
+  display: block;
+}
+
+body[data-page="solutions"] .catalog-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 24px;
+  align-items: start;
+  margin-top: 0;
+}
+
+body[data-page="solutions"] .catalog-hero,
+body[data-page="solutions"] .catalog-summary,
+body[data-page="solutions"] .filters,
+body[data-page="solutions"] .solutions-grid,
+body[data-page="solutions"] .catalog-help {
+  grid-area: auto;
+}
+
+body[data-page="solutions"] .section-head {
+  max-width: 620px;
+}
+
+body[data-page="solutions"] .ui-kicker {
+  margin-bottom: 18px;
+  padding: 6px 11px;
+  font-size: 0.74rem;
+}
+
+body[data-page="solutions"] .section-head h1 {
+  max-width: 600px;
+  font-size: clamp(2.45rem, 4.35vw, 3.35rem);
+  line-height: 1.03;
+  letter-spacing: -0.035em;
+}
+
+body[data-page="solutions"] .section-head p:not(.ui-kicker) {
+  max-width: 530px;
+  margin-top: 14px;
+  font-size: 0.93rem;
+  line-height: 1.55;
+}
+
+body[data-page="solutions"] .catalog-summary {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 86px;
+  gap: 10px;
+  margin: 0;
+  align-self: end;
+  transform: none;
+}
+
+body[data-page="solutions"] .catalog-summary > div,
+body[data-page="solutions"] .catalog-compare {
+  border: 1px solid var(--catalog-border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--catalog-shadow-soft);
+}
+
+body[data-page="solutions"] .catalog-summary > div {
+  display: grid;
+  gap: 3px;
+  padding: 12px 13px;
+}
+
+body[data-page="solutions"] .catalog-summary span {
+  color: var(--catalog-secondary);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+body[data-page="solutions"] .catalog-summary strong {
+  font-size: 0.78rem;
+  line-height: 1.24;
+}
+
+body[data-page="solutions"] .catalog-compare {
+  min-height: 45px;
+  padding: 0 12px;
+  color: var(--catalog-accent);
+  font-size: 0.72rem;
+}
+
+body[data-page="solutions"] .catalog-filterbar {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(96px, 1fr)) minmax(160px, 1.25fr);
+  gap: 10px;
+  margin: 24px 0 16px;
+  border: 1px solid var(--catalog-border);
+  border-radius: 4px;
+  padding: 11px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: none;
+}
+
+body[data-page="solutions"] .catalog-filterbar label {
+  display: grid;
+  gap: 7px;
+  color: var(--catalog-secondary);
+  font-size: 0.66rem;
+  font-weight: 700;
+}
+
+body[data-page="solutions"] .catalog-filterbar select,
+body[data-page="solutions"] .catalog-search {
+  width: 100%;
+  min-height: 32px;
+  border: 1px solid var(--catalog-border);
+  border-radius: 4px;
+  padding: 0 10px;
+  background: #fff;
+  color: var(--catalog-text);
+  font: inherit;
+  font-size: 0.72rem;
+}
+
+body[data-page="solutions"] .catalog-search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-self: end;
+  color: var(--catalog-muted);
+}
+
+body[data-page="solutions"] .catalog-search b {
+  width: 12px;
+  height: 12px;
+  border: 1.6px solid currentColor;
+  border-radius: 999px;
+  position: relative;
+}
+
+body[data-page="solutions"] .catalog-search b::after {
+  content: "";
+  position: absolute;
+  right: -5px;
+  bottom: -4px;
+  width: 6px;
+  height: 1.6px;
+  border-radius: 999px;
+  background: currentColor;
+  transform: rotate(45deg);
+}
+
+body[data-page="solutions"] .catalog-workspace {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+body[data-page="solutions"] .catalog-results {
+  min-width: 0;
+  width: 100%;
+}
+
+body[data-page="solutions"] .filters {
+  position: sticky;
+  top: 92px;
+  display: grid;
+  gap: 0;
+  margin: 0;
+  border-radius: 4px;
+  padding: 0;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+body[data-page="solutions"] .filters::before {
+  margin: 0;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--catalog-border);
+  color: var(--catalog-secondary);
+  font-size: 0.68rem;
+}
+
+body[data-page="solutions"] .filter-btn {
+  min-height: 29px;
+  border: 0;
+  border-radius: 0;
+  padding: 8px 12px;
+  background: transparent;
+  color: var(--catalog-secondary);
+  font-size: 0.7rem;
+  line-height: 1.15;
+}
+
+body[data-page="solutions"] .filter-btn:hover,
+body[data-page="solutions"] .filter-btn:focus-visible {
+  background: var(--catalog-surface-soft);
+  transform: none;
+}
+
+body[data-page="solutions"] .filter-btn.is-active {
+  background: var(--catalog-accent-soft);
+  color: var(--catalog-accent);
+}
+
+body[data-page="solutions"] .catalog-extra-filters {
+  display: grid;
+  gap: 9px;
+  margin-top: 16px;
+  border-top: 1px solid var(--catalog-border);
+  padding: 14px;
+  color: var(--catalog-secondary);
+  font-size: 0.7rem;
+}
+
+body[data-page="solutions"] .catalog-extra-filters span {
+  color: var(--catalog-text);
+  font-weight: 750;
+}
+
+body[data-page="solutions"] .catalog-extra-filters label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+body[data-page="solutions"] .catalog-extra-filters i {
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--catalog-border-strong);
+  border-radius: 2px;
+  background: #fff;
+}
+
+body[data-page="solutions"] .catalog-selected-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin: 0 0 14px;
+  color: var(--catalog-muted);
+  font-size: 0.7rem;
+}
+
+body[data-page="solutions"] .catalog-selected-row b {
+  border: 1px solid var(--catalog-border);
+  border-radius: 4px;
+  padding: 5px 8px;
+  background: var(--catalog-surface-soft);
+  color: var(--catalog-accent);
+  font-weight: 650;
+}
+
+body[data-page="solutions"] .catalog-selected-row button {
+  border: 0;
+  background: transparent;
+  color: var(--catalog-accent);
+  font: inherit;
+  font-weight: 650;
+}
+
+body[data-page="solutions"] .catalog-selected-row strong {
+  margin-left: auto;
+  color: var(--catalog-secondary);
+  font-weight: 650;
+}
+
+body[data-page="solutions"] .solutions-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+body[data-page="solutions"] .solution-card {
+  border-radius: 6px;
+  padding: 8px;
+  box-shadow: 0 10px 24px rgba(43, 35, 28, 0.055);
+}
+
+body[data-page="solutions"] .solution-card:hover,
+body[data-page="solutions"] .solution-card:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(43, 35, 28, 0.09);
+}
+
+body[data-page="solutions"] .solution-preview,
+body[data-page="solutions"] .solution-card .solution-preview,
+body[data-page="solutions"] .solution-preview--image,
+body[data-page="solutions"] .solution-card .solution-preview--image {
+  aspect-ratio: 16 / 6.7;
+  border-radius: 5px;
+  padding: 18px 6px 6px;
+  background: linear-gradient(180deg, #fbfaf8 0 18px, #f4efe9 18px 100%);
+}
+
+body[data-page="solutions"] .solution-preview::after,
+body[data-page="solutions"] .solution-preview--image::after {
+  top: 7px;
+  left: 9px;
+  width: 5px;
+  height: 5px;
+  box-shadow: 10px 0 0 #ddd7d0, 20px 0 0 #e8e2dc;
+}
+
+body[data-page="solutions"] .solution-preview--image img {
+  border-radius: 4px;
+}
+
+body[data-page="solutions"] .solution-card__body {
+  padding: 10px 0 0;
+}
+
+body[data-page="solutions"] .solution-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 0 0 7px;
+}
+
+body[data-page="solutions"] .solution-card__tags span {
+  border-radius: 4px;
+  padding: 4px 7px;
+  background: var(--catalog-surface-soft);
+  color: var(--catalog-secondary);
+  font-size: 0.62rem;
+  line-height: 1;
+}
+
+body[data-page="solutions"] .solution-card h3 {
+  margin-bottom: 5px;
+  font-size: clamp(1.08rem, 1.45vw, 1.28rem);
+  line-height: 1.05;
+}
+
+body[data-page="solutions"] .solution-card p {
+  margin-bottom: 8px;
+  font-size: 0.73rem;
+  line-height: 1.34;
+  -webkit-line-clamp: 2;
+}
+
+body[data-page="solutions"] .solution-card__features {
+  display: none;
+}
+
+body[data-page="solutions"] .solution-card__meta {
+  padding-top: 5px;
+  border-top: 0;
+  font-size: 0.72rem;
+}
+
+body[data-page="solutions"] .solution-card__meta b {
+  order: -1;
+  font-size: 0.9rem;
+}
+
+body[data-page="solutions"] .solution-card__actions {
+  gap: 6px;
+  margin-top: 9px;
+}
+
+body[data-page="solutions"] .solution-card__action {
+  min-height: 30px;
+  border-radius: 4px;
+  padding: 7px 8px;
+  font-size: 0.68rem;
+}
+
+body[data-page="solutions"] .catalog-help {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 22px;
+  margin-top: 20px;
+  border-radius: 4px;
+  padding: 18px 22px;
+}
+
+body[data-page="solutions"] .catalog-help::before {
+  content: "?";
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(142, 15, 19, 0.28);
+  border-radius: 999px;
+  color: var(--catalog-accent);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2rem;
+}
+
+body[data-page="solutions"] .catalog-help span {
+  display: none;
+}
+
+body[data-page="solutions"] .catalog-help h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  letter-spacing: -0.02em;
+}
+
+body[data-page="solutions"] .catalog-help p {
+  margin-top: 6px;
+  font-size: 0.83rem;
+  line-height: 1.4;
+}
+
+body[data-page="solutions"] .catalog-help .btn {
+  min-height: 40px;
+  border-radius: 4px;
+  padding-inline: 28px;
+}
+
+body[data-page="solutions"] .footer__inner {
+  min-height: 70px;
+}
+
+@media (max-width: 1080px) {
+  body[data-page="solutions"] .container,
+  body[data-page="solutions"] .screen-section[data-section="solutions"] .container {
+    width: min(100% - 48px, 1040px);
+  }
+
+  body[data-page="solutions"] .catalog-top {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-page="solutions"] .catalog-summary {
+    transform: none;
+    max-width: 360px;
+  }
+
+  body[data-page="solutions"] .catalog-filterbar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body[data-page="solutions"] .catalog-search {
+    grid-column: 1 / -1;
+  }
+
+  body[data-page="solutions"] .catalog-workspace {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-page="solutions"] .filters {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  body[data-page="solutions"] .filters::before,
+  body[data-page="solutions"] .catalog-extra-filters {
+    width: 100%;
+  }
+
+  body[data-page="solutions"] .filter-btn {
+    width: auto;
+    border: 1px solid var(--catalog-border);
+    border-radius: 999px;
+  }
+
+  body[data-page="solutions"] .solutions-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  body[data-page="solutions"] .container,
+  body[data-page="solutions"] .screen-section[data-section="solutions"] .container {
+    width: min(100% - 28px, 1040px);
+  }
+
+  body[data-page="solutions"] .screen-section[data-section="solutions"] {
+    padding-top: 36px;
+  }
+
+  body[data-page="solutions"] .section-head h1 {
+    font-size: clamp(2.35rem, 12vw, 3.1rem);
+  }
+
+  body[data-page="solutions"] .catalog-filterbar,
+  body[data-page="solutions"] .solutions-grid,
+  body[data-page="solutions"] .catalog-help {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-page="solutions"] .catalog-selected-row strong {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  body[data-page="solutions"] .solution-preview,
+  body[data-page="solutions"] .solution-card .solution-preview,
+  body[data-page="solutions"] .solution-preview--image,
+  body[data-page="solutions"] .solution-card .solution-preview--image {
+    aspect-ratio: 16 / 8.8;
+  }
+
+  body[data-page="solutions"] .solution-card h3 {
+    font-size: 1.35rem;
+  }
+
+  body[data-page="solutions"] .solution-card p {
+    font-size: 0.88rem;
+  }
+
+  body[data-page="solutions"] .solution-card__action {
+    min-height: 38px;
+    font-size: 0.82rem;
+  }
+
+  body[data-page="solutions"] .catalog-help .btn {
+    width: 100%;
+  }
+}
+
+/* Sprint 9.1 density tune: closer vertical rhythm to Screenshot_31. */
+body[data-page="solutions"] .header__inner {
+  min-height: 56px;
+}
+
+body[data-page="solutions"] .header__cta {
+  min-height: 36px;
+  padding-inline: 22px;
+  font-size: 0.82rem;
+}
+
+body[data-page="solutions"] .screen-section[data-section="solutions"] {
+  padding-top: 18px;
+}
+
+body[data-page="solutions"] .ui-kicker {
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  font-size: 0.68rem;
+}
+
+body[data-page="solutions"] .section-head h1 {
+  max-width: 560px;
+  font-size: clamp(2.05rem, 3.45vw, 2.65rem);
+  line-height: 1;
+  letter-spacing: -0.032em;
+}
+
+body[data-page="solutions"] .section-head p:not(.ui-kicker) {
+  max-width: 510px;
+  margin-top: 10px;
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+body[data-page="solutions"] .catalog-top {
+  align-items: center;
+}
+
+body[data-page="solutions"] .catalog-summary {
+  display: flex;
+  grid-template-columns: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  align-self: center;
+  border: 1px solid var(--catalog-border);
+  border-radius: 8px;
+  padding: 9px 10px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--catalog-shadow-soft);
+}
+
+body[data-page="solutions"] .catalog-summary > div {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+body[data-page="solutions"] .catalog-summary span {
+  font-size: 0.66rem;
+}
+
+body[data-page="solutions"] .catalog-summary strong {
+  font-size: 0.72rem;
+}
+
+body[data-page="solutions"] .catalog-compare {
+  min-height: 40px;
+  padding: 0 10px;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: none;
+  font-size: 0.68rem;
+}
+
+body[data-page="solutions"] .catalog-filterbar {
+  margin: 16px 0 14px;
+  padding: 9px;
+}
+
+body[data-page="solutions"] .catalog-filterbar label {
+  gap: 5px;
+}
+
+body[data-page="solutions"] .catalog-filterbar select,
+body[data-page="solutions"] .catalog-search {
+  min-height: 31px;
+}
+
+body[data-page="solutions"] .catalog-selected-row {
+  min-height: 27px;
+  margin-bottom: 10px;
+}
+
+body[data-page="solutions"] .solutions-grid {
+  grid-auto-rows: auto;
+  gap: 12px;
+}
+
+body[data-page="solutions"] .solution-card {
+  min-height: 0;
+  padding: 7px;
+}
+
+body[data-page="solutions"] .solution-preview,
+body[data-page="solutions"] .solution-card .solution-preview,
+body[data-page="solutions"] .solution-preview--image,
+body[data-page="solutions"] .solution-card .solution-preview--image {
+  aspect-ratio: 16 / 6.2;
+  padding: 16px 6px 6px;
+}
+
+body[data-page="solutions"] .solution-card__body {
+  padding-top: 8px;
+}
+
+body[data-page="solutions"] .solution-card h3 {
+  margin-bottom: 4px;
+  font-size: clamp(1rem, 1.25vw, 1.18rem);
+}
+
+body[data-page="solutions"] .solution-card p {
+  margin-bottom: 7px;
+  font-size: 0.7rem;
+  line-height: 1.3;
+  -webkit-line-clamp: 2;
+}
+
+body[data-page="solutions"] .solution-card__meta {
+  padding-top: 4px;
+  font-size: 0.68rem;
+}
+
+body[data-page="solutions"] .solution-card__meta b {
+  font-size: 0.84rem;
+}
+
+body[data-page="solutions"] .solution-card__actions {
+  gap: 6px;
+  margin-top: 7px;
+}
+
+body[data-page="solutions"] .solution-card__action {
+  min-height: 28px;
+  padding: 7px 8px;
+  font-size: 0.65rem;
+}
+
+@media (max-width: 1080px) {
+  body[data-page="solutions"] .header__inner {
+    min-height: 62px;
+  }
+}
+
+@media (max-width: 680px) {
+  body[data-page="solutions"] .header__inner {
+    min-height: 62px;
+  }
+
+  body[data-page="solutions"] .screen-section[data-section="solutions"] {
+    padding-top: 28px;
+  }
+
+  body[data-page="solutions"] .section-head h1 {
+    font-size: clamp(2.15rem, 11vw, 2.7rem);
+  }
+
+  body[data-page="solutions"] .solution-card h3 {
+    font-size: 1.25rem;
+  }
+
+  body[data-page="solutions"] .solution-card p {
+    font-size: 0.84rem;
+  }
+
+  body[data-page="solutions"] .solution-card__action {
+    min-height: 36px;
+    font-size: 0.78rem;
+  }
+}
+
+/* Sprint 9.1.1: catalog density polish against Screenshot_31. */
+body[data-page="solutions"] .header__inner {
+  min-height: 54px;
+}
+
+body[data-page="solutions"] .catalog-logo span,
+body[data-page="solutions"] .catalog-logo b {
+  font-size: 1.2rem;
+}
+
+body[data-page="solutions"] .nav {
+  gap: 30px;
+  font-size: 0.86rem;
+}
+
+body[data-page="solutions"] .nav a {
+  padding: 18px 0;
+}
+
+body[data-page="solutions"] .header__cta {
+  min-height: 34px;
+  padding-inline: 20px;
+  font-size: 0.76rem;
+  box-shadow: 0 9px 20px rgba(142, 15, 19, 0.13);
+}
+
+body[data-page="solutions"] .screen-section[data-section="solutions"] {
+  padding-top: 11px;
+}
+
+body[data-page="solutions"] .ui-kicker {
+  margin-bottom: 8px;
+  padding: 4px 9px;
+  font-size: 0.62rem;
+}
+
+body[data-page="solutions"] .ui-kicker span {
+  width: 6px;
+  height: 6px;
+}
+
+body[data-page="solutions"] .section-head h1 {
+  font-size: clamp(1.95rem, 3.15vw, 2.45rem);
+  letter-spacing: -0.028em;
+}
+
+body[data-page="solutions"] .section-head p:not(.ui-kicker) {
+  margin-top: 8px;
+  font-size: 0.78rem;
+  line-height: 1.42;
+}
+
+body[data-page="solutions"] .catalog-summary {
+  width: min(100%, 244px);
+  gap: 12px;
+  padding: 8px 9px;
+}
+
+body[data-page="solutions"] .catalog-summary span {
+  font-size: 0.6rem;
+}
+
+body[data-page="solutions"] .catalog-summary strong {
+  font-size: 0.67rem;
+}
+
+body[data-page="solutions"] .catalog-compare {
+  min-height: 34px;
+  padding: 0 9px;
+  font-size: 0.62rem;
+}
+
+body[data-page="solutions"] .catalog-filterbar {
+  gap: 8px;
+  margin: 12px 0 10px;
+  padding: 7px;
+}
+
+body[data-page="solutions"] .catalog-filterbar label {
+  gap: 3px;
+  font-size: 0.6rem;
+}
+
+body[data-page="solutions"] .catalog-filterbar select,
+body[data-page="solutions"] .catalog-search {
+  min-height: 28px;
+  padding-inline: 8px;
+  font-size: 0.66rem;
+}
+
+body[data-page="solutions"] .catalog-search b {
+  width: 10px;
+  height: 10px;
+}
+
+body[data-page="solutions"] .catalog-workspace {
+  grid-template-columns: 142px minmax(0, 1fr);
+  gap: 14px;
+}
+
+body[data-page="solutions"] .catalog-selected-row {
+  min-height: 22px;
+  gap: 6px;
+  margin-bottom: 8px;
+  font-size: 0.64rem;
+}
+
+body[data-page="solutions"] .catalog-selected-row b {
+  padding: 4px 7px;
+}
+
+body[data-page="solutions"] .filters::before {
+  padding: 10px 12px;
+  font-size: 0.62rem;
+}
+
+body[data-page="solutions"] .filter-btn {
+  min-height: 26px;
+  padding: 7px 11px;
+  font-size: 0.66rem;
+}
+
+body[data-page="solutions"] .catalog-extra-filters {
+  gap: 7px;
+  margin-top: 12px;
+  padding: 12px;
+  font-size: 0.64rem;
+}
+
+body[data-page="solutions"] .catalog-extra-filters i {
+  width: 9px;
+  height: 9px;
+}
+
+body[data-page="solutions"] .solutions-grid {
+  gap: 11px;
+}
+
+body[data-page="solutions"] .solution-card {
+  border-radius: 5px;
+  padding: 6px;
+}
+
+body[data-page="solutions"] .solution-preview,
+body[data-page="solutions"] .solution-card .solution-preview,
+body[data-page="solutions"] .solution-preview--image,
+body[data-page="solutions"] .solution-card .solution-preview--image {
+  aspect-ratio: 16 / 5.85;
+  padding: 15px 5px 5px;
+}
+
+body[data-page="solutions"] .solution-preview::after,
+body[data-page="solutions"] .solution-preview--image::after {
+  top: 6px;
+  left: 8px;
+  width: 4px;
+  height: 4px;
+  box-shadow: 8px 0 0 #ddd7d0, 16px 0 0 #e8e2dc;
+}
+
+body[data-page="solutions"] .solution-card__body {
+  padding-top: 7px;
+}
+
+body[data-page="solutions"] .solution-card__tags {
+  gap: 4px;
+  margin-bottom: 5px;
+}
+
+body[data-page="solutions"] .solution-card__tags span {
+  padding: 3px 6px;
+  font-size: 0.56rem;
+}
+
+body[data-page="solutions"] .solution-card h3 {
+  font-size: clamp(0.96rem, 1.12vw, 1.08rem);
+}
+
+body[data-page="solutions"] .solution-card p {
+  margin-bottom: 6px;
+  font-size: 0.66rem;
+  line-height: 1.28;
+}
+
+body[data-page="solutions"] .solution-card__meta {
+  font-size: 0.64rem;
+}
+
+body[data-page="solutions"] .solution-card__meta b {
+  font-size: 0.8rem;
+}
+
+body[data-page="solutions"] .solution-card__actions {
+  margin-top: 6px;
+}
+
+body[data-page="solutions"] .solution-card__action {
+  min-height: 27px;
+  font-size: 0.61rem;
+}
+
+@media (min-width: 900px) and (max-width: 1080px) {
+  body[data-page="solutions"] .catalog-top {
+    grid-template-columns: minmax(0, 1fr) 244px;
+    gap: 18px;
+  }
+
+  body[data-page="solutions"] .catalog-summary {
+    max-width: none;
+  }
+
+  body[data-page="solutions"] .catalog-filterbar {
+    grid-template-columns: repeat(5, minmax(92px, 1fr)) minmax(150px, 1.12fr);
+  }
+
+  body[data-page="solutions"] .catalog-search {
+    grid-column: auto;
+  }
+
+  body[data-page="solutions"] .catalog-workspace {
+    grid-template-columns: 142px minmax(0, 1fr);
+  }
+
+  body[data-page="solutions"] .filters {
+    position: sticky;
+    top: 70px;
+    display: grid;
+    flex-wrap: initial;
+    border-radius: 4px;
+    padding: 0;
+  }
+
+  body[data-page="solutions"] .filters::before,
+  body[data-page="solutions"] .catalog-extra-filters {
+    width: auto;
+  }
+
+  body[data-page="solutions"] .filter-btn {
+    width: 100%;
+    border: 0;
+    border-radius: 0;
+  }
+
+  body[data-page="solutions"] .solutions-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  body[data-page="solutions"] .catalog-top,
+  body[data-page="solutions"] .catalog-workspace {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-page="solutions"] .catalog-summary {
+    width: 100%;
+    max-width: none;
+  }
+
+  body[data-page="solutions"] .filters {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  body[data-page="solutions"] .filters::before {
+    width: 100%;
+    padding: 0 0 6px;
+    border-bottom: 0;
+  }
+
+  body[data-page="solutions"] .filter-btn {
+    width: auto;
+    border: 1px solid var(--catalog-border);
+    border-radius: 999px;
+  }
+
+  body[data-page="solutions"] .catalog-results,
+  body[data-page="solutions"] .catalog-selected-row,
+  body[data-page="solutions"] .solutions-grid {
+    width: 100%;
+  }
+
+  body[data-page="solutions"] .solutions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-page="solutions"] .catalog-extra-filters {
+    display: none;
+  }
+
+  body[data-page="solutions"] .catalog-filterbar {
+    margin-top: 14px;
+    padding: 8px;
+  }
+
+  body[data-page="solutions"] .solution-preview,
+  body[data-page="solutions"] .solution-card .solution-preview,
+  body[data-page="solutions"] .solution-preview--image,
+  body[data-page="solutions"] .solution-card .solution-preview--image {
+    aspect-ratio: 16 / 8;
+  }
+
+  body[data-page="solutions"] .solution-card h3 {
+    font-size: 1.22rem;
+  }
+
+  body[data-page="solutions"] .solution-card p {
+    font-size: 0.82rem;
+    line-height: 1.4;
+  }
+
+  body[data-page="solutions"] .solution-card__action {
+    min-height: 36px;
+    font-size: 0.76rem;
+  }
+}

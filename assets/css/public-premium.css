@@ -419,12 +419,41 @@ body[data-page="how-it-works"] .work-summary p {
 }
 
 body[data-page="services"] .service-paths button,
+body[data-page="services"] .service-paths a,
 body[data-page="services"] .service-route-cards button,
 body[data-page="services"] .service-route-cards a,
 body[data-page="services"] .choice-grid button,
 body[data-page="services"] .choice-grid a,
-body[data-page="services"] .service-grid button {
+body[data-page="services"] .service-grid button,
+body[data-page="services"] .service-grid a {
   color: var(--public-accent);
+}
+
+body[data-page="services"] .service-paths a,
+body[data-page="services"] .service-grid a {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  border: 1px solid var(--public-line);
+  border-radius: 999px;
+  background: var(--public-accent-soft);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 900;
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+body[data-page="services"] .service-paths article:hover a,
+body[data-page="services"] .service-paths a:focus-visible,
+body[data-page="services"] .service-grid a:hover,
+body[data-page="services"] .service-grid a:focus-visible {
+  transform: translateX(3px);
+  border-color: rgba(142, 15, 19, 0.28);
+  background: rgba(142, 15, 19, 0.12);
+  outline: none;
 }
 
 body[data-page="services"] .service-paths__icon,

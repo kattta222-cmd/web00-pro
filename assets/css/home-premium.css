@@ -195,7 +195,8 @@ body[data-page="home"] .premium-card-actions button {
 }
 
 body[data-page="home"] .premium-btn--primary,
-body[data-page="home"] .premium-card-actions button {
+body[data-page="home"] .premium-card-actions button,
+body[data-page="home"] .premium-card-actions a:last-child {
   border: 1px solid var(--home-accent);
   background: var(--home-accent);
   color: #fff;
@@ -203,7 +204,7 @@ body[data-page="home"] .premium-card-actions button {
 }
 
 body[data-page="home"] .premium-btn--secondary,
-body[data-page="home"] .premium-card-actions a {
+body[data-page="home"] .premium-card-actions a:first-child {
   border: 1px solid var(--home-border-strong);
   background: var(--home-surface);
   color: var(--home-text);
@@ -222,15 +223,17 @@ body[data-page="home"] .premium-card-actions button:focus-visible {
 body[data-page="home"] .premium-btn--primary:hover,
 body[data-page="home"] .premium-btn--primary:focus-visible,
 body[data-page="home"] .premium-card-actions button:hover,
-body[data-page="home"] .premium-card-actions button:focus-visible {
+body[data-page="home"] .premium-card-actions button:focus-visible,
+body[data-page="home"] .premium-card-actions a:last-child:hover,
+body[data-page="home"] .premium-card-actions a:last-child:focus-visible {
   border-color: var(--home-accent-hover);
   background: var(--home-accent-hover);
 }
 
 body[data-page="home"] .premium-btn--secondary:hover,
 body[data-page="home"] .premium-btn--secondary:focus-visible,
-body[data-page="home"] .premium-card-actions a:hover,
-body[data-page="home"] .premium-card-actions a:focus-visible {
+body[data-page="home"] .premium-card-actions a:first-child:hover,
+body[data-page="home"] .premium-card-actions a:first-child:focus-visible {
   border-color: var(--home-accent);
   color: var(--home-accent);
 }

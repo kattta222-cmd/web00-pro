@@ -22,50 +22,74 @@
           <a href="solutions.html">Каталог</a>
           <a href="pricing.html">Тарифы</a>
           <a href="how-it-works.html">Как это работает</a>
-          <a href="index.html#popular-templates">Примеры</a>
+          <a href="index.html#popular-templates">Кейсы</a>
           <a href="faq.html">FAQ</a>
         </nav>
-        <button class="btn btn--primary header__cta" type="button" data-open-lead>Выбрать сайт</button>
+        <a class="btn btn--primary header__cta" href="brief.html">Выбрать сайт</a>
       </div>
     </header>
 
     <main>
       <section class="screen-section" id="solutions" data-section="solutions">
         <div class="container">
-          <div class="section-head catalog-hero">
-            <p class="ui-kicker"><span></span>Каталог</p>
-            <h1>Каталог готовых сайтов</h1>
-            <p>Профессиональные сайты для бизнеса, которые можно запустить без разработки и технических сложностей.</p>
+          <div class="catalog-top">
+            <div class="section-head catalog-hero">
+              <p class="ui-kicker"><span></span>Каталог</p>
+              <h1>Каталог готовых сайтов</h1>
+              <p>Профессиональные сайты для бизнеса, которые можно запустить без разработки и технических сложностей.</p>
+            </div>
+            <aside class="catalog-summary" aria-label="Сравнение выбранных сайтов">
+              <div>
+                <span>Сравнение</span>
+                <strong>Выбрано 0 из 3 сайтов</strong>
+              </div>
+              <button class="catalog-compare" type="button" disabled>Сравнить</button>
+            </aside>
           </div>
-          <div class="catalog-summary" aria-label="Сводка каталога">
-            <article>
-              <span>Найдено шаблонов</span>
-              <strong>15</strong>
-            </article>
-            <article>
-              <span>Сравнение</span>
-              <strong>Выбрано 0 из 3 сайтов</strong>
-            </article>
-            <button class="catalog-compare" type="button" disabled>Сравнить</button>
+          <div class="catalog-filterbar" aria-label="Быстрый подбор">
+            <label><span>Категория</span><select aria-label="Категория каталога"><option>Все категории</option></select></label>
+            <label><span>Цель сайта</span><select aria-label="Цель сайта"><option>Любая цель</option></select></label>
+            <label><span>Бюджет</span><select aria-label="Бюджет"><option>Любой бюджет</option></select></label>
+            <label><span>Срок запуска</span><select aria-label="Срок запуска"><option>Любой срок</option></select></label>
+            <label><span>Интеграции</span><select aria-label="Интеграции"><option>Любые интеграции</option></select></label>
+            <div class="catalog-search" aria-label="Поиск по каталогу"><span>Поиск по нише или названию</span><b aria-hidden="true"></b></div>
           </div>
-          <div class="filters" aria-label="Фильтры готовых решений" data-solution-filters>
-            <button class="filter-btn is-active" type="button" data-filter="all">Все решения</button>
-            <button class="filter-btn" type="button" data-filter="goods">Сайты для продаж</button>
-            <button class="filter-btn" type="button" data-filter="services">Сайты услуг</button>
-            <button class="filter-btn" type="button" data-filter="construction">Строительные сайты</button>
-            <button class="filter-btn" type="button" data-filter="medicine">Медицинские сайты</button>
-            <button class="filter-btn" type="button" data-filter="realty">Сайты недвижимости</button>
-            <button class="filter-btn" type="button" data-filter="delivery">Сайты доставки и локального бизнеса</button>
-            <button class="filter-btn" type="button" data-filter="individual">Индивидуальные проекты</button>
+          <div class="catalog-workspace">
+            <aside class="filters" aria-label="Фильтры готовых решений" data-solution-filters>
+              <button class="filter-btn is-active" type="button" data-filter="all">Все решения</button>
+              <button class="filter-btn" type="button" data-filter="goods">Сайты для продаж</button>
+              <button class="filter-btn" type="button" data-filter="services">Сайты услуг</button>
+              <button class="filter-btn" type="button" data-filter="construction">Строительные сайты</button>
+              <button class="filter-btn" type="button" data-filter="medicine">Медицинские сайты</button>
+              <button class="filter-btn" type="button" data-filter="realty">Сайты недвижимости</button>
+              <button class="filter-btn" type="button" data-filter="delivery">Сайты доставки и локального бизнеса</button>
+              <button class="filter-btn" type="button" data-filter="individual">Индивидуальные проекты</button>
+              <div class="catalog-extra-filters" aria-hidden="true">
+                <span>Дополнительно</span>
+                <label><i></i>С формой заявки</label>
+                <label><i></i>Интернет-магазин</label>
+                <label><i></i>Личный кабинет</label>
+                <label><i></i>Онлайн-оплата</label>
+              </div>
+            </aside>
+            <div class="catalog-results">
+              <div class="catalog-selected-row" aria-label="Текущие фильтры">
+                <span>Выбранные фильтры:</span>
+                <b>Все категории</b>
+                <b>Любой бюджет</b>
+                <button type="button" disabled>Сбросить все</button>
+                <strong>Найдено шаблонов: 15</strong>
+              </div>
+              <div class="solutions-grid" data-solutions-grid></div>
+            </div>
           </div>
-          <div class="solutions-grid" data-solutions-grid></div>
           <section class="catalog-help" aria-labelledby="catalog-help-title">
             <div>
               <span>Подбор под задачу</span>
               <h2 id="catalog-help-title">Не знаете, что выбрать?</h2>
               <p>Ответьте на несколько вопросов — подберём оптимальный сайт под задачи вашего бизнеса.</p>
             </div>
-            <button class="btn btn--primary" type="button" data-open-lead data-service="Подбор готового сайта">Подобрать под задачу</button>
+            <a class="btn btn--primary" href="brief.html?service=Подбор готового сайта">Подобрать под задачу</a>
           </section>
         </div>
       </section>
