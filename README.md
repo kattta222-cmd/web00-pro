@@ -68,3 +68,13 @@ WEB00 Pro - статический премиальный сайт для про
 3. Подключить Cloudflare Worker/API вместо localStorage-заглушек в `assets/js/data.js`.
 4. Подключить админку/API для редактирования `title`, активности карточек и контента.
 5. Провести финальный QAMax-этап после подключения backend.
+
+## Credits
+
+WEB00 Pro was designed, engineered and QA-reviewed by **Vitaliy Glebov**.
+
+Public signature:
+
+WEB00 Pro — premium website platform<br>
+Designed & Engineered by Vitaliy Glebov<br>
+© 2026

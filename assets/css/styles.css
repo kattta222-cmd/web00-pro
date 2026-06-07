@@ -4394,6 +4394,16 @@ textarea {
   font-size: 0.92rem;
 }
 
+.footer-credit {
+  margin-left: auto;
+  max-width: 420px;
+  color: currentColor;
+  font-size: 11.5px;
+  line-height: 1.45;
+  text-align: right;
+  opacity: 0.62;
+}
+
 .footer__links button {
   border: 0;
   padding: 0;
@@ -6586,6 +6596,13 @@ textarea {
 
   .footer__links {
     justify-content: flex-start;
+  }
+
+  .footer-credit {
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+    text-align: left;
   }
 
   .mobile-cta {
