@@ -602,6 +602,10 @@ body[data-page="solutions"] .footer__links {
   gap: 18px;
 }
 
+body[data-page="solutions"] .footer [data-open-bug] {
+  display: none;
+}
+
 body[data-page="solutions"] .footer__links a,
 body[data-page="solutions"] .footer-link {
   color: var(--catalog-secondary);
