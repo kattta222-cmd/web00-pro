@@ -1,11 +1,14 @@
 # Review artifacts and mockup packs
 _review_artifacts/
 web00_premium_mockups_final/
+_qa/
+test-results/
 
 # Recorded review media and archives
 *.zip
 *.webm
 *.mp4
+*.mov
 
 # Temporary recording scripts
 record_review.mjs
@@ -14,3 +17,9 @@ record_*.mjs
 
 # Local dependency folders if tools are run manually
 node_modules/
+
+# Local secrets and OS files
+.env
+.env.*
+.DS_Store
+Thumbs.db

@@ -211,6 +211,7 @@
     if (!grid) return;
     grid.innerHTML = solutions().map((solution) => {
       const features = solutionFeatures(solution);
+      const hasDemo = Boolean(solutionDemoUrl(solution));
       return `
       <article class="solution-card" data-solution-card data-category="${esc(solutionFilter(solution))}" data-solution-id="${esc(solution.id)}" role="button" tabindex="0" aria-label="Смотреть решение: ${esc(solution.title)}">
         ${solutionPreview(solution, { card: true })}
@@ -219,6 +220,10 @@
           <p>${esc(solution.description || solutionAudience(solution))}</p>
           <p class="solution-card__features"><span>Входит:</span> ${esc(features.slice(0, 3).join(", "))}</p>
           <div class="solution-card__meta"><span>${esc(solutionTime(solution))}</span><b>${esc(solutionPrice(solution))}</b></div>
+          <div class="solution-card__actions">
+            <button class="solution-card__action solution-card__action--secondary" type="button" data-card-action="${hasDemo ? "demo" : "details"}">${hasDemo ? "Смотреть демо" : "Подробнее"}</button>
+            <button class="solution-card__action solution-card__action--primary" type="button" data-open-lead data-solution-id="${esc(solution.id)}">${hasDemo ? "Запустить" : "Оставить заявку"}</button>
+          </div>
         </div>
       </article>
     `;
@@ -226,11 +231,22 @@
 
     $$(".solution-card", grid).forEach((card) => {
       const openCard = () => openSolutionModal(solutionById(card.dataset.solutionId));
-      card.addEventListener("click", openCard);
+      card.addEventListener("click", (event) => {
+        if (event.target.closest(".solution-card__actions")) return;
+        openCard();
+      });
       card.addEventListener("keydown", (event) => {
+        if (event.target !== card) return;
         if (event.key !== "Enter" && event.key !== " ") return;
         event.preventDefault();
         openCard();
+      });
+      $("[data-card-action]", card)?.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const solution = solutionById(card.dataset.solutionId);
+        if (solutionDemoUrl(solution)) openDemoModal(solution);
+        else openCard();
       });
     });
 
@@ -353,41 +369,81 @@
     const hasDemo = Boolean(solutionDemoUrl(solution));
     const gallery = solutionGallery(solution);
     const activeImage = gallery[0] || solution.previewImage || "";
+    const category = solution.category || "Бизнес";
+    const bestForMap = {
+      "Товары": "магазинам, шоурумам и локальным брендам, которым нужно показать ассортимент и быстро принимать заявки.",
+      "Услуги": "специалистам и сервисным компаниям, которым важно понятно описать услуги и получать обращения клиентов.",
+      "Строительство": "бригадам и компаниям, которым нужно показать работы, доверие, этапы и заявку на расчёт.",
+      "Медицина": "медицинским услугам и кабинетам, где важны аккуратная подача, доверие и запись на консультацию.",
+      "Недвижимость": "аренде, объектам и локальным предложениям, где нужно показать условия, фото и форму бронирования.",
+      "Доставка": "локальному бизнесу с доставкой, прайсом и быстрым заказом через форму.",
+      "Индивидуально": "бизнесу с нестандартной задачей, где готовый шаблон нужно адаптировать под особый сценарий.",
+    };
+    const included = [...new Set([...features, "Адаптивная версия", "Форма заявки", "Подготовка к запуску"])].slice(0, 7);
+    const quality = ["Performance 90+", "SEO-ready", "Mobile-ready", "Адаптивность", "Поддержка после запуска"];
+    const launchSteps = ["Бриф", "Подготовка", "Согласование", "Запуск", "Поддержка"];
     target.innerHTML = `
-      <div class="solution-modal solution-modal--premium">
-        <section class="solution-gallery" aria-label="Галерея решения ${esc(solution.title)}">
-          <div class="solution-gallery__stage">
-            ${activeImage ? `<img data-solution-gallery-main src="${attr(activeImage)}" alt="${attr(solution.title)} - экран сайта">` : `<div class="solution-gallery__empty">Preview готовится</div>`}
+      <div class="solution-modal solution-modal--premium template-detail">
+        <section class="template-detail__hero" aria-label="Подробности шаблона ${esc(solution.title)}">
+          <div class="template-detail__visual">
+            <div class="template-detail__eyebrow">Готовый сайт · ${esc(category)}</div>
+            <section class="solution-gallery template-detail__gallery" aria-label="Галерея решения ${esc(solution.title)}">
+              <div class="solution-gallery__stage template-detail__stage">
+                ${activeImage ? `<img data-solution-gallery-main src="${attr(activeImage)}" alt="${attr(solution.title)} - экран сайта">` : `<div class="solution-gallery__empty">Preview готовится</div>`}
+              </div>
+              ${gallery.length > 1 ? `
+                <div class="solution-gallery__thumbs template-detail__thumbs" role="list" aria-label="Экраны сайта">
+                  ${gallery.map((image, index) => `
+                    <button class="${index === 0 ? "is-active" : ""}" type="button" data-gallery-thumb data-gallery-image="${attr(image)}" aria-label="Показать экран ${index + 1}">
+                      <img src="${attr(image)}" alt="" loading="lazy">
+                    </button>
+                  `).join("")}
+                </div>
+              ` : ""}
+            </section>
           </div>
-          ${gallery.length > 1 ? `
-            <div class="solution-gallery__thumbs" role="list" aria-label="Экраны сайта">
-              ${gallery.map((image, index) => `
-                <button class="${index === 0 ? "is-active" : ""}" type="button" data-gallery-thumb data-gallery-image="${attr(image)}" aria-label="Показать экран ${index + 1}">
-                  <img src="${attr(image)}" alt="" loading="lazy">
-                </button>
-              `).join("")}
+
+          <aside class="solution-detail template-detail__summary">
+            <span class="solution-detail__tag">Шаблон готов к адаптации</span>
+            <h2 id="solution-title">${esc(solution.title)}</h2>
+            <p class="solution-detail__description">${esc(solution.description)}</p>
+            <div class="solution-detail__meta template-detail__meta">
+              <article><span>Стоимость</span><strong>${esc(price)}</strong></article>
+              <article><span>Запуск</span><strong>${esc(time)}</strong></article>
             </div>
-          ` : ""}
+            <div class="template-detail__fit">
+              <h3>Кому подходит</h3>
+              <p>${esc(bestForMap[category] || "малому бизнесу, которому нужен понятный сайт с формой заявки и подготовкой к запуску.")}</p>
+            </div>
+            <ul class="check-list solution-detail__features">${features.map((item) => `<li>${esc(item)}</li>`).join("")}</ul>
+            <div class="solution-detail__actions template-detail__actions">
+              <button class="btn btn--primary btn--full" type="button" data-open-lead data-solution-id="${esc(solution.id)}">Запустить этот сайт</button>
+              ${hasDemo ? `<button class="btn btn--secondary btn--full" type="button" data-open-demo="${esc(solution.id)}">Смотреть демо</button>` : `<p class="template-detail__demo-note">Демо подберём после короткого брифа.</p>`}
+            </div>
+          </aside>
         </section>
 
-        <aside class="solution-detail">
-          <span class="solution-detail__tag">Готов к запуску</span>
-          <h2 id="solution-title">${esc(solution.title)}</h2>
-          <div class="solution-detail__meta"><strong>${esc(price)}</strong><i></i><span>${esc(time)}</span></div>
-          <p class="solution-detail__description">${esc(solution.description)}</p>
-          <ul class="check-list solution-detail__features">${features.map((item) => `<li>${esc(item)}</li>`).join("")}</ul>
-          <div class="solution-detail__actions">
-            <button class="btn btn--primary btn--full" type="button" data-open-lead data-solution-id="${esc(solution.id)}">${hasDemo ? "Хочу такой сайт" : "Оставить заявку"}</button>
-            ${hasDemo ? `<button class="btn btn--secondary btn--full" type="button" data-open-demo="${esc(solution.id)}">Посмотреть демо</button>` : ""}
-          </div>
-        </aside>
-
-        <div class="modal-benefits modal-benefits--premium">
-          <article><span>${modalIcon("launch")}</span><strong>Запуск ${esc(time)}</strong><small>Быстрый старт без лишних задержек</small></article>
-          <article><span>${modalIcon("support")}</span><strong>Поддержка 7 дней</strong><small>Поможем на старте и ответим на вопросы</small></article>
-          <article><span>${modalIcon("demo")}</span><strong>Демо доступно</strong><small>Посмотрите живой пример перед запуском</small></article>
-          <article><span>${modalIcon("payment")}</span><strong>Без подписок</strong><small>Единоразовая оплата без скрытых платежей</small></article>
-        </div>
+        <section class="template-detail__sections" aria-label="Состав и запуск шаблона">
+          <article class="template-detail__panel template-detail__panel--included">
+            <span>Что входит</span>
+            <h3>Основа для запуска сайта</h3>
+            <ul class="check-list">${included.map((item) => `<li>${esc(item)}</li>`).join("")}</ul>
+          </article>
+          <article class="template-detail__panel template-detail__panel--quality">
+            <span>Паспорт качества</span>
+            <h3>Проверяем перед запуском</h3>
+            <div class="template-detail__quality-grid">
+              ${quality.map((item) => `<b>${esc(item)}</b>`).join("")}
+            </div>
+          </article>
+          <article class="template-detail__panel template-detail__panel--process">
+            <span>Как запускаем</span>
+            <h3>Понятный путь без лишней сложности</h3>
+            <ol>
+              ${launchSteps.map((item, index) => `<li><i>${index + 1}</i><strong>${esc(item)}</strong></li>`).join("")}
+            </ol>
+          </article>
+        </section>
       </div>
     `;
     $$("[data-gallery-thumb]", target).forEach((button) => {
@@ -490,22 +546,42 @@
     if (solution) {
       const features = solutionFeatures(solution);
       return `
-        <aside class="lead-aside">
-          <h3>Выбранное решение</h3>
+        <aside class="lead-aside brief-summary">
+          <span class="brief-summary__eyebrow">Выбранный шаблон</span>
           ${solutionPreview(solution)}
-          <h4>${esc(solution.title)}</h4>
+          <h3>${esc(solution.title)}</h3>
           <p>${esc(solution.description)}</p>
-          <ul class="check-list">${features.map((item) => `<li>${esc(item)}</li>`).join("")}</ul>
-          <div class="mini-meta"><span>${esc(solutionTime(solution))}</span><span>${esc(solutionPrice(solution))}</span></div>
+          <div class="brief-summary__meta">
+            <article><span>Запуск</span><strong>${esc(solutionTime(solution))}</strong></article>
+            <article><span>Стоимость</span><strong>${esc(solutionPrice(solution))}</strong></article>
+          </div>
+          <ul class="check-list">${features.slice(0, 5).map((item) => `<li>${esc(item)}</li>`).join("")}</ul>
+          <div class="brief-summary__trust">
+            <span>Демо до оплаты</span>
+            <span>Форма заявки</span>
+            <span>Поддержка после запуска</span>
+          </div>
         </aside>
       `;
     }
+    const service = context.service || "Сайт под ключ";
+    const estimateMatch = service.match(/(\d[\d\s]*[–-]\d[\d\s]*\s*₽)/);
     return `
-      <aside class="lead-aside">
-        <h3>Выбранная услуга</h3>
-        <div class="service-selected"><span>WEB00</span><strong>${esc(context.service || "Сайт под ключ")}</strong></div>
-        <p>Опишите задачу, и мы предложим формат, срок и стоимость.</p>
+      <aside class="lead-aside brief-summary">
+        <span class="brief-summary__eyebrow">Контекст заявки</span>
+        <div class="service-selected"><span>WEB00</span><strong>${esc(service)}</strong></div>
+        ${estimateMatch ? `<div class="brief-summary__estimate"><span>Ориентир калькулятора</span><strong>${esc(estimateMatch[1])}</strong></div>` : ""}
+        <p>Опишите задачу, и мы предложим формат, срок и следующий шаг без лишней технической сложности.</p>
+        <div class="brief-summary__meta">
+          <article><span>Формат</span><strong>Подбор</strong></article>
+          <article><span>Старт</span><strong>от 2 дней</strong></article>
+        </div>
         <ul class="check-list"><li>Разбор задачи</li><li>Подбор формата сайта</li><li>Цена и срок</li><li>Демо до оплаты</li></ul>
+        <div class="brief-summary__trust">
+          <span>Без предоплаты</span>
+          <span>Заявки в удобный канал</span>
+          <span>Поддержка после запуска</span>
+        </div>
       </aside>
     `;
   }
@@ -521,28 +597,110 @@
   function renderLeadForm(context) {
     const target = $("[data-lead-modal-content]");
     const hasErrors = Boolean(context.errors);
+    const rawTaskValue = context.solution ? "Запуск готового сайта" : context.service || "Сайт под заказ";
+    const taskValue = rawTaskValue.includes("Доработ")
+      ? "Доработка сайта"
+      : rawTaskValue.includes("Автомат") || rawTaskValue.includes("бот")
+        ? "Автоматизация заявок"
+        : rawTaskValue.includes("Поддерж")
+          ? "Поддержка после запуска"
+          : context.solution
+            ? "Запуск готового сайта"
+            : "Сайт под заказ";
+    const introComment = context.solution ? `Интересует решение: ${context.solution.title}` : "";
     target.innerHTML = `
-      <div class="lead-modal ${hasErrors ? "has-errors" : ""}">
-        <form class="lead-form-ui" data-lead-form novalidate>
-          <h2 id="lead-title">Заявка на создание сайта</h2>
-          <p>Заполните форму, и мы свяжемся с вами в ближайшее время.</p>
+      <div class="lead-modal brief-modal ${hasErrors ? "has-errors" : ""}">
+        <form class="lead-form-ui brief-form" data-lead-form novalidate>
+          <div class="brief-modal__header">
+            <span class="brief-kicker">WEB00 launch brief</span>
+            <h2 id="lead-title">Бриф на запуск сайта</h2>
+            <p>Расскажите о проекте — мы подготовим сайт, который привлечёт клиентов и поддержит ваш бренд.</p>
+          </div>
+          <div class="brief-stepper" aria-label="Этапы брифа">
+            <span><b>1</b> Выбор</span>
+            <span><b>2</b> Данные</span>
+            <span><b>3</b> Контент</span>
+            <span><b>4</b> Подтверждение</span>
+          </div>
           ${hasErrors ? '<div class="alert alert--error">Пожалуйста, заполните обязательные поля</div>' : ""}
-          <label><span class="field-label">Ваше имя <b>*</b></span><input name="name" type="text" placeholder="Введите ваше имя" required></label>
-          <label><span class="field-label">Контакт для связи <b>*</b></span><input name="contact" type="text" placeholder="Телефон, Telegram или Email" required></label>
-          <label><span class="field-label">Тип задачи <b>*</b></span><select name="taskType" required>
-            <option value="">Выберите тип задачи</option>
-            <option ${context.solution ? "selected" : ""}>Готовое решение</option>
-            <option ${context.service === "Сайт под ключ" ? "selected" : ""}>Сайт под ключ</option>
-            <option ${context.service === "Telegram-бот" ? "selected" : ""}>Telegram-бот</option>
-            <option ${context.service === "Автоматизация заявок" ? "selected" : ""}>Автоматизация заявок</option>
-            <option>Доработка сайта</option>
-            <option>Поддержка</option>
-          </select></label>
-          <label><span class="field-label">Бюджет <b>*</b></span><select name="budget" required><option>Пока не знаю</option><option>до 10 000 ₽</option><option>10 000-20 000 ₽</option><option>20 000-40 000 ₽</option><option>от 40 000 ₽</option></select></label>
-          <label>Комментарий к проекту <textarea name="comment" rows="5" maxlength="500" placeholder="Опишите проект, цели, пожелания...">${context.solution ? `Интересует решение: ${context.solution.title}` : ""}</textarea></label>
-          <label class="checkbox-row"><input name="consent" type="checkbox" required> <span class="field-label">Согласие на обработку данных <b>*</b></span></label>
-          <button class="btn btn--primary btn--full" type="submit">Отправить заявку</button>
-          <small>Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности.</small>
+
+          <section class="brief-section">
+            <div class="brief-section__head"><span>01</span><h3>Контакт и задача</h3></div>
+            <div class="brief-grid">
+              <label><span class="field-label">Ваше имя <b>*</b></span><input name="name" type="text" placeholder="Иван" autocomplete="name" required></label>
+              <label><span class="field-label">Контакт для связи <b>*</b></span><input name="contact" type="text" placeholder="+7, Telegram или Email" autocomplete="tel" required></label>
+              <label><span class="field-label">Ниша / сфера деятельности <b>*</b></span><select name="industry" required>
+                <option value="">Выберите сферу</option>
+                <option>Товары / интернет-магазин</option>
+                <option>Услуги</option>
+                <option>Строительство / ремонт</option>
+                <option>Медицина / здоровье</option>
+                <option>Недвижимость</option>
+                <option>Доставка / локальный бизнес</option>
+                <option>Индивидуальный проект</option>
+                <option>Другое</option>
+              </select></label>
+              <label><span class="field-label">Название бизнеса / проекта</span><input name="businessName" type="text" placeholder="Название компании или проекта"></label>
+              <label><span class="field-label">Тип задачи <b>*</b></span><select name="taskType" required>
+                <option ${taskValue === "Запуск готового сайта" ? "selected" : ""}>Запуск готового сайта</option>
+                <option ${taskValue === "Сайт под заказ" || taskValue === "Сайт под ключ" ? "selected" : ""}>Сайт под заказ</option>
+                <option ${taskValue.includes("Доработ") ? "selected" : ""}>Доработка сайта</option>
+                <option ${taskValue.includes("Автомат") || taskValue.includes("бот") ? "selected" : ""}>Автоматизация заявок</option>
+                <option ${taskValue.includes("Поддерж") ? "selected" : ""}>Поддержка после запуска</option>
+              </select></label>
+              <label><span class="field-label">Бюджет <b>*</b></span><select name="budget" required><option>Пока не знаю</option><option>до 10 000 ₽</option><option>10 000-20 000 ₽</option><option>20 000-40 000 ₽</option><option>от 40 000 ₽</option></select></label>
+            </div>
+          </section>
+
+          <section class="brief-section">
+            <div class="brief-section__head"><span>02</span><h3>Содержание сайта</h3></div>
+            <label><span class="field-label">Какие услуги или товары вы предлагаете?</span><textarea name="offerDescription" rows="4" maxlength="800" placeholder="Коротко опишите ассортимент, услуги, географию, особенности бизнеса"></textarea></label>
+            <div class="brief-grid">
+              <label><span class="field-label">Стиль и настроение сайта</span><input name="styleMood" type="text" placeholder="Например: спокойный, премиальный, строгий"></label>
+              <label><span class="field-label">Примеры сайтов, которые нравятся</span><input name="references" type="text" placeholder="Ссылки или названия сайтов"></label>
+            </div>
+          </section>
+
+          <section class="brief-section">
+            <div class="brief-section__head"><span>03</span><h3>Запуск и заявки</h3></div>
+            <div class="brief-grid brief-grid--compact">
+              <fieldset class="brief-choice-group">
+                <legend>Нужен ли домен?</legend>
+                <label><input type="radio" name="domainNeeded" value="Да"> <span>Да</span></label>
+                <label><input type="radio" name="domainNeeded" value="Нет"> <span>Нет</span></label>
+                <label><input type="radio" name="domainNeeded" value="Не знаю" checked> <span>Не знаю</span></label>
+              </fieldset>
+              <fieldset class="brief-choice-group">
+                <legend>Нужен ли блог / статьи?</legend>
+                <label><input type="radio" name="blogNeeded" value="Да"> <span>Да</span></label>
+                <label><input type="radio" name="blogNeeded" value="Нет"> <span>Нет</span></label>
+                <label><input type="radio" name="blogNeeded" value="Позже" checked> <span>Позже</span></label>
+              </fieldset>
+            </div>
+            <fieldset class="brief-choice-group brief-choice-group--wide">
+              <legend>Куда должны приходить заявки?</legend>
+              <label><input type="checkbox" name="leadChannels" value="Telegram" checked> <span>Telegram</span></label>
+              <label><input type="checkbox" name="leadChannels" value="Email"> <span>Email</span></label>
+              <label><input type="checkbox" name="leadChannels" value="WhatsApp"> <span>WhatsApp</span></label>
+              <label><input type="checkbox" name="leadChannels" value="CRM"> <span>CRM</span></label>
+            </fieldset>
+          </section>
+
+          <section class="brief-section">
+            <div class="brief-section__head"><span>04</span><h3>Материалы и комментарий</h3></div>
+            <div class="brief-upload-grid" aria-label="Материалы для будущей загрузки">
+              <div class="brief-upload-placeholder"><strong>Логотип</strong><span>Прикрепление файлов подключим на backend-этапе</span></div>
+              <div class="brief-upload-placeholder"><strong>Фото / контент</strong><span>Пока можно описать материалы в комментарии</span></div>
+            </div>
+            <label><span class="field-label">Комментарий</span><textarea name="comment" rows="5" maxlength="700" placeholder="Опишите пожелания, сроки, важные детали">${introComment}</textarea></label>
+          </section>
+
+          <label class="checkbox-row brief-consent"><input name="consent" type="checkbox" required> <span class="field-label">Согласие на обработку данных <b>*</b></span></label>
+          <div class="brief-actions">
+            <button class="btn btn--primary btn--full" type="submit">Отправить бриф</button>
+            <button class="btn btn--secondary btn--full" type="button" data-close-modal>Вернуться к выбору</button>
+          </div>
+          <small>Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности. Файлы сейчас не загружаются: это безопасный frontend-preview.</small>
         </form>
         ${leadAside(context)}
       </div>
@@ -577,7 +735,7 @@
   }
 
   function bindLeadErrorCleanup(form) {
-    ["name", "contact", "taskType", "budget", "consent"].forEach((name) => {
+    ["name", "contact", "industry", "taskType", "budget", "consent"].forEach((name) => {
       const field = form.elements[name];
       if (!field) return;
       const eventName = field.type === "checkbox" || field.tagName === "SELECT" ? "change" : "input";
@@ -594,10 +752,12 @@
   function submitLeadForm(event, context) {
     event.preventDefault();
     const form = event.currentTarget;
-    const data = Object.fromEntries(new FormData(form).entries());
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
     const errors = {};
     if (!data.name?.trim()) errors.name = "Заполните имя";
     if (!data.contact?.trim()) errors.contact = "Укажите контакт";
+    if (!data.industry?.trim()) errors.industry = "Выберите сферу";
     if (!data.taskType?.trim()) errors.taskType = "Выберите тип задачи";
     if (!form.elements.consent.checked) errors.consent = "Необходимо согласие";
 
@@ -612,8 +772,18 @@
         contact: data.contact.trim(),
         taskType: data.taskType,
         budget: data.budget,
-        comment: data.comment,
+        industry: data.industry,
+        businessName: data.businessName?.trim() || "",
+        offerDescription: data.offerDescription?.trim() || "",
+        styleMood: data.styleMood?.trim() || "",
+        references: data.references?.trim() || "",
+        domainNeeded: data.domainNeeded || "Не знаю",
+        leadChannels: formData.getAll("leadChannels"),
+        blogNeeded: data.blogNeeded || "Позже",
+        comment: data.comment?.trim() || "",
         solution: context.solution?.title || context.service || data.taskType,
+        selectedSolutionId: context.solution?.id || "",
+        requestContext: context.service || (context.solution ? "Готовый шаблон" : data.taskType),
       });
       renderLeadSuccess(lead, context);
     } catch (error) {
@@ -626,13 +796,14 @@
     target.innerHTML = `
       <div class="success-state">
         <div class="success-icon">✓</div>
-        <h2>Заявка принята</h2>
-        <p>Мы получили ваши данные и уже начали обработку.</p>
+        <h2>Бриф отправлен</h2>
+        <p>Мы получили данные по проекту. Менеджер свяжется с вами, уточнит детали и подготовит следующий шаг.</p>
         <div class="success-box success-box--lead">
           <span>Номер заявки</span>
           <strong class="lead-number">${esc(lead.id)}</strong>
           <span class="success-badge">Новая</span>
           <span>Выбранное решение: ${esc(normalizeSolutionTitle(lead.solution || context.solution?.title || context.service || "WEB00 проект"))}</span>
+          <span>Сфера: ${esc(lead.industry || "Будет уточнена")}</span>
           <span>Способ связи: ${esc(lead.contact)}</span>
         </div>
         <div class="success-next">
@@ -832,12 +1003,26 @@
       form.addEventListener("submit", (event) => {
         event.preventDefault();
         const data = Object.fromEntries(new FormData(form).entries());
-        const lead = DATA.getLeadStatus(data.leadId);
+        const leadId = String(data.leadId || "").trim();
+        const isDirectLookup = form.getAttribute("data-status-lookup") === "direct";
+        if (!leadId) {
+          const message = $("[data-status-message]", form.closest(".status-lookup") || form.closest(".status-lookup-card") || document);
+          if (message) {
+            message.textContent = "Введите номер заявки.";
+            message.classList.add("is-error");
+          }
+          return;
+        }
+        const lead = DATA.getLeadStatus(leadId);
         if (lead) {
           window.location.href = `status.html?id=${encodeURIComponent(lead.id)}`;
           return;
         }
-        const message = $("[data-status-message]", form.closest(".status-lookup") || document);
+        if (isDirectLookup) {
+          window.location.href = `status.html?id=${encodeURIComponent(leadId)}`;
+          return;
+        }
+        const message = $("[data-status-message]", form.closest(".status-lookup") || form.closest(".status-lookup-card") || document);
         if (message) {
           message.textContent = "Заявка не найдена. Проверьте номер и контакт или свяжитесь с поддержкой.";
           message.classList.add("is-error");
@@ -858,71 +1043,238 @@
   }
 
   function statusSteps(active) {
-    const labels = ["Новая", "Уточнение", "Предложение", "В работе", "Демо", "Запуск"];
-    return labels.map((label, index) => `<li class="${index + 1 <= active ? "is-done" : ""}"><span>${index + 1}</span><strong>${label}</strong></li>`).join("");
+    const labels = ["Бриф получен", "Контент проверяется", "Дизайн настраивается", "QA-проверка", "Публикация"];
+    const current = Math.max(1, Math.min(Number(active) || 1, labels.length));
+    return labels.map((label, index) => {
+      const step = index + 1;
+      const className = step < current ? "is-done" : step === current ? "is-active" : "";
+      return `<li class="${className}"><span>${step}</span><strong>${label}</strong></li>`;
+    }).join("");
+  }
+
+  function statusStage(statusKey, status) {
+    const map = {
+      new: 1,
+      clarification_needed: 2,
+      proposal_ready: 2,
+      waiting_client_confirmation: 2,
+      in_progress: 3,
+      revision_in_progress: 3,
+      demo_ready: 4,
+      delayed: 4,
+      ready_to_launch: 5,
+      launched: 5,
+      completed: 5,
+    };
+    return map[statusKey] || Math.max(1, Math.min(Number(status?.progress) || 1, 5));
+  }
+
+  function formatStatusDate(value) {
+    if (!value) return "Уточняется";
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return "Уточняется";
+    return date.toLocaleString("ru-RU", { day: "2-digit", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit" });
+  }
+
+  function statusLeadSolution(lead) {
+    if (!lead) return null;
+    if (lead.selectedSolutionId) {
+      const byId = DATA.SOLUTIONS.find((item) => item.id === lead.selectedSolutionId);
+      if (byId) return byId;
+    }
+    const title = normalizeSolutionTitle(lead.solution || "");
+    return DATA.SOLUTIONS.find((item) => item.title === title || item.legacyTitle === title || item.id === title) || null;
+  }
+
+  function statusDisplayValue(value, fallback = "Уточняется") {
+    if (Array.isArray(value)) return value.length ? value.join(", ") : fallback;
+    const text = String(value ?? "").trim();
+    return text || fallback;
+  }
+
+  function statusFact(label, value, fallback = "Уточняется") {
+    return `<article><span>${esc(label)}</span><strong>${esc(statusDisplayValue(value, fallback))}</strong></article>`;
+  }
+
+  function statusEstimate(lead) {
+    const source = [lead?.requestContext, lead?.solution, lead?.budget].filter(Boolean).join(" ");
+    const match = source.match(/(\d[\d\s]*[–-]\d[\d\s]*\s*₽|от\s*\d[\d\s]*\s*₽)/i);
+    return match ? match[1] : "";
+  }
+
+  function renderStatusLookup(root) {
+    root.innerHTML = `
+      <section class="status-lookup-page">
+        <div class="status-lookup-card">
+          <p class="status-kicker"><span></span>WEB00 · кабинет клиента</p>
+          <h1>Проверить статус заявки</h1>
+          <p>Введите номер заявки, чтобы открыть статус проекта и следующий шаг по запуску сайта.</p>
+          <form data-status-lookup="direct">
+            <label>
+              <span>Номер заявки</span>
+              <input name="leadId" type="text" placeholder="WEB00-2026-0001" autocomplete="off">
+            </label>
+            <button class="btn btn--primary" type="submit">Открыть статус</button>
+          </form>
+          <p class="status-form-message" data-status-message></p>
+          <div class="status-lookup-actions">
+            <a class="btn btn--secondary" href="solutions.html">Вернуться в каталог</a>
+            <button class="btn btn--secondary" type="button" data-open-lead>Оставить заявку</button>
+          </div>
+        </div>
+      </section>
+    `;
   }
 
   function renderStatusPage() {
     const root = $("#status-app");
     if (!root) return;
     const params = new URLSearchParams(window.location.search);
-    const id = params.get("id") || "WEB00-2026-0001";
+    const id = params.get("id");
+    if (!id) {
+      renderStatusLookup(root);
+      initStatusLookup();
+      return;
+    }
     const state = params.get("state");
     const lead = DATA.getLeadStatus(id);
-    if (!lead && params.get("notFound")) {
+    if (!lead) {
       renderStatusNotFound(root, id);
       return;
     }
-    const statusKey = state || lead?.status || "new";
+    const statusKey = state && DATA.LEAD_STATUSES[state] ? state : lead.status || "new";
     const status = DATA.LEAD_STATUSES[statusKey] || DATA.LEAD_STATUSES.new;
-    const displayLead = lead || { id, solution: "WEB00 проект", contact: "Telegram", createdAt: new Date().toISOString() };
-    displayLead.solution = normalizeSolutionTitle(displayLead.solution || "WEB00 проект");
+    const solution = statusLeadSolution(lead);
+    const selectedTitle = solution?.title || normalizeSolutionTitle(lead.solution || lead.requestContext || lead.taskType || "WEB00 проект");
+    const estimate = statusEstimate(lead);
+    const stage = statusStage(statusKey, status);
+    const passportItems = [
+      statusFact("Тип задачи", lead.taskType),
+      statusFact("Бюджет", estimate || lead.budget),
+      statusFact("Ниша / сфера", lead.industry),
+      statusFact("Бизнес / проект", lead.businessName),
+      statusFact("Домен", lead.domainNeeded),
+      statusFact("Каналы заявок", lead.leadChannels),
+      statusFact("Блог / статьи", lead.blogNeeded),
+    ].join("");
+    const description = lead.offerDescription || lead.comment || status.clientAction;
     root.innerHTML = `
-      <section class="status-hero">
-        <p class="ui-kicker"><span></span>WEB00 · статус заявки</p>
-        <h1>${esc(status.title)}</h1>
-        <p>${esc(status.intro)}</p>
-        <strong class="status-id">${esc(displayLead.id)}</strong>
-      </section>
-      <section class="status-layout">
-        <div class="status-main glow-panel">
-          <div class="status-current"><span class="status-dot status-dot--${esc(status.badge)}"></span><div><small>Текущий статус</small><h2 class="status-badge">${esc(status.label)}</h2><p>${esc(status.update)}</p></div></div>
-          <ol class="status-progress">${statusSteps(status.progress)}</ol>
-          <div class="status-note">${esc(status.clientAction)}</div>
-          <div class="modal-actions"><button class="btn btn--primary" type="button">${esc(status.action)}</button></div>
+      <section class="status-hero status-hero--premium">
+        <div>
+          <p class="status-kicker"><span></span>WEB00 · кабинет клиента</p>
+          <h1>Статус заявки</h1>
+          <p>Следите за этапами подготовки сайта и следующим шагом по вашему проекту.</p>
         </div>
-        <aside class="status-side">
-          <article class="glass-card"><span>Выбранное решение</span><strong>${esc(displayLead.solution || "WEB00 проект")}</strong></article>
-          <article class="glass-card"><span>Дата подачи заявки</span><strong>${new Date(displayLead.createdAt || Date.now()).toLocaleString("ru-RU")}</strong></article>
-          <article class="glass-card"><span>Предпочтительный контакт</span><strong>${esc(displayLead.contact || "Telegram")}</strong></article>
-          <article class="glass-card"><span>Действия клиента</span><p>${esc(status.clientAction)}</p></article>
+        <strong class="status-id">${esc(lead.id)}</strong>
+      </section>
+
+      <section class="status-cabinet">
+        <article class="status-summary-card">
+          <div class="status-summary-card__head">
+            <span class="status-dot status-dot--${esc(status.badge)}"></span>
+            <div>
+              <span>Текущий статус</span>
+              <h2>${esc(status.label)}</h2>
+              <p>${esc(status.update)}</p>
+            </div>
+          </div>
+          <div class="status-summary-grid">
+            ${statusFact("Номер заявки", lead.id)}
+            ${statusFact("Дата создания", formatStatusDate(lead.createdAt))}
+            ${statusFact("Клиент", lead.name)}
+            ${statusFact("Контакт", lead.contact)}
+            ${statusFact("Проект", selectedTitle)}
+            ${statusFact("Сфера", lead.industry)}
+          </div>
+        </article>
+
+        <aside class="status-next-card">
+          <span>Следующий шаг</span>
+          <h3>Менеджер свяжется с вами</h3>
+          <p>Мы уточним детали, подтвердим состав работ и подготовим следующий шаг.</p>
+          <div class="status-next-note">${esc(status.clientAction)}</div>
+          <button class="btn btn--primary" type="button" data-open-lead>Уточнить детали</button>
         </aside>
       </section>
-      <section class="status-switcher glow-panel">
-        <h2>Демо состояний 21–30</h2>
-        <div>${Object.entries(DATA.LEAD_STATUSES).filter(([key]) => key !== "completed").map(([key, item]) => `<a href="status.html?id=${encodeURIComponent(displayLead.id)}&state=${esc(key)}">${esc(item.label)}</a>`).join("")}</div>
+
+      <section class="status-timeline-card">
+        <div class="status-section-head">
+          <span>Прогресс проекта</span>
+          <h2>Путь до публикации сайта</h2>
+        </div>
+        <ol class="status-progress status-progress--premium">${statusSteps(stage)}</ol>
+      </section>
+
+      <section class="status-detail-grid">
+        <article class="status-passport-card">
+          <div class="status-section-head">
+            <span>Паспорт проекта</span>
+            <h2>Данные из брифа</h2>
+          </div>
+          <div class="status-passport-grid">${passportItems}</div>
+          ${description ? `<div class="status-description"><span>Краткое описание</span><p>${esc(description)}</p></div>` : ""}
+        </article>
+
+        <article class="status-template-card">
+          <div class="status-section-head">
+            <span>Выбранный формат</span>
+            <h2>${esc(selectedTitle)}</h2>
+          </div>
+          ${solution ? solutionPreview(solution) : `<div class="status-service-preview"><strong>WEB00</strong><span>${esc(selectedTitle)}</span></div>`}
+          <p>${esc(solution?.description || lead.requestContext || lead.taskType || "Формат будет уточнён после обработки заявки.")}</p>
+          <div class="status-template-meta">
+            ${statusFact("Стоимость", estimate || (solution ? solutionPrice(solution) : lead.budget))}
+            ${statusFact("Запуск", solution ? solutionTime(solution) : "от 2 дней")}
+          </div>
+        </article>
+      </section>
+
+      <section class="status-support-grid">
+        <article>
+          <span>Поддержка</span>
+          <h3>Данные сохранены</h3>
+          <p>Номер заявки можно использовать для проверки статуса. Следующий шаг — связь менеджера и уточнение деталей проекта.</p>
+        </article>
+        <article>
+          <span>История</span>
+          <ul class="status-history">
+            <li><strong>Бриф отправлен</strong><small>${esc(formatStatusDate(lead.createdAt))}</small></li>
+            <li><strong>Заявка создана</strong><small>Номер ${esc(lead.id)} зарегистрирован</small></li>
+            <li><strong>Ожидает обработки менеджером</strong><small>Мы не показываем выдуманные сообщения — только текущий frontend-статус.</small></li>
+          </ul>
+        </article>
       </section>
     `;
   }
 
   function renderStatusNotFound(root, id) {
     root.innerHTML = `
-      <section class="not-found-layout">
-        <aside class="glass-card">
-          <h2>Проверьте данные</h2>
-          <p>Убедитесь, что номер введён без лишних пробелов и указан тот же контакт.</p>
-        </aside>
-        <div class="not-found-card glow-panel">
-          <div class="warning-icon">!</div>
+      <section class="not-found-layout status-not-found-page">
+        <div class="not-found-card status-lookup-card">
+          <p class="status-kicker"><span></span>WEB00 · статус заявки</p>
           <h1>Заявка не найдена</h1>
-          <p>Мы не нашли заявку с указанными данными. Возможно, номер или контакт введены неверно.</p>
-          <form data-status-lookup>
-            <input name="leadId" type="text" value="${esc(id)}" placeholder="Номер заявки">
-            <input name="leadContact" type="text" placeholder="Контакт для связи">
+          <p>Мы не нашли заявку с номером ${id ? `<strong>${esc(id)}</strong>` : "без номера"}. Проверьте номер из письма, сообщения или success-экрана.</p>
+          <form data-status-lookup="direct">
+            <label>
+              <span>Номер заявки</span>
+              <input name="leadId" type="text" value="${esc(id || "")}" placeholder="WEB00-2026-0001" autocomplete="off">
+            </label>
             <button class="btn btn--primary btn--full" type="submit">Проверить ещё раз</button>
           </form>
-          <button class="btn btn--secondary btn--full" type="button" data-open-lead>Связаться с поддержкой</button>
+          <p class="status-form-message" data-status-message></p>
+          <div class="status-lookup-actions">
+            <a class="btn btn--secondary" href="solutions.html">Вернуться в каталог</a>
+            <button class="btn btn--secondary" type="button" data-open-lead>Оставить заявку</button>
+          </div>
         </div>
+        <aside class="status-help-card">
+          <h2>Что можно сделать</h2>
+          <ul>
+            <li>Проверьте, что номер введён без лишних пробелов.</li>
+            <li>Откройте ссылку из экрана “Бриф отправлен”.</li>
+            <li>Если номер потерян, оставьте заявку повторно.</li>
+          </ul>
+        </aside>
       </section>
     `;
     initStatusLookup();
