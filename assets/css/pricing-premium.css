@@ -1417,3 +1417,159 @@ body[data-page="pricing"] .after-payment .pricing-section-head h2 {
     font-size: 0.76rem;
   }
 }
+
+/* FE-PATCH-2: pricing density and layout-stability pass */
+body[data-page="pricing"] .pricing-premium {
+  padding-top: 4px;
+}
+
+body[data-page="pricing"] .pricing-hero {
+  gap: 18px;
+}
+
+body[data-page="pricing"] .pricing-panel {
+  min-height: 66px;
+  padding: 14px 18px 14px 46px;
+}
+
+body[data-page="pricing"] .pricing-panel::before {
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+}
+
+body[data-page="pricing"] .pricing-panel p {
+  max-width: 360px;
+  line-height: 1.38;
+}
+
+body[data-page="pricing"] .pricing-grid[data-pricing-grid] {
+  min-height: 300px;
+}
+
+body[data-page="pricing"] .pricing-tariffs {
+  margin-top: 14px;
+}
+
+body[data-page="pricing"] .price-card {
+  min-height: 286px;
+  padding: 14px 16px;
+}
+
+body[data-page="pricing"] .price-card h3 {
+  margin-bottom: 6px;
+}
+
+body[data-page="pricing"] .price-card strong {
+  margin-bottom: 7px;
+}
+
+body[data-page="pricing"] .price-card p {
+  min-height: 28px;
+  margin-bottom: 8px;
+}
+
+body[data-page="pricing"] .price-card .price-card__specs {
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+body[data-page="pricing"] .price-card li {
+  line-height: 1.32;
+}
+
+body[data-page="pricing"] .price-card .btn {
+  min-height: 36px;
+}
+
+body[data-page="pricing"] .pricing-compare {
+  margin-top: 18px;
+}
+
+body[data-page="pricing"] .comparison-table th,
+body[data-page="pricing"] .comparison-table td {
+  padding: 5px 8px;
+  line-height: 1.18;
+}
+
+body[data-page="pricing"] .after-payment,
+body[data-page="pricing"] .pricing-trust-block {
+  margin-top: 24px;
+}
+
+body[data-page="pricing"] .after-payment .pricing-section-head {
+  margin-bottom: 12px;
+}
+
+body[data-page="pricing"] .after-payment__grid {
+  gap: 10px;
+}
+
+body[data-page="pricing"] .after-payment__grid article {
+  padding: 12px 14px;
+}
+
+body[data-page="pricing"] .pricing-trust-block {
+  padding: 20px;
+}
+
+@media (max-width: 1180px) and (min-width: 761px) {
+  body[data-page="pricing"] .pricing-grid[data-pricing-grid] {
+    min-height: 308px;
+  }
+
+  body[data-page="pricing"] .pricing-panel p {
+    max-width: 310px;
+  }
+}
+
+@media (max-width: 760px) {
+  body[data-page="pricing"] .pricing-premium {
+    padding-top: 16px;
+  }
+
+  body[data-page="pricing"] .pricing-hero {
+    gap: 18px;
+  }
+
+  body[data-page="pricing"] .pricing-hero h1 {
+    font-size: clamp(2.02rem, 10.4vw, 2.48rem);
+    line-height: 1.05;
+  }
+
+  body[data-page="pricing"] .pricing-hero__content > p:not(.pricing-kicker) {
+    margin-top: 8px;
+    font-size: 0.88rem;
+    line-height: 1.48;
+  }
+
+  body[data-page="pricing"] .pricing-panel {
+    align-items: flex-start;
+    gap: 10px;
+    min-height: 0;
+    padding: 13px 14px 13px 42px;
+  }
+
+  body[data-page="pricing"] .pricing-panel p {
+    max-width: none;
+    font-size: 0.72rem;
+    line-height: 1.35;
+  }
+
+  body[data-page="pricing"] .pricing-grid[data-pricing-grid] {
+    min-height: 870px;
+  }
+
+  body[data-page="pricing"] .price-card {
+    min-height: 0;
+    padding: 16px;
+  }
+
+  body[data-page="pricing"] .price-card .btn {
+    min-height: 42px;
+  }
+
+  body[data-page="pricing"] .pricing-compare {
+    margin-top: 22px;
+  }
+}

@@ -1145,3 +1145,325 @@ body[data-page="home"] .mobile-cta {
     padding: 22px;
   }
 }
+
+/* FE-PATCH-2: approved-mockup density pass for the first viewport */
+body[data-page="home"] .premium-hero {
+  padding: 54px 0 20px;
+}
+
+body[data-page="home"] .premium-hero__grid {
+  grid-template-columns: minmax(0, 0.92fr) minmax(480px, 1.08fr);
+  gap: 48px;
+}
+
+body[data-page="home"] .premium-badge {
+  margin-bottom: 16px;
+  padding: 7px 12px;
+  font-size: 0.76rem;
+}
+
+body[data-page="home"] .premium-hero h1 {
+  max-width: 610px;
+  font-size: clamp(2.9rem, 4.45vw, 4.55rem);
+  line-height: 0.98;
+}
+
+body[data-page="home"] .premium-hero__text {
+  margin-top: 18px;
+  font-size: 1rem;
+  line-height: 1.58;
+}
+
+body[data-page="home"] .premium-actions {
+  margin-top: 24px;
+  gap: 12px;
+}
+
+body[data-page="home"] .premium-device-wrap {
+  min-height: 420px;
+  padding: 8px 0 34px;
+}
+
+body[data-page="home"] .premium-laptop {
+  border-radius: 22px;
+}
+
+body[data-page="home"] .premium-device-bar {
+  height: 34px;
+  padding: 0 14px;
+}
+
+body[data-page="home"] .premium-site-preview {
+  padding: 18px;
+}
+
+body[data-page="home"] .premium-site-nav {
+  padding-bottom: 14px;
+  gap: 14px;
+  font-size: 0.68rem;
+}
+
+body[data-page="home"] .premium-site-hero {
+  min-height: 214px;
+  padding: 28px;
+  border-radius: 18px;
+}
+
+body[data-page="home"] .premium-site-hero h2 {
+  max-width: 380px;
+  font-size: clamp(1.75rem, 2.35vw, 2.1rem);
+  line-height: 1.04;
+}
+
+body[data-page="home"] .premium-site-hero p {
+  max-width: 360px;
+  margin-top: 10px;
+}
+
+body[data-page="home"] .premium-site-hero .premium-mini-btn {
+  margin-top: 16px;
+}
+
+body[data-page="home"] .premium-site-cards {
+  gap: 10px;
+  padding-top: 12px;
+}
+
+body[data-page="home"] .premium-site-cards i {
+  min-height: 58px;
+}
+
+body[data-page="home"] .premium-phone {
+  width: 136px;
+  right: -6px;
+  bottom: 18px;
+  border-width: 6px;
+}
+
+body[data-page="home"] .premium-trust {
+  padding: 14px 0 38px;
+}
+
+body[data-page="home"] .premium-trust article {
+  min-height: 104px;
+  padding: 22px;
+}
+
+body[data-page="home"] .premium-section {
+  padding: 54px 0;
+}
+
+body[data-page="home"] .premium-section__head {
+  margin-bottom: 24px;
+}
+
+@media (max-width: 1180px) and (min-width: 861px) {
+  body[data-page="home"] .premium-hero {
+    padding-top: 44px;
+  }
+
+  body[data-page="home"] .premium-hero__grid {
+    grid-template-columns: minmax(0, 0.88fr) minmax(420px, 1fr);
+    gap: 34px;
+  }
+
+  body[data-page="home"] .premium-device-wrap {
+    min-height: 392px;
+  }
+
+  body[data-page="home"] .premium-site-hero {
+    min-height: 196px;
+    padding: 24px;
+  }
+
+  body[data-page="home"] .premium-phone {
+    width: 124px;
+  }
+}
+
+@media (max-width: 860px) {
+  body[data-page="home"] .premium-hero {
+    padding: 30px 0 18px;
+  }
+
+  body[data-page="home"] .premium-hero__grid {
+    gap: 26px;
+  }
+
+  body[data-page="home"] .premium-hero h1 {
+    font-size: clamp(2.22rem, 10.4vw, 2.65rem);
+    line-height: 1.03;
+  }
+
+  body[data-page="home"] .premium-hero__text {
+    margin-top: 16px;
+    font-size: 0.96rem;
+    line-height: 1.55;
+  }
+
+  body[data-page="home"] .premium-device-wrap {
+    padding-bottom: 0;
+  }
+
+  body[data-page="home"] .premium-site-preview {
+    padding: 14px;
+  }
+
+  body[data-page="home"] .premium-site-hero {
+    min-height: 250px;
+    padding: 24px;
+  }
+
+  body[data-page="home"] .premium-trust {
+    padding: 22px 0 34px;
+  }
+
+  body[data-page="home"] .premium-section {
+    padding: 42px 0;
+  }
+}
+
+@media (max-width: 520px) {
+  body[data-page="home"] .premium-actions {
+    margin-top: 22px;
+  }
+
+  body[data-page="home"] .premium-site-nav span {
+    display: none;
+  }
+
+  body[data-page="home"] .premium-site-hero h2 {
+    font-size: clamp(1.72rem, 10vw, 2.15rem);
+  }
+}
+
+/* FE-PATCH-2.1: make the approved first-screen content visible sooner */
+@media (min-width: 861px) {
+  body[data-page="home"] .premium-hero {
+    padding: 26px 0 10px;
+  }
+
+  body[data-page="home"] .premium-hero__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(430px, 0.86fr);
+    align-items: start;
+    gap: 34px;
+  }
+
+  body[data-page="home"] .premium-hero__content {
+    padding-top: 24px;
+  }
+
+  body[data-page="home"] .premium-hero h1 {
+    max-width: 650px;
+    font-size: clamp(2.45rem, 3.55vw, 3.35rem);
+    line-height: 1.02;
+  }
+
+  body[data-page="home"] .premium-device-wrap {
+    min-height: 300px;
+    padding: 0 0 18px;
+    overflow: hidden;
+  }
+
+  body[data-page="home"] .premium-laptop {
+    max-width: 480px;
+    margin-left: auto;
+  }
+
+  body[data-page="home"] .premium-site-preview {
+    padding: 14px;
+  }
+
+  body[data-page="home"] .premium-site-nav {
+    padding-bottom: 10px;
+  }
+
+  body[data-page="home"] .premium-site-hero {
+    min-height: 152px;
+    padding: 20px;
+  }
+
+  body[data-page="home"] .premium-site-hero h2 {
+    max-width: 320px;
+    font-size: clamp(1.35rem, 1.9vw, 1.72rem);
+  }
+
+  body[data-page="home"] .premium-site-hero p {
+    font-size: 0.72rem;
+    line-height: 1.42;
+  }
+
+  body[data-page="home"] .premium-mini-btn {
+    min-height: 32px;
+    padding: 8px 14px;
+  }
+
+  body[data-page="home"] .premium-site-cards i {
+    min-height: 42px;
+  }
+
+  body[data-page="home"] .premium-phone {
+    width: 98px;
+    right: 0;
+    bottom: 4px;
+  }
+
+  body[data-page="home"] .premium-trust {
+    padding: 8px 0 24px;
+  }
+
+  body[data-page="home"] .premium-trust article {
+    min-height: 74px;
+    padding: 14px 18px;
+  }
+
+  body[data-page="home"] .premium-trust strong {
+    font-size: 0.84rem;
+  }
+
+  body[data-page="home"] .premium-trust span {
+    font-size: 0.7rem;
+    line-height: 1.32;
+  }
+
+  body[data-page="home"] .premium-section {
+    padding: 36px 0;
+  }
+}
+
+@media (max-width: 860px) {
+  body[data-page="home"] .premium-hero {
+    overflow: hidden;
+  }
+
+  body[data-page="home"] .premium-hero__grid {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-page="home"] .premium-badge {
+    max-width: 100%;
+    width: fit-content;
+  }
+
+  body[data-page="home"] .premium-hero__content {
+    padding-top: 0;
+  }
+
+  body[data-page="home"] .premium-device-wrap {
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  body[data-page="home"] .premium-laptop {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  body[data-page="home"] .premium-phone {
+    display: none;
+  }
+
+  body[data-page="home"] .premium-site-cards {
+    display: none;
+  }
+}

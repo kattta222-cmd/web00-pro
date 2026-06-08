@@ -8026,12 +8026,34 @@ body[data-page="cases"] .nav a::after {
   left: 50% !important;
   right: auto !important;
   bottom: 0 !important;
-  width: 28px !important;
+  width: 0 !important;
   height: 2px !important;
   border-radius: 4px !important;
   transform: translateX(-50%) !important;
 }
 
+body[data-page="home"] .nav a:hover::after,
+body[data-page="home"] .nav a:focus-visible::after,
+body[data-page="solutions"] .nav a:hover::after,
+body[data-page="solutions"] .nav a:focus-visible::after,
+body[data-page="pricing"] .nav a:hover::after,
+body[data-page="pricing"] .nav a:focus-visible::after,
+body[data-page="services"] .nav a:hover::after,
+body[data-page="services"] .nav a:focus-visible::after,
+body[data-page="how-it-works"] .nav a:hover::after,
+body[data-page="how-it-works"] .nav a:focus-visible::after,
+body[data-page="faq"] .nav a:hover::after,
+body[data-page="faq"] .nav a:focus-visible::after,
+body[data-page="contacts"] .nav a:hover::after,
+body[data-page="contacts"] .nav a:focus-visible::after,
+body[data-page="status"] .nav a:hover::after,
+body[data-page="status"] .nav a:focus-visible::after,
+body[data-page="brief"] .nav a:hover::after,
+body[data-page="brief"] .nav a:focus-visible::after,
+body[data-page="legal"] .nav a:hover::after,
+body[data-page="legal"] .nav a:focus-visible::after,
+body[data-page="cases"] .nav a:hover::after,
+body[data-page="cases"] .nav a:focus-visible::after,
 body[data-page="home"] .nav a.is-active::after,
 body[data-page="solutions"] .nav a.is-active::after,
 body[data-page="pricing"] .nav a.is-active::after,
@@ -8044,6 +8066,7 @@ body[data-page="brief"] .nav a.is-active::after,
 body[data-page="legal"] .nav a.is-active::after,
 body[data-page="cases"] .nav a.is-active::after {
   content: "" !important;
+  width: 28px !important;
 }
 
 body[data-page="home"] .header__cta,
