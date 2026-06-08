@@ -1160,12 +1160,21 @@
   }
 
   function statusSteps(active) {
-    const labels = ["Бриф получен", "Контент проверяется", "Дизайн настраивается", "QA-проверка", "Публикация"];
+    const labels = [
+      ["Анкета получена", "Бриф сохранён"],
+      ["Уточняем детали", "Формат и объём"],
+      ["Материалы", "Контент и доступы"],
+      ["Сайт в работе", "Структура и сборка"],
+      ["Проверка качества", "Адаптив и формы"],
+      ["Согласование", "Комментарии клиента"],
+      ["Публикация", "Финальный запуск"],
+      ["Поддержка", "После старта"],
+    ];
     const current = Math.max(1, Math.min(Number(active) || 1, labels.length));
-    return labels.map((label, index) => {
+    return labels.map(([label, note], index) => {
       const step = index + 1;
       const className = step < current ? "is-done" : step === current ? "is-active" : "";
-      return `<li class="${className}"><span>${step}</span><strong>${label}</strong></li>`;
+      return `<li class="${className}"><span>${step}</span><strong>${label}</strong><small>${note}</small></li>`;
     }).join("");
   }
 
@@ -1173,17 +1182,17 @@
     const map = {
       new: 1,
       clarification_needed: 2,
-      proposal_ready: 2,
-      waiting_client_confirmation: 2,
-      in_progress: 3,
-      revision_in_progress: 3,
-      demo_ready: 4,
-      delayed: 4,
-      ready_to_launch: 5,
-      launched: 5,
-      completed: 5,
+      proposal_ready: 3,
+      waiting_client_confirmation: 3,
+      in_progress: 4,
+      revision_in_progress: 6,
+      demo_ready: 5,
+      delayed: 5,
+      ready_to_launch: 7,
+      launched: 8,
+      completed: 8,
     };
-    return map[statusKey] || Math.max(1, Math.min(Number(status?.progress) || 1, 5));
+    return map[statusKey] || Math.max(1, Math.min(Number(status?.progress) || 1, 8));
   }
 
   function formatStatusDate(value) {
@@ -1211,6 +1220,13 @@
 
   function statusFact(label, value, fallback = "Уточняется") {
     return `<article><span>${esc(label)}</span><strong>${esc(statusDisplayValue(value, fallback))}</strong></article>`;
+  }
+
+  function statusCompactDate(value) {
+    if (!value) return "Уточняется";
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return "Уточняется";
+    return date.toLocaleDateString("ru-RU", { day: "2-digit", month: "long", year: "numeric" });
   }
 
   function statusEstimate(lead) {
@@ -1265,102 +1281,170 @@
     const selectedTitle = solution?.title || normalizeSolutionTitle(lead.solution || lead.requestContext || lead.taskType || "WEB00 проект");
     const estimate = statusEstimate(lead);
     const stage = statusStage(statusKey, status);
+    const launchValue = solution ? solutionTime(solution) : lead.launchEstimate || "от 2 дней";
+    const priceValue = estimate || (solution ? solutionPrice(solution) : lead.budget);
+    const channels = statusDisplayValue(lead.leadChannels, "Telegram / удобный канал");
+    const tariffValue = statusDisplayValue(lead.tariff || lead.service || lead.taskType, solution ? "Готовый сайт" : "По задаче");
     const passportItems = [
-      statusFact("Тип задачи", lead.taskType),
-      statusFact("Бюджет", estimate || lead.budget),
+      statusFact("Формат", tariffValue),
+      statusFact("Стоимость", priceValue),
+      statusFact("Срок запуска", launchValue),
       statusFact("Ниша / сфера", lead.industry),
-      statusFact("Бизнес / проект", lead.businessName),
+      statusFact("Страницы", solution?.features?.length ? `до ${Math.max(5, solution.features.length + 4)}` : "по задаче"),
+      statusFact("Язык сайта", "русский"),
+      statusFact("Интеграции", channels),
       statusFact("Домен", lead.domainNeeded),
-      statusFact("Каналы заявок", lead.leadChannels),
+    ].join("");
+    const summaryItems = [
+      statusFact("Статус проекта", status.label),
+      statusFact("Дата заявки", statusCompactDate(lead.createdAt)),
+      statusFact("Контакт", lead.contact),
+      statusFact("Бизнес", lead.businessName || lead.name),
+    ].join("");
+    const includedItems = [
+      ...(solution?.features || []),
+      "Адаптивная вёрстка",
+      "Форма заявки",
+      "Базовая SEO-подготовка",
+      "Техническая поддержка после запуска",
+    ].slice(0, 7);
+    const integrationItems = [
+      ["Форма обратной связи", "Подключается"],
+      [channels, "По брифу"],
+      ["Почта для заявок", lead.contact ? "Уточняется" : "Ожидает"],
+    ];
+    const supportItems = [
+      ["Техническая поддержка", "Включено"],
+      ["Помощь после запуска", "Включено"],
+      ["Правки и уточнения", "По задаче"],
+      ["Консультация", "Доступна"],
+    ];
+    const historyItems = [
+      ["Бриф отправлен", formatStatusDate(lead.createdAt)],
+      ["Заявка зарегистрирована", `Номер ${lead.id}`],
+      ["Текущий статус обновлён", status.update],
+    ];
+    const notificationItems = [
+      ["Данные проекта сохранены", formatStatusDate(lead.createdAt)],
+      ["Следующий шаг определён", status.clientAction],
+      ["Канал связи указан", statusDisplayValue(lead.contact, "Уточняется")],
+    ];
+    const projectFacts = [
+      statusFact("Номер", lead.id),
+      statusFact("Клиент", lead.name),
+      statusFact("Домен", lead.domainNeeded),
       statusFact("Блог / статьи", lead.blogNeeded),
     ].join("");
     const description = lead.offerDescription || lead.comment || status.clientAction;
     root.innerHTML = `
-      <section class="status-hero status-hero--premium">
+      <section class="status-hero status-hero--cabinet">
         <div>
-          <p class="status-kicker"><span></span>WEB00 · кабинет клиента</p>
-          <h1>Статус заявки</h1>
-          <p>Следите за этапами подготовки сайта и следующим шагом по вашему проекту.</p>
+          <p class="status-kicker"><span></span>WEB00 · frontend-preview cabinet</p>
+          <h1>Кабинет проекта</h1>
+          <p>Следите за статусом заявки, сохранёнными данными брифа и следующим шагом по запуску сайта.</p>
         </div>
-        <strong class="status-id">${esc(lead.id)}</strong>
+        <button class="btn btn--secondary" type="button" data-open-lead>Задать вопрос</button>
       </section>
 
-      <section class="status-cabinet">
-        <article class="status-summary-card">
-          <div class="status-summary-card__head">
-            <span class="status-dot status-dot--${esc(status.badge)}"></span>
-            <div>
-              <span>Текущий статус</span>
-              <h2>${esc(status.label)}</h2>
-              <p>${esc(status.update)}</p>
+      <div class="status-dashboard" aria-label="Кабинет проекта">
+        <section class="status-dashboard-grid">
+          <article class="status-project-card status-card">
+            <div class="status-project-card__preview">
+              ${solution ? solutionPreview(solution) : `<div class="status-service-preview"><strong>WEB00</strong><span>${esc(selectedTitle)}</span></div>`}
             </div>
-          </div>
-          <div class="status-summary-grid">
-            ${statusFact("Номер заявки", lead.id)}
-            ${statusFact("Дата создания", formatStatusDate(lead.createdAt))}
-            ${statusFact("Клиент", lead.name)}
-            ${statusFact("Контакт", lead.contact)}
-            ${statusFact("Проект", selectedTitle)}
-            ${statusFact("Сфера", lead.industry)}
-          </div>
-        </article>
+            <div class="status-project-card__body">
+              <span class="status-card-label">Текущий проект</span>
+              <h2>${esc(selectedTitle)}</h2>
+              <div class="status-project-meta">
+                <span>${esc(tariffValue)}</span>
+                <strong class="status-badge status-badge--${esc(status.badge)}">${esc(status.label)}</strong>
+              </div>
+              <div class="status-summary-grid status-summary-grid--compact">${summaryItems}</div>
+            </div>
+          </article>
 
-        <aside class="status-next-card">
-          <span>Следующий шаг</span>
-          <h3>Менеджер свяжется с вами</h3>
-          <p>Мы уточним детали, подтвердим состав работ и подготовим следующий шаг.</p>
-          <div class="status-next-note">${esc(status.clientAction)}</div>
-          <button class="btn btn--primary" type="button" data-open-lead>Уточнить детали</button>
-        </aside>
-      </section>
+          <aside class="status-action-card status-card">
+            <span class="status-card-label">Следующее действие</span>
+            <h3>${statusKey === "new" ? "Ожидайте связи" : esc(status.action || "Уточнить детали")}</h3>
+            <p>${esc(status.clientAction)}</p>
+            <button class="btn btn--primary" type="button" data-open-lead>Уточнить детали</button>
+            <small>Это frontend-preview статус: данные сохранены локально, без реальных уведомлений.</small>
+          </aside>
+        </section>
 
-      <section class="status-timeline-card">
-        <div class="status-section-head">
-          <span>Прогресс проекта</span>
-          <h2>Путь до публикации сайта</h2>
-        </div>
-        <ol class="status-progress status-progress--premium">${statusSteps(stage)}</ol>
-      </section>
-
-      <section class="status-detail-grid">
-        <article class="status-passport-card">
+        <section class="status-timeline-card status-card">
           <div class="status-section-head">
-            <span>Паспорт проекта</span>
-            <h2>Данные из брифа</h2>
+            <span>Прогресс выполнения</span>
+            <h2>Путь от анкеты до поддержки</h2>
           </div>
-          <div class="status-passport-grid">${passportItems}</div>
-          ${description ? `<div class="status-description"><span>Краткое описание</span><p>${esc(description)}</p></div>` : ""}
-        </article>
+          <ol class="status-progress status-progress--cabinet">${statusSteps(stage)}</ol>
+        </section>
 
-        <article class="status-template-card">
-          <div class="status-section-head">
-            <span>Выбранный формат</span>
-            <h2>${esc(selectedTitle)}</h2>
-          </div>
-          ${solution ? solutionPreview(solution) : `<div class="status-service-preview"><strong>WEB00</strong><span>${esc(selectedTitle)}</span></div>`}
-          <p>${esc(solution?.description || lead.requestContext || lead.taskType || "Формат будет уточнён после обработки заявки.")}</p>
-          <div class="status-template-meta">
-            ${statusFact("Стоимость", estimate || (solution ? solutionPrice(solution) : lead.budget))}
-            ${statusFact("Запуск", solution ? solutionTime(solution) : "от 2 дней")}
-          </div>
-        </article>
-      </section>
+        <section class="status-dashboard-grid status-dashboard-grid--details">
+          <article class="status-passport-card status-card">
+            <div class="status-section-head">
+              <span>Паспорт проекта</span>
+              <h2>Данные проекта</h2>
+            </div>
+            <div class="status-passport-layout">
+              <div class="status-passport-grid">${passportItems}</div>
+              <div>
+                <h3>Что входит в проект</h3>
+                <ul class="status-check-list">
+                  ${includedItems.map((item) => `<li>${esc(item)}</li>`).join("")}
+                </ul>
+              </div>
+            </div>
+            ${description ? `<div class="status-description"><span>Краткое описание</span><p>${esc(description)}</p></div>` : ""}
+          </article>
 
-      <section class="status-support-grid">
-        <article>
-          <span>Поддержка</span>
-          <h3>Данные сохранены</h3>
-          <p>Номер заявки можно использовать для проверки статуса. Следующий шаг — связь менеджера и уточнение деталей проекта.</p>
-        </article>
-        <article>
-          <span>История</span>
-          <ul class="status-history">
-            <li><strong>Бриф отправлен</strong><small>${esc(formatStatusDate(lead.createdAt))}</small></li>
-            <li><strong>Заявка создана</strong><small>Номер ${esc(lead.id)} зарегистрирован</small></li>
-            <li><strong>Ожидает обработки менеджером</strong><small>Мы не показываем выдуманные сообщения — только текущий frontend-статус.</small></li>
-          </ul>
-        </article>
-      </section>
+          <aside class="status-integrations-card status-card">
+            <div class="status-section-head">
+              <span>Заявки и интеграции</span>
+              <h2>Куда пойдут обращения</h2>
+            </div>
+            <ul class="status-support-list">
+              ${integrationItems.map(([label, value]) => `<li><span>${esc(label)}</span><strong>${esc(value)}</strong></li>`).join("")}
+            </ul>
+          </aside>
+        </section>
+
+        <section class="status-dashboard-grid status-dashboard-grid--support">
+          <article class="status-support-card status-card">
+            <div class="status-section-head">
+              <span>Что входит в поддержку</span>
+              <h2>Связь и сопровождение</h2>
+            </div>
+            <ul class="status-support-list">
+              ${supportItems.map(([label, value]) => `<li><span>${esc(label)}</span><strong>${esc(value)}</strong></li>`).join("")}
+            </ul>
+          </article>
+
+          <article class="status-history-card status-card">
+            <div class="status-section-head">
+              <span>История</span>
+              <h2>События заявки</h2>
+            </div>
+            <ul class="status-history">
+              ${historyItems.map(([title, text]) => `<li><strong>${esc(title)}</strong><small>${esc(text)}</small></li>`).join("")}
+            </ul>
+          </article>
+
+          <article class="status-notifications-card status-card">
+            <div class="status-section-head">
+              <span>Уведомления</span>
+              <h2>Что важно сейчас</h2>
+            </div>
+            <ul class="status-history">
+              ${notificationItems.map(([title, text]) => `<li><strong>${esc(title)}</strong><small>${esc(text)}</small></li>`).join("")}
+            </ul>
+          </article>
+        </section>
+
+        <section class="status-meta-strip status-card" aria-label="Сводка заявки">
+          ${projectFacts}
+        </section>
+      </div>
     `;
   }
 
