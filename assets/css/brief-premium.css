@@ -128,6 +128,7 @@ body[data-page="brief"] .brief-page {
 }
 
 body[data-page="brief"] .brief-back {
+  min-height: 32px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -823,4 +824,12 @@ body[data-page="brief"] .footer__links a:focus-visible {
   body[data-page="brief"] .success-next {
     grid-template-columns: auto 1fr;
   }
+}
+
+/* FE-PATCH-1: keep brief page tap targets aligned with the shared shell */
+body[data-page="brief"] .brief-actions .btn,
+body[data-page="brief"] .modal-actions .btn,
+body[data-page="brief"] .success-actions .btn {
+  min-height: 44px;
+  border-radius: 10px;
 }

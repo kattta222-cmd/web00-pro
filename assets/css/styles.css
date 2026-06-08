@@ -7970,3 +7970,301 @@ body::before {
     border-radius: 20px;
   }
 }
+
+/* FE-PATCH-1: shared premium shell polish */
+:root {
+  --web00-shell-header-height: 68px;
+  --web00-shell-mobile-header-height: 64px;
+  --web00-shell-button-radius: 10px;
+  --web00-shell-button-radius-soft: 12px;
+}
+
+body[data-page="home"] .header__inner,
+body[data-page="solutions"] .header__inner,
+body[data-page="pricing"] .header__inner,
+body[data-page="services"] .header__inner,
+body[data-page="how-it-works"] .header__inner,
+body[data-page="faq"] .header__inner,
+body[data-page="contacts"] .header__inner,
+body[data-page="status"] .header__inner,
+body[data-page="brief"] .header__inner,
+body[data-page="legal"] .header__inner,
+body[data-page="cases"] .header__inner {
+  min-height: var(--web00-shell-header-height) !important;
+}
+
+body[data-page="home"] .nav a,
+body[data-page="solutions"] .nav a,
+body[data-page="pricing"] .nav a,
+body[data-page="services"] .nav a,
+body[data-page="how-it-works"] .nav a,
+body[data-page="faq"] .nav a,
+body[data-page="contacts"] .nav a,
+body[data-page="status"] .nav a,
+body[data-page="brief"] .nav a,
+body[data-page="legal"] .nav a,
+body[data-page="cases"] .nav a {
+  min-height: var(--web00-shell-header-height) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  border-bottom: 0 !important;
+}
+
+body[data-page="home"] .nav a::after,
+body[data-page="solutions"] .nav a::after,
+body[data-page="pricing"] .nav a::after,
+body[data-page="services"] .nav a::after,
+body[data-page="how-it-works"] .nav a::after,
+body[data-page="faq"] .nav a::after,
+body[data-page="contacts"] .nav a::after,
+body[data-page="status"] .nav a::after,
+body[data-page="brief"] .nav a::after,
+body[data-page="legal"] .nav a::after,
+body[data-page="cases"] .nav a::after {
+  left: 50% !important;
+  right: auto !important;
+  bottom: 0 !important;
+  width: 28px !important;
+  height: 2px !important;
+  border-radius: 4px !important;
+  transform: translateX(-50%) !important;
+}
+
+body[data-page="home"] .nav a.is-active::after,
+body[data-page="solutions"] .nav a.is-active::after,
+body[data-page="pricing"] .nav a.is-active::after,
+body[data-page="services"] .nav a.is-active::after,
+body[data-page="how-it-works"] .nav a.is-active::after,
+body[data-page="faq"] .nav a.is-active::after,
+body[data-page="contacts"] .nav a.is-active::after,
+body[data-page="status"] .nav a.is-active::after,
+body[data-page="brief"] .nav a.is-active::after,
+body[data-page="legal"] .nav a.is-active::after,
+body[data-page="cases"] .nav a.is-active::after {
+  content: "" !important;
+}
+
+body[data-page="home"] .header__cta,
+body[data-page="home"] .premium-btn,
+body[data-page="home"] .premium-card-actions button,
+body[data-page="solutions"] .btn,
+body[data-page="solutions"] .solution-card__action,
+body[data-page="pricing"] .btn,
+body[data-page="services"] .btn,
+body[data-page="how-it-works"] .btn,
+body[data-page="faq"] .btn,
+body[data-page="contacts"] .btn,
+body[data-page="status"] .btn,
+body[data-page="brief"] .btn,
+body[data-page="legal"] .btn,
+body[data-page="cases"] .btn {
+  min-height: 44px;
+  border-radius: var(--web00-shell-button-radius) !important;
+}
+
+body[data-page="home"] .header__cta,
+body[data-page="solutions"] .header__cta,
+body[data-page="pricing"] .header__cta,
+body[data-page="services"] .header__cta,
+body[data-page="how-it-works"] .header__cta,
+body[data-page="faq"] .header__cta,
+body[data-page="contacts"] .header__cta,
+body[data-page="status"] .header__cta,
+body[data-page="brief"] .header__cta,
+body[data-page="legal"] .header__cta,
+body[data-page="cases"] .header__cta {
+  min-height: 42px;
+  padding-inline: 20px;
+  border-radius: var(--web00-shell-button-radius) !important;
+}
+
+.footer-credit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0 0.55ch;
+}
+
+.footer-credit__part {
+  white-space: nowrap;
+}
+
+.footer-credit__sep {
+  color: inherit;
+}
+
+body[data-page="home"] .logo,
+body[data-page="solutions"] .logo,
+body[data-page="pricing"] .logo,
+body[data-page="services"] .logo,
+body[data-page="how-it-works"] .logo,
+body[data-page="faq"] .logo,
+body[data-page="contacts"] .logo,
+body[data-page="status"] .logo,
+body[data-page="brief"] .logo,
+body[data-page="legal"] .logo,
+body[data-page="cases"] .logo {
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+}
+
+body[data-page="home"] .premium-link {
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  body[data-page="home"] .header__inner,
+  body[data-page="solutions"] .header__inner,
+  body[data-page="pricing"] .header__inner,
+  body[data-page="services"] .header__inner,
+  body[data-page="how-it-works"] .header__inner,
+  body[data-page="faq"] .header__inner,
+  body[data-page="contacts"] .header__inner,
+  body[data-page="status"] .header__inner,
+  body[data-page="brief"] .header__inner,
+  body[data-page="legal"] .header__inner,
+  body[data-page="cases"] .header__inner {
+    min-height: var(--web00-shell-mobile-header-height) !important;
+  }
+
+  body[data-page="home"] .menu-toggle,
+  body[data-page="solutions"] .menu-toggle,
+  body[data-page="pricing"] .menu-toggle,
+  body[data-page="services"] .menu-toggle,
+  body[data-page="how-it-works"] .menu-toggle,
+  body[data-page="faq"] .menu-toggle,
+  body[data-page="contacts"] .menu-toggle,
+  body[data-page="status"] .menu-toggle,
+  body[data-page="brief"] .menu-toggle,
+  body[data-page="legal"] .menu-toggle,
+  body[data-page="cases"] .menu-toggle {
+    width: 44px !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    border-radius: var(--web00-shell-button-radius-soft) !important;
+    position: relative;
+    z-index: 70;
+  }
+
+  body[data-page="home"] .nav,
+  body[data-page="solutions"] .nav,
+  body[data-page="pricing"] .nav,
+  body[data-page="services"] .nav,
+  body[data-page="how-it-works"] .nav,
+  body[data-page="faq"] .nav,
+  body[data-page="contacts"] .nav,
+  body[data-page="status"] .nav,
+  body[data-page="brief"] .nav,
+  body[data-page="legal"] .nav,
+  body[data-page="cases"] .nav {
+    top: var(--web00-shell-mobile-header-height) !important;
+    z-index: 60;
+  }
+
+  body[data-page="home"] .nav a,
+  body[data-page="solutions"] .nav a,
+  body[data-page="pricing"] .nav a,
+  body[data-page="services"] .nav a,
+  body[data-page="how-it-works"] .nav a,
+  body[data-page="faq"] .nav a,
+  body[data-page="contacts"] .nav a,
+  body[data-page="status"] .nav a,
+  body[data-page="brief"] .nav a,
+  body[data-page="legal"] .nav a,
+  body[data-page="cases"] .nav a {
+    min-height: 44px !important;
+    padding: 10px 12px !important;
+  }
+
+  body[data-page="home"] .nav a::after,
+  body[data-page="solutions"] .nav a::after,
+  body[data-page="pricing"] .nav a::after,
+  body[data-page="services"] .nav a::after,
+  body[data-page="how-it-works"] .nav a::after,
+  body[data-page="faq"] .nav a::after,
+  body[data-page="contacts"] .nav a::after,
+  body[data-page="status"] .nav a::after,
+  body[data-page="brief"] .nav a::after,
+  body[data-page="legal"] .nav a::after,
+  body[data-page="cases"] .nav a::after {
+    content: none !important;
+  }
+
+  .footer__links a,
+  .footer__links button {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  body[data-page="home"] .premium-actions,
+  body[data-page="home"] .premium-card-actions,
+  body[data-page="pricing"] .pricing-actions,
+  body[data-page="services"] .services-actions,
+  body[data-page="how-it-works"] .work-actions,
+  body[data-page="faq"] .faq-actions,
+  body[data-page="contacts"] .contacts-actions,
+  body[data-page="brief"] .brief-actions,
+  body[data-page="cases"] .cases-actions {
+    gap: 10px;
+  }
+
+  body[data-page="home"] .premium-btn,
+  body[data-page="home"] .premium-card-actions button,
+  body[data-page="solutions"] .btn,
+  body[data-page="solutions"] .solution-card__action,
+  body[data-page="pricing"] .btn,
+  body[data-page="services"] .btn,
+  body[data-page="how-it-works"] .btn,
+  body[data-page="faq"] .btn,
+  body[data-page="contacts"] .btn,
+  body[data-page="status"] .btn,
+  body[data-page="brief"] .btn,
+  body[data-page="cases"] .btn {
+    width: 100%;
+    border-radius: var(--web00-shell-button-radius) !important;
+  }
+
+  body[data-page="solutions"] .filter-btn,
+  body[data-page="solutions"] .catalog-filterbar select,
+  body[data-page="solutions"] .catalog-filterbar input,
+  body[data-page="solutions"] .catalog-selected-row button {
+    min-height: 44px !important;
+  }
+
+  body[data-page="brief"] input[type="radio"],
+  body[data-page="brief"] input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+  }
+
+  body[data-page="brief"] .brief-choice-group label {
+    min-height: 44px;
+  }
+
+  .footer-credit {
+    display: grid;
+    justify-content: start;
+    gap: 3px;
+    text-align: left;
+  }
+
+  .footer-credit__part {
+    white-space: normal;
+  }
+
+  .footer-credit__sep {
+    display: none;
+  }
+}
