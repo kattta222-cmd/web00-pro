@@ -250,6 +250,12 @@ body[data-page="brief"] .brief-page-ui {
   align-items: start;
 }
 
+body[data-page="brief"] .brief-page-ui.brief-modal {
+  max-height: none;
+  overflow: visible;
+  background: transparent;
+}
+
 body[data-page="brief"] .brief-form {
   display: block;
   min-width: 0;

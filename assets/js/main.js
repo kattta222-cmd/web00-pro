@@ -427,7 +427,7 @@
     };
     const included = [...new Set([...features, "Адаптивная версия", "Форма заявки", "Подготовка к запуску"])].slice(0, 7);
     const quality = ["Performance 90+", "SEO-ready", "Mobile-ready", "Адаптивность", "Поддержка после запуска"];
-    const launchSteps = ["Бриф", "Подготовка", "Согласование", "Запуск", "Поддержка"];
+    const launchSteps = ["Анкета", "Подготовка", "Согласование", "Запуск", "Поддержка"];
     target.innerHTML = `
       <div class="solution-modal solution-modal--premium template-detail">
         <section class="template-detail__hero" aria-label="Подробности шаблона ${esc(solution.title)}">
@@ -464,7 +464,7 @@
             <ul class="check-list solution-detail__features">${features.map((item) => `<li>${esc(item)}</li>`).join("")}</ul>
             <div class="solution-detail__actions template-detail__actions">
               <a class="btn btn--primary btn--full" href="${attr(briefUrl({ solution: solution.id }))}">Запустить этот сайт</a>
-              ${hasDemo ? `<button class="btn btn--secondary btn--full" type="button" data-open-demo="${esc(solution.id)}">Смотреть демо</button>` : `<p class="template-detail__demo-note">Демо подберём после короткого брифа.</p>`}
+              ${hasDemo ? `<button class="btn btn--secondary btn--full" type="button" data-open-demo="${esc(solution.id)}">Смотреть демо</button>` : `<p class="template-detail__demo-note">Демо подберём после короткой анкеты.</p>`}
             </div>
           </aside>
         </section>
@@ -696,11 +696,11 @@
       <div class="${isPageMode ? "brief-page-ui" : "lead-modal"} brief-modal ${hasErrors ? "has-errors" : ""}">
         <form class="lead-form-ui brief-form" data-lead-form novalidate>
           ${isPageMode ? "" : `<div class="brief-modal__header">
-            <span class="brief-kicker">WEB00 launch brief</span>
-            <h2 id="lead-title">Бриф на запуск сайта</h2>
+            <span class="brief-kicker">WEB00 launch form</span>
+            <h2 id="lead-title">Анкета на запуск сайта</h2>
             <p>Расскажите о проекте — мы подготовим сайт, который привлечёт клиентов и поддержит ваш бренд.</p>
           </div>
-          <div class="brief-stepper" aria-label="Этапы брифа">
+          <div class="brief-stepper" aria-label="Этапы анкеты">
             <span><b>1</b> Выбор</span>
             <span><b>2</b> Данные</span>
             <span><b>3</b> Контент</span>
@@ -773,18 +773,18 @@
           <section class="brief-section">
             <div class="brief-section__head"><span>04</span><h3>Материалы и комментарий</h3></div>
             <div class="brief-upload-grid" aria-label="Материалы для будущей загрузки">
-              <div class="brief-upload-placeholder"><strong>Логотип</strong><span>Файлы можно будет передать менеджеру после отправки брифа.</span></div>
-              <div class="brief-upload-placeholder"><strong>Фото / изображения</strong><span>Файлы можно будет передать менеджеру после отправки брифа.</span></div>
+              <div class="brief-upload-placeholder"><strong>Логотип</strong><span>Файлы можно будет передать менеджеру после отправки анкеты.</span></div>
+              <div class="brief-upload-placeholder"><strong>Фото / изображения</strong><span>Файлы можно будет передать менеджеру после отправки анкеты.</span></div>
             </div>
             <label><span class="field-label">Комментарий</span><textarea name="comment" rows="5" maxlength="700" placeholder="Опишите пожелания, сроки, важные детали">${introComment}</textarea></label>
           </section>
 
           <label class="checkbox-row brief-consent"><input name="consent" type="checkbox" required> <span class="field-label">Согласие на обработку данных <b>*</b></span></label>
           <div class="brief-actions">
-            <button class="btn btn--primary btn--full" type="submit">Отправить бриф</button>
+            <button class="btn btn--primary btn--full" type="submit">Отправить анкету</button>
             ${isPageMode ? '<a class="btn btn--secondary btn--full" href="solutions.html">Вернуться к выбору</a>' : '<button class="btn btn--secondary btn--full" type="button" data-close-modal>Вернуться к выбору</button>'}
           </div>
-          <small>Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности. Файлы сейчас не загружаются: их можно будет передать менеджеру после отправки брифа.</small>
+          <small>Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности. Файлы сейчас не загружаются: их можно будет передать менеджеру после отправки анкеты.</small>
         </form>
         ${leadAside(context)}
       </div>
@@ -885,7 +885,7 @@
     target.innerHTML = `
       <div class="success-state ${isPageMode ? "brief-page-success" : ""}">
         <div class="success-icon">✓</div>
-        <h2>Бриф отправлен</h2>
+        <h2>Анкета отправлена</h2>
         <p>Мы получили данные по проекту. Менеджер свяжется с вами, уточнит детали и подготовит следующий шаг.</p>
         <div class="success-box success-box--lead">
           <span>Номер заявки</span>
@@ -1161,7 +1161,7 @@
 
   function statusSteps(active) {
     const labels = [
-      ["Анкета получена", "Бриф сохранён"],
+      ["Анкета получена", "Анкета сохранена"],
       ["Уточняем детали", "Формат и объём"],
       ["Материалы", "Контент и доступы"],
       ["Сайт в работе", "Структура и сборка"],
@@ -1310,7 +1310,7 @@
     ].slice(0, 7);
     const integrationItems = [
       ["Форма обратной связи", "Подключается"],
-      [channels, "По брифу"],
+      [channels, "По анкете"],
       ["Почта для заявок", lead.contact ? "Уточняется" : "Ожидает"],
     ];
     const supportItems = [
@@ -1320,7 +1320,7 @@
       ["Консультация", "Доступна"],
     ];
     const historyItems = [
-      ["Бриф отправлен", formatStatusDate(lead.createdAt)],
+      ["Анкета отправлена", formatStatusDate(lead.createdAt)],
       ["Заявка зарегистрирована", `Номер ${lead.id}`],
       ["Текущий статус обновлён", status.update],
     ];
@@ -1341,7 +1341,7 @@
         <div>
           <p class="status-kicker"><span></span>WEB00 · frontend-preview cabinet</p>
           <h1>Кабинет проекта</h1>
-          <p>Следите за статусом заявки, сохранёнными данными брифа и следующим шагом по запуску сайта.</p>
+          <p>Следите за статусом заявки, сохранёнными данными анкеты и следующим шагом по запуску сайта.</p>
         </div>
         <button class="btn btn--secondary" type="button" data-open-lead>Задать вопрос</button>
       </section>
@@ -1472,7 +1472,7 @@
           <h2>Что можно сделать</h2>
           <ul>
             <li>Проверьте, что номер введён без лишних пробелов.</li>
-            <li>Откройте ссылку из экрана “Бриф отправлен”.</li>
+            <li>Откройте ссылку из экрана “Анкета отправлена”.</li>
             <li>Если номер потерян, оставьте заявку повторно.</li>
           </ul>
         </aside>
