@@ -17,6 +17,698 @@
     ["Сайт для услуг", "Услуга муж на час"],
     ["Сайт для доставки", "Доставка и продажа дров"],
   ]);
+  const HOME_LANGUAGE_KEY = "web00.home.language";
+  const HOME_LANGUAGES = {
+    ru: { label: "Русский", flag: "🇷🇺", htmlLang: "ru" },
+    en: { label: "English", flag: "🇬🇧", htmlLang: "en" },
+    de: { label: "Deutsch", flag: "🇩🇪", htmlLang: "de" },
+    fr: { label: "Français", flag: "🇫🇷", htmlLang: "fr" },
+    it: { label: "Italiano", flag: "🇮🇹", htmlLang: "it" },
+    zh: { label: "中文", flag: "🇨🇳", htmlLang: "zh-CN" },
+    ja: { label: "日本語", flag: "🇯🇵", htmlLang: "ja" },
+  };
+  const HOME_TRANSLATIONS = {
+    ru: {
+      "nav.catalog": "Каталог",
+      "nav.pricing": "Тарифы",
+      "nav.how": "Как это работает",
+      "nav.cases": "Кейсы",
+      "nav.cta": "Выбрать сайт",
+      "hero.badge": "Премиум-платформа готовых сайтов для бизнеса",
+      "hero.title": "Готовый сайт для бизнеса — запуск без хаоса",
+      "hero.text": "Выберите шаблон, заполните анкету проекта — и мы запустим ваш сайт под ключ. Быстро, прозрачно и с поддержкой на каждом этапе.",
+      "hero.primary": "Выбрать шаблон",
+      "hero.demo": "Смотреть демо",
+      "device.nav.about": "Обо мне",
+      "device.nav.services": "Услуги",
+      "device.nav.reviews": "Отзывы",
+      "device.nav.contacts": "Контакты",
+      "device.title": "Психология<br>для жизни и роста",
+      "device.text": "Онлайн-консультации и программа индивидуально и бережно",
+      "device.cta": "Записаться на консультацию",
+      "device.mobileText": "Онлайн-консультации и программа",
+      "device.mobileCta": "Записаться",
+      "trust.launch.title": "Запуск от 48 часов",
+      "trust.launch.text": "Быстрый старт без потери качества",
+      "trust.performance.title": "Performance 90+",
+      "trust.performance.text": "Высокая скорость и стабильность",
+      "trust.seo.title": "SEO-ready",
+      "trust.seo.text": "Готовность к поисковому продвижению",
+      "trust.support.title": "Поддержка и сопровождение",
+      "trust.support.text": "Мы рядом после запуска",
+      "steps.title": "Как это работает",
+      "steps.one.title": "Выбрать",
+      "steps.one.text": "Из каталога готовых решений под вашу нишу и задачу.",
+      "steps.two.title": "Проверить",
+      "steps.two.text": "Смотрите демо, уточняете детали, мы готовим под вашу анкету.",
+      "steps.three.title": "Запустить",
+      "steps.three.text": "Запускаем сайт от 48 часов и остаёмся на связи.",
+      "templates.title": "Популярные шаблоны",
+      "templates.all": "Смотреть все в каталоге →",
+      "card.mebel.title": "Мебельный магазин",
+      "card.mebel.price": "от 15 000 ₽",
+      "card.mebel.text": "Интернет-витрина с каталогом, акциями, заявками и быстрым запуском продаж.",
+      "card.mebel.tag1": "Каталог",
+      "card.med.title": "Медицинский центр",
+      "card.med.price": "от 12 000 ₽",
+      "card.med.text": "Страница доверия для клиники: услуги, преимущества, запись и понятный контакт.",
+      "card.med.tag1": "Запись",
+      "card.med.tag2": "Доверие",
+      "card.build.title": "Дома и бани из сруба",
+      "card.build.price": "от 15 000 ₽",
+      "card.build.text": "Проекты, преимущества, расчёт стоимости и заявки на строительство.",
+      "card.build.tag1": "Проекты",
+      "card.build.tag2": "Расчёт",
+      "card.common.leads": "Заявки",
+      "card.common.promo": "Промо",
+      "card.common.adaptive": "Адаптив",
+      "card.demo": "Смотреть демо",
+      "card.launch": "Запустить",
+      "proof.title": "Почему нам доверяют",
+      "proof.price.title": "Прозрачные цены",
+      "proof.price.text": "Никаких скрытых платежей. Всё фиксируем в договоре.",
+      "proof.qa.title": "Паспорт качества (QA)",
+      "proof.qa.text": "Каждый сайт проходит проверку по 50+ пунктам.",
+      "proof.support.title": "Поддержка 24/7",
+      "proof.support.text": "Техподдержка и сопровождение после запуска.",
+      "proof.owner.title": "Вы — владелец",
+      "proof.owner.text": "Домен и сайт полностью ваши. Без ограничений.",
+      "quality.title": "Паспорт качества",
+      "quality.time": "Время запуска",
+      "quality.hours": "48ч",
+      "quality.yes": "Да",
+      "quality.caption": "Средние показатели по всем проектам WEB00",
+      "pricing.title": "Тарифы",
+      "pricing.compare": "Сравнить все тарифы →",
+      "pricing.start.text": "Быстрый старт для малого бизнеса и экспертов.",
+      "pricing.start.item1": "Готовый шаблон",
+      "pricing.start.item2": "Базовая настройка и контент",
+      "pricing.start.item3": "Запуск от 48 часов",
+      "pricing.start.price": "от 39 000 ₽",
+      "pricing.business.text": "Расширенные возможности для роста и конверсии.",
+      "pricing.business.item1": "Всё из тарифа Start",
+      "pricing.business.item2": "Индивидуальная настройка",
+      "pricing.business.item3": "Интеграции и аналитика",
+      "pricing.business.price": "от 69 000 ₽",
+      "pricing.pro.text": "Максимум возможностей и персональный подход.",
+      "pricing.pro.item1": "Всё из тарифа Business",
+      "pricing.pro.item2": "Приоритетная поддержка",
+      "pricing.pro.item3": "Персональный менеджер",
+      "pricing.pro.price": "от 99 000 ₽",
+      "pricing.choose": "Выбрать",
+      "final.title": "Выберите сайт, заполните анкету проекта, получите запуск",
+      "final.text": "Мы берём на себя всё остальное — дизайн, настройку, наполнение и поддержку.",
+      "final.cta": "Начать",
+      "footer.privacy": "Политика конфиденциальности",
+      "footer.consent": "Согласие на обработку данных",
+      "footer.contacts": "Контакты",
+      "language.title": "Язык",
+    },
+    en: {
+      "nav.catalog": "Catalog",
+      "nav.pricing": "Pricing",
+      "nav.how": "How it works",
+      "nav.cases": "Cases",
+      "nav.cta": "Choose a site",
+      "hero.badge": "Premium platform for ready-made business websites",
+      "hero.title": "A ready-made business website — launch without chaos",
+      "hero.text": "Choose a template, fill in the project questionnaire, and we launch your website end to end. Fast, transparent, and supported at every step.",
+      "hero.primary": "Choose template",
+      "hero.demo": "View demo",
+      "device.nav.about": "About",
+      "device.nav.services": "Services",
+      "device.nav.reviews": "Reviews",
+      "device.nav.contacts": "Contacts",
+      "device.title": "Psychology<br>for life and growth",
+      "device.text": "Online consultations and an individual, careful program",
+      "device.cta": "Book a consultation",
+      "device.mobileText": "Online consultations and program",
+      "device.mobileCta": "Book",
+      "trust.launch.title": "Launch from 48 hours",
+      "trust.launch.text": "Fast start without losing quality",
+      "trust.performance.title": "Performance 90+",
+      "trust.performance.text": "High speed and stability",
+      "trust.seo.title": "SEO-ready",
+      "trust.seo.text": "Prepared for search promotion",
+      "trust.support.title": "Support and maintenance",
+      "trust.support.text": "We stay with you after launch",
+      "steps.title": "How it works",
+      "steps.one.title": "Choose",
+      "steps.one.text": "Select a ready solution for your niche and task.",
+      "steps.two.title": "Review",
+      "steps.two.text": "View the demo, clarify details, and we prepare it for your questionnaire.",
+      "steps.three.title": "Launch",
+      "steps.three.text": "We launch from 48 hours and stay in touch.",
+      "templates.title": "Popular templates",
+      "templates.all": "View all in catalog →",
+      "card.mebel.title": "Furniture store",
+      "card.mebel.price": "from 15,000 ₽",
+      "card.mebel.text": "Online showcase with catalog, promotions, requests, and a fast sales launch.",
+      "card.mebel.tag1": "Catalog",
+      "card.med.title": "Medical center",
+      "card.med.price": "from 12,000 ₽",
+      "card.med.text": "A trust-building clinic page: services, benefits, booking, and clear contact.",
+      "card.med.tag1": "Booking",
+      "card.med.tag2": "Trust",
+      "card.build.title": "Log houses and saunas",
+      "card.build.price": "from 15,000 ₽",
+      "card.build.text": "Projects, benefits, price estimate, and construction requests.",
+      "card.build.tag1": "Projects",
+      "card.build.tag2": "Estimate",
+      "card.common.leads": "Leads",
+      "card.common.promo": "Promo",
+      "card.common.adaptive": "Responsive",
+      "card.demo": "View demo",
+      "card.launch": "Launch",
+      "proof.title": "Why clients trust us",
+      "proof.price.title": "Transparent pricing",
+      "proof.price.text": "No hidden fees. Everything is fixed in the agreement.",
+      "proof.qa.title": "Quality passport (QA)",
+      "proof.qa.text": "Every website is checked across 50+ points.",
+      "proof.support.title": "24/7 support",
+      "proof.support.text": "Technical support and maintenance after launch.",
+      "proof.owner.title": "You own it",
+      "proof.owner.text": "The domain and website are fully yours. No limits.",
+      "quality.title": "Quality passport",
+      "quality.time": "Launch time",
+      "quality.hours": "48h",
+      "quality.yes": "Yes",
+      "quality.caption": "Average metrics across WEB00 projects",
+      "pricing.title": "Pricing",
+      "pricing.compare": "Compare all plans →",
+      "pricing.start.text": "A fast start for small businesses and experts.",
+      "pricing.start.item1": "Ready-made template",
+      "pricing.start.item2": "Basic setup and content",
+      "pricing.start.item3": "Launch from 48 hours",
+      "pricing.start.price": "from 39,000 ₽",
+      "pricing.business.text": "Expanded features for growth and conversion.",
+      "pricing.business.item1": "Everything in Start",
+      "pricing.business.item2": "Individual setup",
+      "pricing.business.item3": "Integrations and analytics",
+      "pricing.business.price": "from 69,000 ₽",
+      "pricing.pro.text": "Maximum capabilities and a personal approach.",
+      "pricing.pro.item1": "Everything in Business",
+      "pricing.pro.item2": "Priority support",
+      "pricing.pro.item3": "Personal manager",
+      "pricing.pro.price": "from 99,000 ₽",
+      "pricing.choose": "Choose",
+      "final.title": "Choose a site, complete the project questionnaire, get launched",
+      "final.text": "We handle the rest: design, setup, content, and support.",
+      "final.cta": "Start",
+      "footer.privacy": "Privacy Policy",
+      "footer.consent": "Personal data consent",
+      "footer.contacts": "Contacts",
+      "language.title": "Language",
+    },
+    de: {
+      "nav.catalog": "Katalog",
+      "nav.pricing": "Preise",
+      "nav.how": "So funktioniert es",
+      "nav.cases": "Cases",
+      "nav.cta": "Website wählen",
+      "hero.badge": "Premium-Plattform für fertige Business-Websites",
+      "hero.title": "Fertige Website für Ihr Business — Start ohne Chaos",
+      "hero.text": "Wählen Sie eine Vorlage, füllen Sie den Projektfragebogen aus, und wir starten Ihre Website schlüsselfertig. Schnell, transparent und mit Support in jeder Phase.",
+      "hero.primary": "Vorlage wählen",
+      "hero.demo": "Demo ansehen",
+      "device.nav.about": "Über mich",
+      "device.nav.services": "Leistungen",
+      "device.nav.reviews": "Bewertungen",
+      "device.nav.contacts": "Kontakt",
+      "device.title": "Psychologie<br>für Leben und Wachstum",
+      "device.text": "Online-Beratung und ein individuelles, achtsames Programm",
+      "device.cta": "Beratung buchen",
+      "device.mobileText": "Online-Beratung und Programm",
+      "device.mobileCta": "Buchen",
+      "trust.launch.title": "Start ab 48 Stunden",
+      "trust.launch.text": "Schneller Start ohne Qualitätsverlust",
+      "trust.performance.title": "Performance 90+",
+      "trust.performance.text": "Hohe Geschwindigkeit und Stabilität",
+      "trust.seo.title": "SEO-ready",
+      "trust.seo.text": "Vorbereitet für Suchmaschinen",
+      "trust.support.title": "Support und Betreuung",
+      "trust.support.text": "Wir bleiben nach dem Start an Ihrer Seite",
+      "steps.title": "So funktioniert es",
+      "steps.one.title": "Wählen",
+      "steps.one.text": "Ein fertiges Konzept für Ihre Nische und Aufgabe auswählen.",
+      "steps.two.title": "Prüfen",
+      "steps.two.text": "Demo ansehen, Details klären, wir bereiten alles nach Fragebogen vor.",
+      "steps.three.title": "Starten",
+      "steps.three.text": "Start ab 48 Stunden, danach bleiben wir in Kontakt.",
+      "templates.title": "Beliebte Vorlagen",
+      "templates.all": "Alle im Katalog ansehen →",
+      "card.mebel.title": "Möbelshop",
+      "card.mebel.price": "ab 15.000 ₽",
+      "card.mebel.text": "Online-Schaufenster mit Katalog, Aktionen, Anfragen und schnellem Verkaufsstart.",
+      "card.mebel.tag1": "Katalog",
+      "card.med.title": "Medizinisches Zentrum",
+      "card.med.price": "ab 12.000 ₽",
+      "card.med.text": "Vertrauensseite für Kliniken: Leistungen, Vorteile, Termin und klarer Kontakt.",
+      "card.med.tag1": "Termin",
+      "card.med.tag2": "Vertrauen",
+      "card.build.title": "Blockhäuser und Saunen",
+      "card.build.price": "ab 15.000 ₽",
+      "card.build.text": "Projekte, Vorteile, Kostenschätzung und Anfragen für den Bau.",
+      "card.build.tag1": "Projekte",
+      "card.build.tag2": "Kalkulation",
+      "card.common.leads": "Anfragen",
+      "card.common.promo": "Promo",
+      "card.common.adaptive": "Adaptiv",
+      "card.demo": "Demo ansehen",
+      "card.launch": "Starten",
+      "proof.title": "Warum man uns vertraut",
+      "proof.price.title": "Transparente Preise",
+      "proof.price.text": "Keine versteckten Kosten. Alles wird im Vertrag fixiert.",
+      "proof.qa.title": "Qualitätspass (QA)",
+      "proof.qa.text": "Jede Website wird anhand von 50+ Punkten geprüft.",
+      "proof.support.title": "Support 24/7",
+      "proof.support.text": "Technischer Support und Betreuung nach dem Start.",
+      "proof.owner.title": "Sie sind Eigentümer",
+      "proof.owner.text": "Domain und Website gehören vollständig Ihnen. Ohne Einschränkungen.",
+      "quality.title": "Qualitätspass",
+      "quality.time": "Startzeit",
+      "quality.hours": "48h",
+      "quality.yes": "Ja",
+      "quality.caption": "Durchschnittswerte aller WEB00-Projekte",
+      "pricing.title": "Tarife",
+      "pricing.compare": "Alle Tarife vergleichen →",
+      "pricing.start.text": "Schneller Start für kleine Unternehmen und Experten.",
+      "pricing.start.item1": "Fertige Vorlage",
+      "pricing.start.item2": "Basis-Setup und Inhalte",
+      "pricing.start.item3": "Start ab 48 Stunden",
+      "pricing.start.price": "ab 39.000 ₽",
+      "pricing.business.text": "Erweiterte Möglichkeiten für Wachstum und Conversion.",
+      "pricing.business.item1": "Alles aus Start",
+      "pricing.business.item2": "Individuelle Einrichtung",
+      "pricing.business.item3": "Integrationen und Analytics",
+      "pricing.business.price": "ab 69.000 ₽",
+      "pricing.pro.text": "Maximale Möglichkeiten und persönlicher Ansatz.",
+      "pricing.pro.item1": "Alles aus Business",
+      "pricing.pro.item2": "Priorisierter Support",
+      "pricing.pro.item3": "Persönlicher Manager",
+      "pricing.pro.price": "ab 99.000 ₽",
+      "pricing.choose": "Wählen",
+      "final.title": "Website wählen, Projektfragebogen ausfüllen, Start erhalten",
+      "final.text": "Wir übernehmen alles Weitere: Design, Einrichtung, Inhalte und Support.",
+      "final.cta": "Starten",
+      "footer.privacy": "Datenschutzerklärung",
+      "footer.consent": "Einwilligung zur Datenverarbeitung",
+      "footer.contacts": "Kontakt",
+      "language.title": "Sprache",
+    },
+  };
+  HOME_TRANSLATIONS.fr = Object.assign({}, HOME_TRANSLATIONS.en, {
+    "nav.catalog": "Catalogue",
+    "nav.pricing": "Tarifs",
+    "nav.how": "Fonctionnement",
+    "nav.cases": "Cas",
+    "nav.cta": "Choisir un site",
+    "hero.badge": "Plateforme premium de sites prêts pour les entreprises",
+    "hero.title": "Un site prêt pour votre entreprise — lancement sans chaos",
+    "hero.text": "Choisissez un modèle, remplissez le questionnaire projet, et nous lançons votre site clé en main. Rapidement, clairement, avec accompagnement.",
+    "hero.primary": "Choisir un modèle",
+    "hero.demo": "Voir la démo",
+    "templates.title": "Modèles populaires",
+    "templates.all": "Tout voir dans le catalogue →",
+    "card.mebel.title": "Boutique de meubles",
+    "card.med.title": "Centre médical",
+    "card.build.title": "Maisons et bains en rondins",
+    "proof.title": "Pourquoi ils nous font confiance",
+    "pricing.title": "Tarifs",
+    "pricing.compare": "Comparer tous les tarifs →",
+    "final.title": "Choisissez un site, remplissez le questionnaire, obtenez le lancement",
+    "final.cta": "Commencer",
+    "footer.privacy": "Politique de confidentialité",
+    "footer.consent": "Consentement aux données personnelles",
+    "footer.contacts": "Contacts",
+    "language.title": "Langue",
+  });
+  HOME_TRANSLATIONS.it = Object.assign({}, HOME_TRANSLATIONS.en, {
+    "nav.catalog": "Catalogo",
+    "nav.pricing": "Tariffe",
+    "nav.how": "Come funziona",
+    "nav.cases": "Casi",
+    "nav.cta": "Scegli sito",
+    "hero.badge": "Piattaforma premium di siti pronti per il business",
+    "hero.title": "Sito pronto per il business — lancio senza caos",
+    "hero.text": "Scegli un modello, compila il questionario del progetto e lanciamo il sito chiavi in mano. Rapido, trasparente e con supporto.",
+    "hero.primary": "Scegli modello",
+    "hero.demo": "Guarda demo",
+    "templates.title": "Modelli popolari",
+    "templates.all": "Vedi tutto nel catalogo →",
+    "card.mebel.title": "Negozio di mobili",
+    "card.med.title": "Centro medico",
+    "card.build.title": "Case e saune in legno",
+    "proof.title": "Perché si fidano di noi",
+    "pricing.title": "Tariffe",
+    "pricing.compare": "Confronta tutte le tariffe →",
+    "final.title": "Scegli un sito, compila il questionario, ottieni il lancio",
+    "final.cta": "Inizia",
+    "footer.privacy": "Informativa sulla privacy",
+    "footer.consent": "Consenso al trattamento dei dati",
+    "footer.contacts": "Contatti",
+    "language.title": "Lingua",
+  });
+  HOME_TRANSLATIONS.zh = Object.assign({}, HOME_TRANSLATIONS.en, {
+    "nav.catalog": "目录",
+    "nav.pricing": "价格",
+    "nav.how": "流程",
+    "nav.cases": "案例",
+    "nav.cta": "选择网站",
+    "hero.badge": "面向企业的高端现成网站平台",
+    "hero.title": "企业现成网站 — 告别混乱上线",
+    "hero.text": "选择模板，填写项目问卷，我们为你完成网站上线。快速、透明，并在每个阶段提供支持。",
+    "hero.primary": "选择模板",
+    "hero.demo": "查看演示",
+    "device.title": "心理咨询<br>生活与成长",
+    "device.text": "线上咨询与个性化温和方案",
+    "device.cta": "预约咨询",
+    "templates.title": "热门模板",
+    "templates.all": "查看全部目录 →",
+    "card.mebel.title": "家具商店",
+    "card.mebel.price": "15,000 ₽ 起",
+    "card.med.title": "医疗中心",
+    "card.med.price": "12,000 ₽ 起",
+    "card.build.title": "木屋与桑拿",
+    "card.build.price": "15,000 ₽ 起",
+    "proof.title": "客户为什么信任我们",
+    "pricing.title": "套餐",
+    "pricing.compare": "比较全部套餐 →",
+    "pricing.start.price": "39,000 ₽ 起",
+    "pricing.business.price": "69,000 ₽ 起",
+    "pricing.pro.price": "99,000 ₽ 起",
+    "pricing.choose": "选择",
+    "quality.yes": "是",
+    "final.title": "选择网站，填写项目问卷，获得上线",
+    "final.text": "设计、设置、内容和支持都由我们处理。",
+    "final.cta": "开始",
+    "footer.privacy": "隐私政策",
+    "footer.consent": "个人数据同意",
+    "footer.contacts": "联系方式",
+    "language.title": "语言",
+  });
+  HOME_TRANSLATIONS.ja = Object.assign({}, HOME_TRANSLATIONS.en, {
+    "nav.catalog": "カタログ",
+    "nav.pricing": "料金",
+    "nav.how": "流れ",
+    "nav.cases": "事例",
+    "nav.cta": "サイトを選ぶ",
+    "hero.badge": "ビジネス向け完成済みサイトのプレミアム平台",
+    "hero.title": "ビジネス向け完成サイト — 混乱なく公開",
+    "hero.text": "テンプレートを選び、プロジェクト質問票を入力すれば、サイト公開まで対応します。速く、透明に、各段階でサポートします。",
+    "hero.primary": "テンプレートを選ぶ",
+    "hero.demo": "デモを見る",
+    "device.title": "心理サポート<br>人生と成長のために",
+    "device.text": "オンライン相談と個別で丁寧なプログラム",
+    "device.cta": "相談を予約",
+    "templates.title": "人気テンプレート",
+    "templates.all": "カタログですべて見る →",
+    "card.mebel.title": "家具ショップ",
+    "card.mebel.price": "15,000 ₽〜",
+    "card.med.title": "医療センター",
+    "card.med.price": "12,000 ₽〜",
+    "card.build.title": "ログハウスとサウナ",
+    "card.build.price": "15,000 ₽〜",
+    "proof.title": "信頼される理由",
+    "pricing.title": "料金",
+    "pricing.compare": "すべての料金を比較 →",
+    "pricing.start.price": "39,000 ₽〜",
+    "pricing.business.price": "69,000 ₽〜",
+    "pricing.pro.price": "99,000 ₽〜",
+    "pricing.choose": "選ぶ",
+    "quality.yes": "はい",
+    "final.title": "サイトを選び、質問票を入力し、公開へ",
+    "final.text": "デザイン、設定、コンテンツ、サポートまで対応します。",
+    "final.cta": "開始",
+    "footer.privacy": "プライバシーポリシー",
+    "footer.consent": "個人データ同意",
+    "footer.contacts": "連絡先",
+    "language.title": "言語",
+  });
+  Object.assign(HOME_TRANSLATIONS.fr, {
+    "device.nav.about": "À propos",
+    "device.nav.services": "Services",
+    "device.nav.reviews": "Avis",
+    "device.nav.contacts": "Contacts",
+    "device.title": "Psychologie<br>pour vivre et grandir",
+    "device.text": "Consultations en ligne et programme individuel avec attention",
+    "device.cta": "Réserver une consultation",
+    "device.mobileText": "Consultations en ligne et programme",
+    "device.mobileCta": "Réserver",
+    "trust.launch.title": "Lancement dès 48 h",
+    "trust.launch.text": "Démarrage rapide sans perte de qualité",
+    "trust.performance.title": "Performance 90+",
+    "trust.performance.text": "Vitesse élevée et stabilité",
+    "trust.seo.title": "Prêt pour le SEO",
+    "trust.seo.text": "Préparé pour le référencement",
+    "trust.support.title": "Support et accompagnement",
+    "trust.support.text": "Nous restons présents après le lancement",
+    "steps.title": "Comment ça marche",
+    "steps.one.title": "Choisir",
+    "steps.one.text": "Sélectionnez une solution prête pour votre niche et votre tâche.",
+    "steps.two.title": "Vérifier",
+    "steps.two.text": "Vous regardez la démo, précisez les détails, nous préparons selon le questionnaire.",
+    "steps.three.title": "Lancer",
+    "steps.three.text": "Nous lançons dès 48 heures et restons en contact.",
+    "card.mebel.price": "à partir de 15 000 ₽",
+    "card.mebel.text": "Vitrine en ligne avec catalogue, promotions, demandes et lancement rapide des ventes.",
+    "card.mebel.tag1": "Catalogue",
+    "card.med.price": "à partir de 12 000 ₽",
+    "card.med.text": "Page de confiance pour clinique : services, avantages, prise de rendez-vous et contact clair.",
+    "card.med.tag1": "Rendez-vous",
+    "card.med.tag2": "Confiance",
+    "card.build.price": "à partir de 15 000 ₽",
+    "card.build.text": "Projets, avantages, estimation du coût et demandes de construction.",
+    "card.build.tag1": "Projets",
+    "card.build.tag2": "Estimation",
+    "card.common.leads": "Demandes",
+    "card.common.promo": "Promo",
+    "card.common.adaptive": "Adaptatif",
+    "card.demo": "Voir la démo",
+    "card.launch": "Lancer",
+    "proof.price.title": "Prix transparents",
+    "proof.price.text": "Aucun paiement caché. Tout est fixé dans l’accord.",
+    "proof.qa.title": "Passeport qualité (QA)",
+    "proof.qa.text": "Chaque site est vérifié sur plus de 50 points.",
+    "proof.support.title": "Support 24/7",
+    "proof.support.text": "Support technique et accompagnement après le lancement.",
+    "proof.owner.title": "Vous êtes propriétaire",
+    "proof.owner.text": "Le domaine et le site vous appartiennent entièrement. Sans limites.",
+    "quality.title": "Passeport qualité",
+    "quality.time": "Temps de lancement",
+    "quality.hours": "48 h",
+    "quality.yes": "Oui",
+    "quality.caption": "Indicateurs moyens pour les projets WEB00",
+    "pricing.start.text": "Démarrage rapide pour petites entreprises et experts.",
+    "pricing.start.item1": "Modèle prêt",
+    "pricing.start.item2": "Configuration de base et contenu",
+    "pricing.start.item3": "Lancement dès 48 h",
+    "pricing.start.price": "à partir de 39 000 ₽",
+    "pricing.business.text": "Fonctions étendues pour la croissance et la conversion.",
+    "pricing.business.item1": "Tout dans Start",
+    "pricing.business.item2": "Configuration individuelle",
+    "pricing.business.item3": "Intégrations et analytique",
+    "pricing.business.price": "à partir de 69 000 ₽",
+    "pricing.pro.text": "Maximum de possibilités et approche personnalisée.",
+    "pricing.pro.item1": "Tout dans Business",
+    "pricing.pro.item2": "Support prioritaire",
+    "pricing.pro.item3": "Manager personnel",
+    "pricing.pro.price": "à partir de 99 000 ₽",
+    "pricing.choose": "Choisir",
+    "final.text": "Nous prenons en charge le reste : design, configuration, contenu et support.",
+  });
+  Object.assign(HOME_TRANSLATIONS.it, {
+    "device.nav.about": "Chi sono",
+    "device.nav.services": "Servizi",
+    "device.nav.reviews": "Recensioni",
+    "device.nav.contacts": "Contatti",
+    "device.title": "Psicologia<br>per vita e crescita",
+    "device.text": "Consulenze online e programma individuale con cura",
+    "device.cta": "Prenota una consulenza",
+    "device.mobileText": "Consulenze online e programma",
+    "device.mobileCta": "Prenota",
+    "trust.launch.title": "Lancio da 48 ore",
+    "trust.launch.text": "Partenza rapida senza perdere qualità",
+    "trust.performance.title": "Performance 90+",
+    "trust.performance.text": "Alta velocità e stabilità",
+    "trust.seo.title": "SEO-ready",
+    "trust.seo.text": "Pronto per la promozione nei motori di ricerca",
+    "trust.support.title": "Supporto e accompagnamento",
+    "trust.support.text": "Restiamo al tuo fianco dopo il lancio",
+    "steps.title": "Come funziona",
+    "steps.one.title": "Scegli",
+    "steps.one.text": "Seleziona una soluzione pronta per la tua nicchia e il tuo obiettivo.",
+    "steps.two.title": "Verifica",
+    "steps.two.text": "Guardi la demo, chiarisci i dettagli, noi prepariamo tutto sul questionario.",
+    "steps.three.title": "Lancia",
+    "steps.three.text": "Lanciamo da 48 ore e restiamo in contatto.",
+    "card.mebel.price": "da 15.000 ₽",
+    "card.mebel.text": "Vetrina online con catalogo, promozioni, richieste e avvio rapido delle vendite.",
+    "card.mebel.tag1": "Catalogo",
+    "card.med.price": "da 12.000 ₽",
+    "card.med.text": "Pagina di fiducia per cliniche: servizi, vantaggi, prenotazione e contatto chiaro.",
+    "card.med.tag1": "Prenotazione",
+    "card.med.tag2": "Fiducia",
+    "card.build.price": "da 15.000 ₽",
+    "card.build.text": "Progetti, vantaggi, stima dei costi e richieste per costruzione.",
+    "card.build.tag1": "Progetti",
+    "card.build.tag2": "Stima",
+    "card.common.leads": "Richieste",
+    "card.common.promo": "Promo",
+    "card.common.adaptive": "Responsive",
+    "card.demo": "Guarda demo",
+    "card.launch": "Lancia",
+    "proof.price.title": "Prezzi trasparenti",
+    "proof.price.text": "Nessun costo nascosto. Tutto viene fissato nell’accordo.",
+    "proof.qa.title": "Passaporto qualità (QA)",
+    "proof.qa.text": "Ogni sito viene controllato su oltre 50 punti.",
+    "proof.support.title": "Supporto 24/7",
+    "proof.support.text": "Supporto tecnico e accompagnamento dopo il lancio.",
+    "proof.owner.title": "Sei il proprietario",
+    "proof.owner.text": "Dominio e sito sono completamente tuoi. Senza limiti.",
+    "quality.title": "Passaporto qualità",
+    "quality.time": "Tempo di lancio",
+    "quality.hours": "48h",
+    "quality.yes": "Sì",
+    "quality.caption": "Metriche medie dei progetti WEB00",
+    "pricing.start.text": "Partenza rapida per piccole imprese ed esperti.",
+    "pricing.start.item1": "Modello pronto",
+    "pricing.start.item2": "Setup base e contenuti",
+    "pricing.start.item3": "Lancio da 48 ore",
+    "pricing.start.price": "da 39.000 ₽",
+    "pricing.business.text": "Funzionalità estese per crescita e conversioni.",
+    "pricing.business.item1": "Tutto di Start",
+    "pricing.business.item2": "Configurazione individuale",
+    "pricing.business.item3": "Integrazioni e analytics",
+    "pricing.business.price": "da 69.000 ₽",
+    "pricing.pro.text": "Massime possibilità e approccio personale.",
+    "pricing.pro.item1": "Tutto di Business",
+    "pricing.pro.item2": "Supporto prioritario",
+    "pricing.pro.item3": "Manager personale",
+    "pricing.pro.price": "da 99.000 ₽",
+    "pricing.choose": "Scegli",
+    "final.text": "Ci occupiamo del resto: design, configurazione, contenuti e supporto.",
+  });
+  Object.assign(HOME_TRANSLATIONS.zh, {
+    "device.nav.about": "关于",
+    "device.nav.services": "服务",
+    "device.nav.reviews": "评价",
+    "device.nav.contacts": "联系",
+    "device.mobileText": "线上咨询与方案",
+    "device.mobileCta": "预约",
+    "trust.launch.title": "48小时起上线",
+    "trust.launch.text": "快速启动，不牺牲质量",
+    "trust.performance.title": "性能 90+",
+    "trust.performance.text": "高速稳定",
+    "trust.seo.title": "SEO 就绪",
+    "trust.seo.text": "已为搜索推广准备",
+    "trust.support.title": "支持与维护",
+    "trust.support.text": "上线后我们继续支持",
+    "steps.title": "工作流程",
+    "steps.one.title": "选择",
+    "steps.one.text": "从现成方案中选择适合行业和任务的模板。",
+    "steps.two.title": "确认",
+    "steps.two.text": "查看演示、确认细节，我们按问卷准备项目。",
+    "steps.three.title": "上线",
+    "steps.three.text": "最快48小时上线，并保持联系。",
+    "card.mebel.text": "带目录、促销、询盘和快速销售启动的在线展示。",
+    "card.mebel.tag1": "目录",
+    "card.med.text": "诊所信任页面：服务、优势、预约和清晰联系方式。",
+    "card.med.tag1": "预约",
+    "card.med.tag2": "信任",
+    "card.build.text": "项目展示、优势、费用估算和施工申请。",
+    "card.build.tag1": "项目",
+    "card.build.tag2": "估算",
+    "card.common.leads": "询盘",
+    "card.common.promo": "推广",
+    "card.common.adaptive": "自适应",
+    "card.demo": "查看演示",
+    "card.launch": "启动",
+    "proof.price.title": "价格透明",
+    "proof.price.text": "没有隐藏费用。所有内容写入协议。",
+    "proof.qa.title": "质量护照（QA）",
+    "proof.qa.text": "每个网站都会通过50多项检查。",
+    "proof.support.title": "24/7 支持",
+    "proof.support.text": "上线后提供技术支持和维护。",
+    "proof.owner.title": "你拥有网站",
+    "proof.owner.text": "域名和网站完全属于你。没有限制。",
+    "quality.title": "质量护照",
+    "quality.time": "上线时间",
+    "quality.hours": "48小时",
+    "quality.caption": "WEB00 项目的平均指标",
+    "pricing.start.text": "适合小企业和专家的快速启动。",
+    "pricing.start.item1": "现成模板",
+    "pricing.start.item2": "基础设置和内容",
+    "pricing.start.item3": "48小时起上线",
+    "pricing.business.text": "面向增长和转化的扩展功能。",
+    "pricing.business.item1": "包含 Start 全部内容",
+    "pricing.business.item2": "个性化设置",
+    "pricing.business.item3": "集成与分析",
+    "pricing.pro.text": "最大功能和个人化服务。",
+    "pricing.pro.item1": "包含 Business 全部内容",
+    "pricing.pro.item2": "优先支持",
+    "pricing.pro.item3": "专属经理",
+  });
+  Object.assign(HOME_TRANSLATIONS.ja, {
+    "device.nav.about": "概要",
+    "device.nav.services": "サービス",
+    "device.nav.reviews": "レビュー",
+    "device.nav.contacts": "連絡先",
+    "device.mobileText": "オンライン相談とプログラム",
+    "device.mobileCta": "予約",
+    "trust.launch.title": "48時間から公開",
+    "trust.launch.text": "品質を落とさず素早く開始",
+    "trust.performance.title": "Performance 90+",
+    "trust.performance.text": "高速で安定した動作",
+    "trust.seo.title": "SEO対応",
+    "trust.seo.text": "検索対策の準備済み",
+    "trust.support.title": "サポートと運用",
+    "trust.support.text": "公開後もサポートします",
+    "steps.title": "公開までの流れ",
+    "steps.one.title": "選ぶ",
+    "steps.one.text": "業種と目的に合う完成済みテンプレートを選びます。",
+    "steps.two.title": "確認",
+    "steps.two.text": "デモを確認し、詳細を詰め、質問票に合わせて準備します。",
+    "steps.three.title": "公開",
+    "steps.three.text": "48時間から公開し、その後も連絡を保ちます。",
+    "card.mebel.text": "カタログ、キャンペーン、問い合わせ、販売開始に対応したオンライン展示。",
+    "card.mebel.tag1": "カタログ",
+    "card.med.text": "クリニック向け信頼ページ：サービス、強み、予約、わかりやすい連絡先。",
+    "card.med.tag1": "予約",
+    "card.med.tag2": "信頼",
+    "card.build.text": "施工事例、強み、費用見積もり、建築問い合わせに対応。",
+    "card.build.tag1": "事例",
+    "card.build.tag2": "見積",
+    "card.common.leads": "問い合わせ",
+    "card.common.promo": "プロモ",
+    "card.common.adaptive": "レスポンシブ",
+    "card.demo": "デモを見る",
+    "card.launch": "開始",
+    "proof.price.title": "透明な料金",
+    "proof.price.text": "隠れた費用はありません。すべて契約で明確にします。",
+    "proof.qa.title": "品質パスポート（QA）",
+    "proof.qa.text": "各サイトは50項目以上で確認します。",
+    "proof.support.title": "24/7 サポート",
+    "proof.support.text": "公開後も技術サポートと運用を行います。",
+    "proof.owner.title": "所有者はあなた",
+    "proof.owner.text": "ドメインとサイトは完全にあなたのものです。制限はありません。",
+    "quality.title": "品質パスポート",
+    "quality.time": "公開時間",
+    "quality.hours": "48時間",
+    "quality.caption": "WEB00全プロジェクトの平均指標",
+    "pricing.start.text": "小規模ビジネスと専門家向けの素早い開始。",
+    "pricing.start.item1": "完成済みテンプレート",
+    "pricing.start.item2": "基本設定とコンテンツ",
+    "pricing.start.item3": "48時間から公開",
+    "pricing.business.text": "成長とコンバージョン向けの拡張機能。",
+    "pricing.business.item1": "Startのすべて",
+    "pricing.business.item2": "個別設定",
+    "pricing.business.item3": "連携と分析",
+    "pricing.pro.text": "最大限の機能と個別対応。",
+    "pricing.pro.item1": "Businessのすべて",
+    "pricing.pro.item2": "優先サポート",
+    "pricing.pro.item3": "専任担当者",
+  });
 
   function esc(value) {
     return String(value ?? "")
@@ -146,6 +838,27 @@
     dialog.classList.toggle("modal__dialog--demo-2", solution?.demoMode === "external-iframe");
   }
 
+  function fitDemoDesktopCanvas(target) {
+    const frame = $("[data-demo-desktop-canvas]", target);
+    if (!frame) return;
+    const canvasWidth = 1180;
+    const fit = () => {
+      const width = frame.clientWidth || frame.getBoundingClientRect().width || 320;
+      const height = frame.clientHeight || frame.getBoundingClientRect().height || 520;
+      const scale = Math.min(1, Math.max(0.22, width / canvasWidth));
+      frame.style.setProperty("--demo-canvas-width", `${canvasWidth}px`);
+      frame.style.setProperty("--demo-canvas-scale", scale.toFixed(4));
+      frame.style.setProperty("--demo-canvas-height", `${Math.max(980, Math.ceil(height / scale))}px`);
+    };
+    fit();
+    requestAnimationFrame(fit);
+    window.setTimeout(fit, 120);
+    if ("ResizeObserver" in window) {
+      const observer = new ResizeObserver(fit);
+      observer.observe(frame);
+    }
+  }
+
   function closeModals() {
     $$(".modal").forEach((modal) => {
       modal.classList.remove("is-open");
@@ -213,6 +926,13 @@
       if (messageButton) {
         event.preventDefault();
         openLeadModal({ service: "Вопрос или консультация" });
+      }
+
+      const homeDemoButton = event.target.closest("[data-open-demo-id]");
+      if (homeDemoButton) {
+        event.preventDefault();
+        const solution = solutionByIdStrict(homeDemoButton.dataset.openDemoId);
+        if (solution) openDemoModal(solution);
       }
     });
 
@@ -328,6 +1048,12 @@
       };
       const rows = rowsByTitle[item.title] || (item.features || []).map((feature) => [feature, ""]);
       const isRecommended = item.title === "Pro";
+      const detailId = `tariff-details-${item.title.toLowerCase()}`;
+      const detailTextByTitle = {
+        Start: "Для быстрого запуска по готовому шаблону: структура, базовая настройка, форма заявки и адаптация под ваши данные.",
+        Business: "Для бизнеса, которому важны рост и управление: больше страниц, индивидуальная настройка, аналитика и поддержка после запуска.",
+        Pro: "Для сложных проектов: персональная структура, расширенные интеграции, приоритетная поддержка и подготовка к масштабированию.",
+      };
       return `
         <article class="price-card ${isRecommended ? "price-card--accent" : ""}">
           <div class="price-card__top">
@@ -337,7 +1063,16 @@
           <strong>${esc(item.price)}</strong>
           <p>${esc(item.note)}</p>
           <ul class="price-card__specs">${rows.map(([label, value]) => `<li><span>${esc(label)}</span><b>${esc(value)}</b></li>`).join("")}</ul>
-          <a class="btn btn--secondary btn--small" href="${attr(briefUrl({ tariff: item.title }))}">Выбрать тариф ${esc(item.title)}</a>
+          <div class="price-card__actions" aria-label="Действия для тарифа ${esc(item.title)}">
+            <input class="price-card__toggle" type="checkbox" id="${attr(detailId)}">
+            <label class="btn btn--secondary btn--small price-card__details" for="${attr(detailId)}">Подробнее</label>
+            <a class="btn btn--primary btn--small price-card__choose" href="${attr(briefUrl({ tariff: item.title }))}">Выбрать</a>
+            <div class="price-card__more" aria-label="Подробности тарифа ${esc(item.title)}">
+              <strong>Что входит</strong>
+              <p>${esc(detailTextByTitle[item.title] || item.note)}</p>
+              <ul>${(item.features || []).slice(0, 4).map((feature) => `<li>${esc(feature)}</li>`).join("")}</ul>
+            </div>
+          </div>
         </article>
       `;
     }).join("");
@@ -426,7 +1161,7 @@
       "Индивидуально": "бизнесу с нестандартной задачей, где готовый шаблон нужно адаптировать под особый сценарий.",
     };
     const included = [...new Set([...features, "Адаптивная версия", "Форма заявки", "Подготовка к запуску"])].slice(0, 7);
-    const quality = ["Performance 90+", "SEO-ready", "Mobile-ready", "Адаптивность", "Поддержка после запуска"];
+    const quality = ["Скорость 90+", "Готово к поиску", "Адаптивность", "Поддержка после запуска"];
     const launchSteps = ["Анкета", "Подготовка", "Согласование", "Запуск", "Поддержка"];
     target.innerHTML = `
       <div class="solution-modal solution-modal--premium template-detail">
@@ -536,7 +1271,7 @@
             <ul class="check-list">${features.map((item) => `<li>${esc(item)}</li>`).join("")}</ul>
             <div class="mini-meta"><span>${esc(price)}</span><span>${esc(time)}</span></div>
           </aside>
-          <div class="demo-frame ${demoUrl ? "demo-frame--live" : ""}" data-demo-frame>
+          <div class="demo-frame ${demoUrl ? "demo-frame--live" : ""}" data-demo-frame ${isExternalFrame ? "data-demo-desktop-canvas" : ""}>
             ${demoUrl ? `
               <iframe data-demo-iframe src="${attr(demoUrl)}" title="Демо: ${attr(solution.title)}" loading="lazy"></iframe>
               ${solution.demoMode === "external-iframe" ? `
@@ -584,6 +1319,7 @@
         externalFallback.hidden = false;
       });
     }
+    if (isExternalFrame) fitDemoDesktopCanvas(target);
     setModal("demo", true);
   }
 
@@ -1481,6 +2217,80 @@
     initStatusLookup();
   }
 
+  function homeTranslation(lang, key) {
+    return HOME_TRANSLATIONS[lang]?.[key] ?? HOME_TRANSLATIONS.ru[key] ?? key;
+  }
+
+  function applyHomeLanguage(lang) {
+    const nextLang = HOME_LANGUAGES[lang] ? lang : "ru";
+    const meta = HOME_LANGUAGES[nextLang];
+    document.documentElement.lang = meta.htmlLang;
+    $$("[data-i18n]").forEach((node) => {
+      node.textContent = homeTranslation(nextLang, node.dataset.i18n);
+    });
+    $$("[data-i18n-html]").forEach((node) => {
+      node.innerHTML = homeTranslation(nextLang, node.dataset.i18nHtml);
+    });
+    const label = $("[data-language-label]");
+    const flag = $("[data-language-flag]");
+    if (label) label.textContent = meta.label;
+    if (flag) flag.textContent = meta.flag;
+    $$("[data-language-option]").forEach((option) => {
+      const active = option.dataset.languageOption === nextLang;
+      option.setAttribute("aria-checked", String(active));
+      option.classList.toggle("is-active", active);
+    });
+    try {
+      localStorage.setItem(HOME_LANGUAGE_KEY, nextLang);
+    } catch (_) {
+      // Private browsing modes can block storage.
+    }
+  }
+
+  function initHomeLanguageSwitcher() {
+    const trigger = $("[data-language-trigger]");
+    const sheet = $("[data-language-sheet]");
+    const backdrop = $("[data-language-backdrop]");
+    if (!trigger || !sheet || !backdrop) return;
+
+    const closeButton = $("[data-language-close]", sheet);
+    const options = $$("[data-language-option]", sheet);
+    const setOpen = (open) => {
+      sheet.hidden = !open;
+      backdrop.hidden = !open;
+      sheet.setAttribute("aria-hidden", String(!open));
+      trigger.setAttribute("aria-expanded", String(open));
+      document.body.classList.toggle("has-language-sheet", open);
+      if (open) {
+        const activeOption = options.find((option) => option.getAttribute("aria-checked") === "true") || options[0];
+        activeOption?.focus({ preventScroll: true });
+      } else {
+        trigger.focus({ preventScroll: true });
+      }
+    };
+
+    let savedLanguage = "ru";
+    try {
+      savedLanguage = localStorage.getItem(HOME_LANGUAGE_KEY) || "ru";
+    } catch (_) {
+      savedLanguage = "ru";
+    }
+    applyHomeLanguage(savedLanguage);
+
+    trigger.addEventListener("click", () => setOpen(true));
+    closeButton?.addEventListener("click", () => setOpen(false));
+    backdrop.addEventListener("click", () => setOpen(false));
+    options.forEach((option) => {
+      option.addEventListener("click", () => {
+        applyHomeLanguage(option.dataset.languageOption);
+        setOpen(false);
+      });
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !sheet.hidden) setOpen(false);
+    });
+  }
+
   function initHome() {
     renderSolutions();
     renderServices();
@@ -1489,6 +2299,7 @@
     initCalculator();
     initStatusLookup();
     initMessageForm();
+    initHomeLanguageSwitcher();
   }
 
   document.addEventListener("DOMContentLoaded", () => {

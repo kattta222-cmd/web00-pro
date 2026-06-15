@@ -5526,6 +5526,12 @@ textarea {
   background: #f5f0ea;
 }
 
+.demo-modal--external .demo-frame[data-demo-desktop-canvas] {
+  --demo-canvas-width: 1180px;
+  --demo-canvas-height: 1200px;
+  --demo-canvas-scale: 1;
+}
+
 .demo-frame.is-mobile {
   max-width: 360px;
   margin: 0 auto;
@@ -6695,6 +6701,64 @@ textarea {
 
   .demo-frame.is-mobile iframe {
     min-height: min(62dvh, 510px);
+  }
+
+  .modal__dialog--demo-2 {
+    width: min(100% - 24px, 620px);
+    height: min(92dvh, 780px);
+    padding: 14px;
+    border-radius: 8px;
+  }
+
+  .demo-modal--external .demo-modal__head {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding-right: 46px;
+  }
+
+  .demo-modal--external .demo-modal__head h2 {
+    max-width: 100%;
+    font-size: clamp(1.42rem, 8vw, 2rem);
+    line-height: 1.02;
+  }
+
+  .demo-modal--external .demo-modal__head p {
+    max-width: 28rem;
+    font-size: 0.9rem;
+    line-height: 1.35;
+  }
+
+  .demo-modal--external .demo-modal__head > .btn,
+  .demo-modal--external .demo-modal__head > a.btn {
+    width: 100%;
+    min-height: 42px;
+    border-radius: 5px;
+  }
+
+  .demo-modal--external .demo-layout {
+    min-height: 0;
+    flex: 1;
+  }
+
+  .demo-modal--external .demo-frame[data-demo-desktop-canvas] {
+    display: block;
+    width: 100%;
+    min-height: min(56dvh, 520px);
+    height: 100%;
+    max-height: none;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #f8f7f4;
+  }
+
+  .demo-modal--external .demo-frame[data-demo-desktop-canvas] iframe {
+    width: var(--demo-canvas-width);
+    height: var(--demo-canvas-height);
+    min-height: 0;
+    max-width: none;
+    transform: scale(var(--demo-canvas-scale));
+    transform-origin: top left;
+    border-radius: 8px;
   }
 }
 
