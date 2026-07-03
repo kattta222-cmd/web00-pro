@@ -1,3 +1,9 @@
+/**
+ * WEB00 transitional global layer.
+ * TODO: split into base/shell/components/pages and remove after migration.
+ * Do not add new page-specific styles here.
+ */
+
 :root {
   --bg: #050812;
   --bg-2: #07111f;

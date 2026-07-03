@@ -304,6 +304,37 @@ body[data-page="brief"] .brief-grid--compact {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+body[data-page="brief"] .brief-context-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+body[data-page="brief"] .brief-context-grid article {
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--brief-line);
+  border-radius: 5px;
+  background: var(--brief-surface-soft);
+}
+
+body[data-page="brief"] .brief-context-grid span {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--brief-muted);
+  font-size: 0.62rem;
+  font-weight: 750;
+}
+
+body[data-page="brief"] .brief-context-grid strong {
+  display: block;
+  overflow-wrap: anywhere;
+  color: var(--brief-text);
+  font-size: 0.72rem;
+  line-height: 1.3;
+}
+
 body[data-page="brief"] .brief-form label,
 body[data-page="brief"] .brief-form fieldset {
   min-width: 0;
@@ -407,6 +438,27 @@ body[data-page="brief"] .brief-upload-placeholder span {
   color: var(--brief-muted);
   font-size: 0.64rem;
   line-height: 1.35;
+}
+
+body[data-page="brief"] .brief-review-note {
+  display: grid;
+  gap: 5px;
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid rgba(142, 15, 19, 0.16);
+  border-radius: 5px;
+  background: var(--brief-accent-soft);
+}
+
+body[data-page="brief"] .brief-review-note strong {
+  color: var(--brief-text);
+  font-size: 0.72rem;
+}
+
+body[data-page="brief"] .brief-review-note span {
+  color: var(--brief-muted);
+  font-size: 0.68rem;
+  line-height: 1.45;
 }
 
 body[data-page="brief"] .brief-consent {
@@ -805,6 +857,7 @@ body[data-page="brief"] .footer__links a:focus-visible {
 
   body[data-page="brief"] .brief-grid,
   body[data-page="brief"] .brief-grid--compact,
+  body[data-page="brief"] .brief-context-grid,
   body[data-page="brief"] .brief-upload-grid {
     grid-template-columns: 1fr;
   }

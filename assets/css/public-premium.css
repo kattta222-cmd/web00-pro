@@ -1304,6 +1304,7 @@ body[data-page="faq"] .faq-final-cta,
 body[data-page="contacts"] .contact-channel,
 body[data-page="contacts"] .contact-form-card,
 body[data-page="contacts"] .contact-status-card,
+body[data-page="contacts"] .contact-error-card,
 body[data-page="contacts"] .contact-schedule-card {
   border: 1px solid var(--public-line);
   border-radius: 26px;
@@ -1325,7 +1326,8 @@ body[data-page="contacts"] .contact-card-head h2,
 body[data-page="contacts"] .contact-next h2,
 body[data-page="contacts"] .contact-channel strong,
 body[data-page="contacts"] .contact-next strong,
-body[data-page="contacts"] .contact-schedule-card strong {
+body[data-page="contacts"] .contact-schedule-card strong,
+body[data-page="contacts"] .contact-error-card h2 {
   color: var(--public-ink);
   font-family: Inter, system-ui, sans-serif;
   font-weight: 800;
@@ -1339,7 +1341,8 @@ body[data-page="contacts"] .contact-card-head p,
 body[data-page="contacts"] .contact-channel small,
 body[data-page="contacts"] .contact-next small,
 body[data-page="contacts"] .contact-schedule-card small,
-body[data-page="contacts"] .message-form small {
+body[data-page="contacts"] .message-form small,
+body[data-page="contacts"] .contact-error-card p {
   color: var(--public-muted);
   line-height: 1.65;
 }
@@ -1567,6 +1570,7 @@ body[data-page="contacts"] .contact-workspace {
 
 body[data-page="contacts"] .contact-form-card,
 body[data-page="contacts"] .contact-status-card,
+body[data-page="contacts"] .contact-error-card,
 body[data-page="contacts"] .contact-schedule-card {
   padding: 28px;
 }
@@ -1587,9 +1591,37 @@ body[data-page="contacts"] .status-lookup {
 }
 
 body[data-page="contacts"] .message-form label,
-body[data-page="contacts"] .status-lookup label {
+body[data-page="contacts"] .status-lookup label,
+body[data-page="contacts"] .consent-line {
   display: grid;
   gap: 8px;
+}
+
+body[data-page="contacts"] .consent-line {
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  color: var(--public-muted);
+  line-height: 1.45;
+}
+
+body[data-page="contacts"] .consent-line input {
+  width: 18px;
+  height: 18px;
+  margin-top: 0.2em;
+}
+
+body[data-page="contacts"] .form-message {
+  margin: 0;
+  color: var(--public-muted);
+  line-height: 1.55;
+}
+
+body[data-page="contacts"] .form-message.is-success {
+  color: #315f3f;
+}
+
+body[data-page="contacts"] .form-message.is-error {
+  color: var(--public-accent);
 }
 
 body[data-page="contacts"] .field-label {

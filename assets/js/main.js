@@ -39,20 +39,20 @@
       "hero.text": "Выберите шаблон, заполните анкету проекта — и мы запустим ваш сайт под ключ. Быстро, прозрачно и с поддержкой на каждом этапе.",
       "hero.primary": "Выбрать шаблон",
       "hero.demo": "Смотреть демо",
-      "device.nav.about": "Обо мне",
-      "device.nav.services": "Услуги",
-      "device.nav.reviews": "Отзывы",
-      "device.nav.contacts": "Контакты",
-      "device.title": "Психология<br>для жизни и роста",
-      "device.text": "Онлайн-консультации и программа индивидуально и бережно",
-      "device.cta": "Записаться на консультацию",
-      "device.mobileText": "Онлайн-консультации и программа",
-      "device.mobileCta": "Записаться",
+      "device.nav.about": "Каталог",
+      "device.nav.services": "Тарифы",
+      "device.nav.reviews": "Кейсы",
+      "device.nav.contacts": "FAQ",
+      "device.title": "WEB00 Pro<br>готовые сайты",
+      "device.text": "Каталог, тарифы и запуск сайта под ключ",
+      "device.cta": "Выбрать сайт",
+      "device.mobileText": "Запуск сайта под ключ",
+      "device.mobileCta": "Выбрать",
       "trust.launch.title": "Запуск от 48 часов",
       "trust.launch.text": "Быстрый старт без потери качества",
-      "trust.performance.title": "Performance 90+",
+      "trust.performance.title": "Быстро загружается",
       "trust.performance.text": "Высокая скорость и стабильность",
-      "trust.seo.title": "SEO-ready",
+      "trust.seo.title": "Готов к продвижению",
       "trust.seo.text": "Готовность к поисковому продвижению",
       "trust.support.title": "Поддержка и сопровождение",
       "trust.support.text": "Мы рядом после запуска",
@@ -135,20 +135,20 @@
       "hero.text": "Choose a template, fill in the project questionnaire, and we launch your website end to end. Fast, transparent, and supported at every step.",
       "hero.primary": "Choose template",
       "hero.demo": "View demo",
-      "device.nav.about": "About",
-      "device.nav.services": "Services",
-      "device.nav.reviews": "Reviews",
-      "device.nav.contacts": "Contacts",
-      "device.title": "Psychology<br>for life and growth",
-      "device.text": "Online consultations and an individual, careful program",
-      "device.cta": "Book a consultation",
-      "device.mobileText": "Online consultations and program",
-      "device.mobileCta": "Book",
+      "device.nav.about": "Catalog",
+      "device.nav.services": "Pricing",
+      "device.nav.reviews": "Cases",
+      "device.nav.contacts": "FAQ",
+      "device.title": "WEB00 Pro<br>ready sites",
+      "device.text": "Catalog, pricing and turnkey launch",
+      "device.cta": "Choose site",
+      "device.mobileText": "Turnkey website launch",
+      "device.mobileCta": "Choose",
       "trust.launch.title": "Launch from 48 hours",
       "trust.launch.text": "Fast start without losing quality",
-      "trust.performance.title": "Performance 90+",
+      "trust.performance.title": "Loads fast",
       "trust.performance.text": "High speed and stability",
-      "trust.seo.title": "SEO-ready",
+      "trust.seo.title": "Ready for search",
       "trust.seo.text": "Prepared for search promotion",
       "trust.support.title": "Support and maintenance",
       "trust.support.text": "We stay with you after launch",
@@ -231,20 +231,20 @@
       "hero.text": "Wählen Sie eine Vorlage, füllen Sie den Projektfragebogen aus, und wir starten Ihre Website schlüsselfertig. Schnell, transparent und mit Support in jeder Phase.",
       "hero.primary": "Vorlage wählen",
       "hero.demo": "Demo ansehen",
-      "device.nav.about": "Über mich",
-      "device.nav.services": "Leistungen",
-      "device.nav.reviews": "Bewertungen",
-      "device.nav.contacts": "Kontakt",
-      "device.title": "Psychologie<br>für Leben und Wachstum",
-      "device.text": "Online-Beratung und ein individuelles, achtsames Programm",
-      "device.cta": "Beratung buchen",
-      "device.mobileText": "Online-Beratung und Programm",
-      "device.mobileCta": "Buchen",
+      "device.nav.about": "Katalog",
+      "device.nav.services": "Tarife",
+      "device.nav.reviews": "Cases",
+      "device.nav.contacts": "FAQ",
+      "device.title": "WEB00 Pro<br>fertige Websites",
+      "device.text": "Katalog, Tarife und schlüsselfertiger Start",
+      "device.cta": "Website wählen",
+      "device.mobileText": "Website startklar",
+      "device.mobileCta": "Wählen",
       "trust.launch.title": "Start ab 48 Stunden",
       "trust.launch.text": "Schneller Start ohne Qualitätsverlust",
-      "trust.performance.title": "Performance 90+",
+      "trust.performance.title": "Lädt schnell",
       "trust.performance.text": "Hohe Geschwindigkeit und Stabilität",
-      "trust.seo.title": "SEO-ready",
+      "trust.seo.title": "Für Suche vorbereitet",
       "trust.seo.text": "Vorbereitet für Suchmaschinen",
       "trust.support.title": "Support und Betreuung",
       "trust.support.text": "Wir bleiben nach dem Start an Ihrer Seite",
@@ -380,9 +380,9 @@
     "hero.text": "选择模板，填写项目问卷，我们为你完成网站上线。快速、透明，并在每个阶段提供支持。",
     "hero.primary": "选择模板",
     "hero.demo": "查看演示",
-    "device.title": "心理咨询<br>生活与成长",
-    "device.text": "线上咨询与个性化温和方案",
-    "device.cta": "预约咨询",
+    "device.title": "WEB00 Pro<br>现成网站",
+    "device.text": "目录、价格与一站式上线",
+    "device.cta": "选择网站",
     "templates.title": "热门模板",
     "templates.all": "查看全部目录 →",
     "card.mebel.title": "家具商店",
@@ -418,9 +418,9 @@
     "hero.text": "テンプレートを選び、プロジェクト質問票を入力すれば、サイト公開まで対応します。速く、透明に、各段階でサポートします。",
     "hero.primary": "テンプレートを選ぶ",
     "hero.demo": "デモを見る",
-    "device.title": "心理サポート<br>人生と成長のために",
-    "device.text": "オンライン相談と個別で丁寧なプログラム",
-    "device.cta": "相談を予約",
+    "device.title": "WEB00 Pro<br>完成サイト",
+    "device.text": "カタログ、料金、公開まで対応",
+    "device.cta": "サイトを選ぶ",
     "templates.title": "人気テンプレート",
     "templates.all": "カタログですべて見る →",
     "card.mebel.title": "家具ショップ",
@@ -446,20 +446,20 @@
     "language.title": "言語",
   });
   Object.assign(HOME_TRANSLATIONS.fr, {
-    "device.nav.about": "À propos",
-    "device.nav.services": "Services",
-    "device.nav.reviews": "Avis",
-    "device.nav.contacts": "Contacts",
-    "device.title": "Psychologie<br>pour vivre et grandir",
-    "device.text": "Consultations en ligne et programme individuel avec attention",
-    "device.cta": "Réserver une consultation",
-    "device.mobileText": "Consultations en ligne et programme",
-    "device.mobileCta": "Réserver",
+    "device.nav.about": "Catalogue",
+    "device.nav.services": "Tarifs",
+    "device.nav.reviews": "Cas",
+    "device.nav.contacts": "FAQ",
+    "device.title": "WEB00 Pro<br>sites prêts",
+    "device.text": "Catalogue, tarifs et lancement clé en main",
+    "device.cta": "Choisir un site",
+    "device.mobileText": "Lancement clé en main",
+    "device.mobileCta": "Choisir",
     "trust.launch.title": "Lancement dès 48 h",
     "trust.launch.text": "Démarrage rapide sans perte de qualité",
-    "trust.performance.title": "Performance 90+",
+    "trust.performance.title": "Chargement rapide",
     "trust.performance.text": "Vitesse élevée et stabilité",
-    "trust.seo.title": "Prêt pour le SEO",
+    "trust.seo.title": "Prêt pour la recherche",
     "trust.seo.text": "Préparé pour le référencement",
     "trust.support.title": "Support et accompagnement",
     "trust.support.text": "Nous restons présents après le lancement",
@@ -518,20 +518,20 @@
     "final.text": "Nous prenons en charge le reste : design, configuration, contenu et support.",
   });
   Object.assign(HOME_TRANSLATIONS.it, {
-    "device.nav.about": "Chi sono",
-    "device.nav.services": "Servizi",
-    "device.nav.reviews": "Recensioni",
-    "device.nav.contacts": "Contatti",
-    "device.title": "Psicologia<br>per vita e crescita",
-    "device.text": "Consulenze online e programma individuale con cura",
-    "device.cta": "Prenota una consulenza",
-    "device.mobileText": "Consulenze online e programma",
-    "device.mobileCta": "Prenota",
+    "device.nav.about": "Catalogo",
+    "device.nav.services": "Tariffe",
+    "device.nav.reviews": "Casi",
+    "device.nav.contacts": "FAQ",
+    "device.title": "WEB00 Pro<br>siti pronti",
+    "device.text": "Catalogo, tariffe e lancio chiavi in mano",
+    "device.cta": "Scegli sito",
+    "device.mobileText": "Lancio sito chiavi in mano",
+    "device.mobileCta": "Scegli",
     "trust.launch.title": "Lancio da 48 ore",
     "trust.launch.text": "Partenza rapida senza perdere qualità",
-    "trust.performance.title": "Performance 90+",
+    "trust.performance.title": "Caricamento rapido",
     "trust.performance.text": "Alta velocità e stabilità",
-    "trust.seo.title": "SEO-ready",
+    "trust.seo.title": "Pronto per la ricerca",
     "trust.seo.text": "Pronto per la promozione nei motori di ricerca",
     "trust.support.title": "Supporto e accompagnamento",
     "trust.support.text": "Restiamo al tuo fianco dopo il lancio",
@@ -590,17 +590,17 @@
     "final.text": "Ci occupiamo del resto: design, configurazione, contenuti e supporto.",
   });
   Object.assign(HOME_TRANSLATIONS.zh, {
-    "device.nav.about": "关于",
-    "device.nav.services": "服务",
-    "device.nav.reviews": "评价",
-    "device.nav.contacts": "联系",
-    "device.mobileText": "线上咨询与方案",
-    "device.mobileCta": "预约",
+    "device.nav.about": "目录",
+    "device.nav.services": "价格",
+    "device.nav.reviews": "案例",
+    "device.nav.contacts": "FAQ",
+    "device.mobileText": "一站式网站上线",
+    "device.mobileCta": "选择",
     "trust.launch.title": "48小时起上线",
     "trust.launch.text": "快速启动，不牺牲质量",
     "trust.performance.title": "性能 90+",
     "trust.performance.text": "高速稳定",
-    "trust.seo.title": "SEO 就绪",
+    "trust.seo.title": "已准备好搜索推广",
     "trust.seo.text": "已为搜索推广准备",
     "trust.support.title": "支持与维护",
     "trust.support.text": "上线后我们继续支持",
@@ -650,15 +650,15 @@
     "pricing.pro.item3": "专属经理",
   });
   Object.assign(HOME_TRANSLATIONS.ja, {
-    "device.nav.about": "概要",
-    "device.nav.services": "サービス",
-    "device.nav.reviews": "レビュー",
-    "device.nav.contacts": "連絡先",
-    "device.mobileText": "オンライン相談とプログラム",
-    "device.mobileCta": "予約",
+    "device.nav.about": "カタログ",
+    "device.nav.services": "料金",
+    "device.nav.reviews": "事例",
+    "device.nav.contacts": "FAQ",
+    "device.mobileText": "サイト公開まで対応",
+    "device.mobileCta": "選ぶ",
     "trust.launch.title": "48時間から公開",
     "trust.launch.text": "品質を落とさず素早く開始",
-    "trust.performance.title": "Performance 90+",
+    "trust.performance.title": "高速表示",
     "trust.performance.text": "高速で安定した動作",
     "trust.seo.title": "SEO対応",
     "trust.seo.text": "検索対策の準備済み",
@@ -965,7 +965,7 @@
           <div class="solution-card__meta"><b>${esc(solutionPrice(solution))}</b><span>${esc(solutionTime(solution))}</span></div>
           <div class="solution-card__actions">
             <button class="solution-card__action solution-card__action--secondary" type="button" data-card-action="${hasDemo ? "demo" : "details"}">${hasDemo ? "Смотреть демо" : "Подробнее"}</button>
-            <a class="solution-card__action solution-card__action--primary" href="${attr(briefUrl({ solution: solution.id }))}">${hasDemo ? "Запустить" : "Оставить заявку"}</a>
+            <a class="solution-card__action solution-card__action--primary" href="${attr(briefUrl({ solution: solution.id }))}">Запустить</a>
           </div>
         </div>
       </article>
@@ -1066,7 +1066,7 @@
           <div class="price-card__actions" aria-label="Действия для тарифа ${esc(item.title)}">
             <input class="price-card__toggle" type="checkbox" id="${attr(detailId)}">
             <label class="btn btn--secondary btn--small price-card__details" for="${attr(detailId)}">Подробнее</label>
-            <a class="btn btn--primary btn--small price-card__choose" href="${attr(briefUrl({ tariff: item.title }))}">Выбрать</a>
+            <a class="btn btn--primary btn--small price-card__choose" href="${attr(briefUrl({ tariff: item.title }))}">Выбрать тариф</a>
             <div class="price-card__more" aria-label="Подробности тарифа ${esc(item.title)}">
               <strong>Что входит</strong>
               <p>${esc(detailTextByTitle[item.title] || item.note)}</p>
@@ -1160,7 +1160,7 @@
       "Доставка": "локальному бизнесу с доставкой, прайсом и быстрым заказом через форму.",
       "Индивидуально": "бизнесу с нестандартной задачей, где готовый шаблон нужно адаптировать под особый сценарий.",
     };
-    const included = [...new Set([...features, "Адаптивная версия", "Форма заявки", "Подготовка к запуску"])].slice(0, 7);
+    const included = [...new Set([...features, "Адаптивная версия", "Форма для обращений", "Подготовка к запуску"])].slice(0, 7);
     const quality = ["Скорость 90+", "Готово к поиску", "Адаптивность", "Поддержка после запуска"];
     const launchSteps = ["Анкета", "Подготовка", "Согласование", "Запуск", "Поддержка"];
     target.innerHTML = `
@@ -1329,7 +1329,7 @@
       const features = solutionFeatures(solution);
       return `
         <aside class="lead-aside brief-summary">
-          <span class="brief-summary__eyebrow">Выбранный шаблон</span>
+          <span class="brief-summary__eyebrow">Выбранный сайт</span>
           ${solutionPreview(solution)}
           <h3>${esc(solution.title)}</h3>
           <p>${esc(solution.description)}</p>
@@ -1340,7 +1340,7 @@
           <ul class="check-list">${features.slice(0, 5).map((item) => `<li>${esc(item)}</li>`).join("")}</ul>
           <div class="brief-summary__trust">
             <span>Демо до оплаты</span>
-            <span>Форма заявки</span>
+            <span>Форма для обращений</span>
             <span>Поддержка после запуска</span>
           </div>
         </aside>
@@ -1373,7 +1373,7 @@
     const estimate = context.estimate || estimateMatch?.[1] || "";
     return `
       <aside class="lead-aside brief-summary">
-        <span class="brief-summary__eyebrow">Контекст заявки</span>
+        <span class="brief-summary__eyebrow">Контекст проекта</span>
         <div class="service-selected"><span>WEB00</span><strong>${esc(service)}</strong></div>
         ${estimate ? `<div class="brief-summary__estimate"><span>Ориентир</span><strong>${esc(estimate)}</strong></div>` : ""}
         <p>Опишите задачу, и мы предложим формат, срок и следующий шаг без лишней технической сложности.</p>
@@ -1384,7 +1384,7 @@
         <ul class="check-list"><li>Разбор задачи</li><li>Подбор формата сайта</li><li>Цена и срок</li><li>Демо до оплаты</li></ul>
         <div class="brief-summary__trust">
           <span>Без предоплаты</span>
-          <span>Заявки в удобный канал</span>
+          <span>Обращения в удобный канал</span>
           <span>Поддержка после запуска</span>
         </div>
       </aside>
@@ -1428,24 +1428,55 @@
       : context.tariff
         ? `Интересует тариф: ${context.tariff.title}`
         : "";
+    const selectedSiteLabel = context.solution?.title || context.service || "Подберём по анкете";
+    const selectedTariffLabel = context.tariff?.title || (context.solution ? "Подберём после анкеты" : "Не выбран");
+    const selectedPriceLabel = context.tariff?.price || (context.solution ? solutionPrice(context.solution) : context.estimate || "после анкеты");
+    const selectedLaunchLabel = context.solution ? solutionTime(context.solution) : "после проверки анкеты";
     target.innerHTML = `
       <div class="${isPageMode ? "brief-page-ui" : "lead-modal"} brief-modal ${hasErrors ? "has-errors" : ""}">
         <form class="lead-form-ui brief-form" data-lead-form novalidate>
           ${isPageMode ? "" : `<div class="brief-modal__header">
-            <span class="brief-kicker">WEB00 launch form</span>
+            <span class="brief-kicker">WEB00 · анкета</span>
             <h2 id="lead-title">Анкета на запуск сайта</h2>
-            <p>Расскажите о проекте — мы подготовим сайт, который привлечёт клиентов и поддержит ваш бренд.</p>
+            <p>Ответьте на несколько вопросов — мы подготовим сайт под ваш бизнес и покажем результат перед запуском.</p>
           </div>
           <div class="brief-stepper" aria-label="Этапы анкеты">
             <span><b>1</b> Выбор</span>
-            <span><b>2</b> Данные</span>
-            <span><b>3</b> Контент</span>
-            <span><b>4</b> Подтверждение</span>
+            <span><b>2</b> О бизнесе</span>
+            <span><b>3</b> Материалы</span>
+            <span><b>4</b> Проверка</span>
           </div>`}
           ${hasErrors ? '<div class="alert alert--error">Пожалуйста, заполните обязательные поля</div>' : ""}
 
           <section class="brief-section">
-            <div class="brief-section__head"><span>01</span><h3>Контакт и задача</h3></div>
+            <div class="brief-section__head"><span>01</span><h3>Выбор сайта и тарифа</h3></div>
+            <div class="brief-context-grid" aria-label="Выбранный формат">
+              <article><span>Сайт</span><strong>${esc(selectedSiteLabel)}</strong></article>
+              <article><span>Тариф</span><strong>${esc(selectedTariffLabel)}</strong></article>
+              <article><span>Стоимость</span><strong>${esc(selectedPriceLabel)}</strong></article>
+              <article><span>Срок запуска</span><strong>${esc(selectedLaunchLabel)}</strong></article>
+            </div>
+            <div class="brief-grid">
+              <label><span class="field-label">Цель сайта</span><select name="siteGoal">
+                <option>Получать обращения клиентов</option>
+                <option>Показать услуги и доверие</option>
+                <option>Продавать товары</option>
+                <option>Запустить страницу под рекламу</option>
+                <option>Пока не знаю, нужна помощь с выбором</option>
+              </select></label>
+              <label><span class="field-label">Тип задачи <b>*</b></span><select name="taskType" required>
+                <option ${taskValue === "Запуск готового сайта" ? "selected" : ""}>Запуск готового сайта</option>
+                <option ${taskValue === "Сайт под заказ" || taskValue === "Сайт под ключ" ? "selected" : ""}>Индивидуальный сайт</option>
+                <option ${taskValue.includes("Доработ") ? "selected" : ""}>Доработка сайта</option>
+                <option ${taskValue.includes("Автомат") || taskValue.includes("бот") ? "selected" : ""}>Приём обращений</option>
+                <option ${taskValue.includes("Поддерж") ? "selected" : ""}>Поддержка после запуска</option>
+              </select></label>
+              <label><span class="field-label">Бюджет <b>*</b></span><select name="budget" required><option>Пока не знаю</option><option>до 39 000 ₽</option><option>39 000-69 000 ₽</option><option>69 000-99 000 ₽</option><option>от 99 000 ₽</option></select></label>
+            </div>
+          </section>
+
+          <section class="brief-section">
+            <div class="brief-section__head"><span>02</span><h3>О бизнесе</h3></div>
             <div class="brief-grid">
               <label><span class="field-label">Ваше имя <b>*</b></span><input name="name" type="text" placeholder="Иван" autocomplete="name" required></label>
               <label><span class="field-label">Контакт для связи <b>*</b></span><input name="contact" type="text" placeholder="+7, Telegram или Email" autocomplete="tel" required></label>
@@ -1461,28 +1492,25 @@
                 <option>Другое</option>
               </select></label>
               <label><span class="field-label">Название бизнеса / проекта</span><input name="businessName" type="text" placeholder="Название компании или проекта"></label>
-              <label><span class="field-label">Тип задачи <b>*</b></span><select name="taskType" required>
-                <option ${taskValue === "Запуск готового сайта" ? "selected" : ""}>Запуск готового сайта</option>
-                <option ${taskValue === "Сайт под заказ" || taskValue === "Сайт под ключ" ? "selected" : ""}>Сайт под заказ</option>
-                <option ${taskValue.includes("Доработ") ? "selected" : ""}>Доработка сайта</option>
-                <option ${taskValue.includes("Автомат") || taskValue.includes("бот") ? "selected" : ""}>Автоматизация заявок</option>
-                <option ${taskValue.includes("Поддерж") ? "selected" : ""}>Поддержка после запуска</option>
-              </select></label>
-              <label><span class="field-label">Бюджет <b>*</b></span><select name="budget" required><option>Пока не знаю</option><option>до 10 000 ₽</option><option>10 000-20 000 ₽</option><option>20 000-40 000 ₽</option><option>от 40 000 ₽</option></select></label>
             </div>
+            <label><span class="field-label">Чем занимаетесь?</span><textarea name="offerDescription" rows="4" maxlength="800" placeholder="Коротко опишите услуги, товары, географию и особенности бизнеса"></textarea></label>
           </section>
 
           <section class="brief-section">
-            <div class="brief-section__head"><span>02</span><h3>Содержание сайта</h3></div>
-            <label><span class="field-label">Какие услуги или товары вы предлагаете?</span><textarea name="offerDescription" rows="4" maxlength="800" placeholder="Коротко опишите ассортимент, услуги, географию, особенности бизнеса"></textarea></label>
+            <div class="brief-section__head"><span>03</span><h3>Материалы</h3></div>
+            <div class="brief-upload-grid" aria-label="Материалы для будущей передачи">
+              <div class="brief-upload-placeholder"><strong>Логотип</strong><span>Файлы можно будет передать команде после отправки анкеты.</span></div>
+              <div class="brief-upload-placeholder"><strong>Фото / изображения</strong><span>Фото, тексты и материалы можно будет передать после проверки анкеты.</span></div>
+            </div>
             <div class="brief-grid">
               <label><span class="field-label">Стиль и настроение сайта</span><input name="styleMood" type="text" placeholder="Например: спокойный, премиальный, строгий"></label>
               <label><span class="field-label">Примеры сайтов, которые нравятся</span><input name="references" type="text" placeholder="Ссылки или названия сайтов"></label>
             </div>
+            <label><span class="field-label">Комментарий</span><textarea name="comment" rows="5" maxlength="700" placeholder="Опишите пожелания, сроки, важные детали">${introComment}</textarea></label>
           </section>
 
           <section class="brief-section">
-            <div class="brief-section__head"><span>03</span><h3>Запуск и заявки</h3></div>
+            <div class="brief-section__head"><span>04</span><h3>Проверка и отправка</h3></div>
             <div class="brief-grid brief-grid--compact">
               <fieldset class="brief-choice-group">
                 <legend>Нужен ли домен?</legend>
@@ -1498,21 +1526,16 @@
               </fieldset>
             </div>
             <fieldset class="brief-choice-group brief-choice-group--wide">
-              <legend>Куда должны приходить заявки?</legend>
+              <legend>Куда должны приходить обращения?</legend>
               <label><input type="checkbox" name="leadChannels" value="Telegram" checked> <span>Telegram</span></label>
               <label><input type="checkbox" name="leadChannels" value="Email"> <span>Email</span></label>
               <label><input type="checkbox" name="leadChannels" value="WhatsApp"> <span>WhatsApp</span></label>
-              <label><input type="checkbox" name="leadChannels" value="CRM"> <span>CRM</span></label>
+              <label><input type="checkbox" name="leadChannels" value="Таблица"> <span>Таблица</span></label>
             </fieldset>
-          </section>
-
-          <section class="brief-section">
-            <div class="brief-section__head"><span>04</span><h3>Материалы и комментарий</h3></div>
-            <div class="brief-upload-grid" aria-label="Материалы для будущей загрузки">
-              <div class="brief-upload-placeholder"><strong>Логотип</strong><span>Файлы можно будет передать менеджеру после отправки анкеты.</span></div>
-              <div class="brief-upload-placeholder"><strong>Фото / изображения</strong><span>Файлы можно будет передать менеджеру после отправки анкеты.</span></div>
+            <div class="brief-review-note">
+              <strong>Перед отправкой</strong>
+              <span>Проверьте контакт, цель сайта и материалы. Если чего-то не хватает, команда WEB00 уточнит детали отдельно.</span>
             </div>
-            <label><span class="field-label">Комментарий</span><textarea name="comment" rows="5" maxlength="700" placeholder="Опишите пожелания, сроки, важные детали">${introComment}</textarea></label>
           </section>
 
           <label class="checkbox-row brief-consent"><input name="consent" type="checkbox" required> <span class="field-label">Согласие на обработку данных <b>*</b></span></label>
@@ -1520,7 +1543,7 @@
             <button class="btn btn--primary btn--full" type="submit">Отправить анкету</button>
             ${isPageMode ? '<a class="btn btn--secondary btn--full" href="solutions.html">Вернуться к выбору</a>' : '<button class="btn btn--secondary btn--full" type="button" data-close-modal>Вернуться к выбору</button>'}
           </div>
-          <small>Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности. Файлы сейчас не загружаются: их можно будет передать менеджеру после отправки анкеты.</small>
+          <small>Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности. Файлы сейчас не загружаются: их можно будет передать команде WEB00 после проверки анкеты.</small>
         </form>
         ${leadAside(context)}
       </div>
@@ -1591,6 +1614,7 @@
         name: data.name.trim(),
         contact: data.contact.trim(),
         taskType: data.taskType,
+        siteGoal: data.siteGoal || "",
         budget: data.budget,
         industry: data.industry,
         businessName: data.businessName?.trim() || "",
@@ -1604,9 +1628,10 @@
         solution: context.solution?.title || context.tariff?.title || context.service || data.taskType,
         selectedSolutionId: context.solution?.id || "",
         selectedTariff: context.tariff?.title || "",
+        tariff: context.tariff?.title || "",
         requestContext: context.estimate
           ? `${context.service || context.tariff?.title || data.taskType}: ${context.estimate}`
-          : context.service || (context.solution ? "Готовый шаблон" : context.tariff ? `Тариф ${context.tariff.title}` : data.taskType),
+          : context.service || (context.solution ? "Готовый сайт" : context.tariff ? `Тариф ${context.tariff.title}` : data.taskType),
       });
       renderLeadSuccess(lead, context);
     } catch (error) {
@@ -1622,23 +1647,23 @@
       <div class="success-state ${isPageMode ? "brief-page-success" : ""}">
         <div class="success-icon">✓</div>
         <h2>Анкета отправлена</h2>
-        <p>Мы получили данные по проекту. Менеджер свяжется с вами, уточнит детали и подготовит следующий шаг.</p>
+        <p>Мы получили данные проекта. Проверим анкету и сообщим, если нужны уточнения.</p>
         <div class="success-box success-box--lead">
-          <span>Номер заявки</span>
+          <span>Номер проекта</span>
           <strong class="lead-number">${esc(lead.id)}</strong>
-          <span class="success-badge">Новая</span>
-          <span>Выбранное решение: ${esc(normalizeSolutionTitle(lead.solution || context.solution?.title || context.service || "WEB00 проект"))}</span>
+          <span class="success-badge">Анкета получена</span>
+          <span>Выбранный сайт: ${esc(normalizeSolutionTitle(lead.solution || context.solution?.title || context.service || "WEB00 проект"))}</span>
           <span>Сфера: ${esc(lead.industry || "Будет уточнена")}</span>
           <span>Способ связи: ${esc(lead.contact)}</span>
         </div>
         <div class="success-next">
-          <span>1</span><p>Проверим задачу</p>
-          <span>2</span><p>Уточним детали</p>
-          <span>3</span><p>Подготовим расчёт</p>
-          <span>4</span><p>Покажем результат до оплаты</p>
+          <span>1</span><p>Проверим данные</p>
+          <span>2</span><p>Уточним материалы</p>
+          <span>3</span><p>Подготовим сайт под задачу</p>
+          <span>4</span><p>Покажем результат перед запуском</p>
         </div>
         <div class="modal-actions">
-          <a class="btn btn--primary" href="status.html?id=${encodeURIComponent(lead.id)}">Проверить статус заявки</a>
+          <a class="btn btn--primary" href="status.html?id=${encodeURIComponent(lead.id)}">Проверить статус</a>
           ${isPageMode ? '<a class="btn btn--secondary" href="solutions.html">Вернуться к каталогу</a>' : '<button class="btn btn--secondary" type="button" data-close-modal>Вернуться к каталогу</button>'}
         </div>
       </div>
@@ -1652,9 +1677,9 @@
     target.innerHTML = `
       <div class="fallback-state">
         <div class="warning-icon">!</div>
-        <h2>Не удалось отправить заявку автоматически</h2>
-        <p>Мы сохранили черновик на странице. Напишите нам в Telegram, и мы примем заявку вручную.</p>
-        <div class="success-box"><span>Выбранное решение</span><strong>${esc(context.solution?.title || context.service || "Проект WEB00")}</strong></div>
+        <h2>Не получилось отправить анкету</h2>
+        <p>Проверьте данные и попробуйте ещё раз. Если проблема повторится, напишите нам в Telegram.</p>
+        <div class="success-box"><span>Выбранный сайт</span><strong>${esc(context.solution?.title || context.service || "Проект WEB00")}</strong></div>
         <a class="btn btn--primary btn--full" href="${attr(DATA.CONTACTS?.telegram?.href || "https://t.me/GarantiyWeb00bot")}" target="_blank" rel="noopener">Открыть Telegram</a>
         <button class="btn btn--secondary btn--full" type="button" onclick="location.reload()">Попробовать ещё раз</button>
       </div>
@@ -1663,25 +1688,31 @@
 
   function openBugModal() {
     bugAttachment = null;
-    renderBugForm();
+    renderBugForm({ formStartTime: Date.now() });
     setModal("bug", true);
   }
 
-  function renderBugForm() {
+  function renderBugForm(context = {}) {
     const target = $("[data-bug-modal-content]");
+    if (!target) return;
+    const formStartTime = context.formStartTime || Date.now();
     target.innerHTML = `
       <div class="bug-modal">
         <form data-bug-form novalidate>
           <h2 id="bug-title">Сообщить об ошибке</h2>
+          <p>Опишите, что пошло не так. Это поможет быстрее исправить проблему.</p>
           <div class="bug-form-body">
-            <p>Нажмите Print Screen и вставьте изображение через Ctrl+V или перетащите файл сюда.</p>
-            <label><span class="field-label">Где находится ошибка? <b>*</b></span><input name="place" type="text" placeholder="Страница, раздел или действие" required></label>
-            <label><span class="field-label">Что произошло? <b>*</b></span><textarea name="what" rows="3" placeholder="Опишите, что случилось" required></textarea></label>
-            <label><span class="field-label">Что вы делали перед ошибкой? <b>*</b></span><textarea name="before" rows="2" placeholder="Какие действия привели к ошибке" required></textarea></label>
-            <label>Контакт для связи <input name="contact" type="text" placeholder="Telegram, телефон или email"></label>
+            <p>Если можете, приложите скриншот: нажмите Print Screen и вставьте изображение в поле через Ctrl+V.</p>
+            <input class="form-honeypot" name="companySite" type="text" autocomplete="off" tabindex="-1" aria-hidden="true">
+            <input name="formStartTime" type="hidden" value="${String(formStartTime)}">
+            <label><span class="field-label">Где ошибка? <b>*</b></span><input name="place" type="text" placeholder="Страница, раздел или действие" required></label>
+            <label><span class="field-label">Что произошло? <b>*</b></span><textarea name="what" rows="3" placeholder="Опишите проблему" required></textarea></label>
+            <label><span class="field-label">Что вы делали перед ошибкой? <b>*</b></span><textarea name="before" rows="2" placeholder="Какие действия были перед проблемой" required></textarea></label>
+            <label><span class="field-label">Контакт для связи</span><input name="contact" type="text" placeholder="Telegram, телефон или email"></label>
             <label class="upload-zone" data-upload-zone>
-              <input name="screenshot" type="file" accept="image/*">
-              <span>Перетащите файл сюда или нажмите для выбора<br><small>PNG, JPG, JPEG до 10 MB</small></span>
+              <span class="field-label">Скриншот / файл</span>
+              <input name="screenshot" type="file" accept="image/png,image/jpeg,image/webp">
+              <span>Перетащите файл сюда или нажмите для выбора<br><small>PNG, JPG, JPEG, WEBP до 10 МБ</small></span>
             </label>
             <p class="attachment-info" data-attachment-info></p>
           </div>
@@ -1721,14 +1752,27 @@
 
   function setBugAttachment(file, info) {
     if (!file) return;
+    const allowed = ["image/png", "image/jpeg", "image/webp"];
+    if (!allowed.includes(file.type)) {
+      info.textContent = "Можно приложить PNG, JPG, JPEG или WEBP.";
+      info.classList.add("is-error");
+      return;
+    }
+    if (file.size > 10 * 1024 * 1024) {
+      info.textContent = "Файл больше 10 МБ. Выберите файл меньшего размера.";
+      info.classList.add("is-error");
+      return;
+    }
     bugAttachment = file;
     info.textContent = `Прикреплён файл: ${file.name}`;
+    info.classList.remove("is-error");
   }
 
   function submitBugReport(event) {
     event.preventDefault();
     const form = event.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries());
+    if (data.companySite) return;
     const errors = [];
     if (!data.place?.trim()) errors.push("Укажите, где ошибка");
     if (!data.what?.trim()) errors.push("Опишите, что произошло");
@@ -1741,14 +1785,19 @@
       $(".attachment-info", form).classList.add("is-error");
       return;
     }
-    const report = DATA.createBugReport({
-      place: data.place,
-      what: data.what,
-      before: data.before,
-      contact: data.contact,
-      fileName: bugAttachment?.name || "",
-    });
-    renderBugSuccess(report);
+    try {
+      const report = (DATA.createErrorReport || DATA.createBugReport)({
+        place: data.place.trim(),
+        what: data.what.trim(),
+        before: data.before.trim(),
+        contact: data.contact?.trim() || "",
+        fileName: bugAttachment?.name || "",
+        formStartTime: data.formStartTime || "",
+      });
+      renderBugSuccess(report);
+    } catch (error) {
+      renderBugFallback();
+    }
   }
 
   function renderBugSuccess(report) {
@@ -1756,13 +1805,25 @@
     target.innerHTML = `
       <div class="success-state">
         <div class="success-icon">✓</div>
-        <h2>Сообщение принято</h2>
-        <p>Спасибо, что помогаете нам стать лучше.</p>
+        <h2>Сообщение отправлено</h2>
+        <p>Мы проверим проблему и свяжемся с вами, если нужны детали.</p>
         <div class="success-box"><span>Номер обращения</span><strong class="lead-number">${esc(report.id)}</strong><span>${report.fileName ? `Скриншот: ${esc(report.fileName)}` : "Скриншот не прикреплён"}</span></div>
-        <div class="modal-actions"><button class="btn btn--primary" type="button" data-close-modal>Вернуться на сайт</button><button class="btn btn--secondary" type="button" data-open-bug>Отправить ещё одно</button></div>
+        <div class="modal-actions"><button class="btn btn--primary" type="button" data-close-modal>Вернуться на сайт</button><a class="btn btn--secondary" href="contacts.html">Написать в поддержку</a></div>
       </div>
     `;
     $("[data-close-modal]", target).addEventListener("click", closeModals);
+  }
+
+  function renderBugFallback() {
+    const target = $("[data-bug-modal-content]");
+    target.innerHTML = `
+      <div class="success-state">
+        <div class="success-icon">!</div>
+        <h2>Не удалось отправить сообщение автоматически</h2>
+        <p>Попробуйте ещё раз или напишите в поддержку.</p>
+        <div class="modal-actions"><button class="btn btn--primary" type="button" data-open-bug>Попробовать ещё раз</button><a class="btn btn--secondary" href="contacts.html">Написать в поддержку</a></div>
+      </div>
+    `;
     $("[data-open-bug]", target).addEventListener("click", openBugModal);
   }
 
@@ -1809,7 +1870,7 @@
         <p>Стоимость проекта <span>ориентировочно</span></p>
         <strong>от ${min.toLocaleString("ru-RU")} ₽ до ${max.toLocaleString("ru-RU")} ₽</strong>
         <p>Срок запуска: от ${days} до ${days + 5} рабочих дней</p>
-        <ul><li>Проектирование и структура</li><li>Адаптивная вёрстка</li><li>Форма заявки</li><li>Базовая SEO-подготовка</li></ul>
+        <ul><li>Проектирование и структура</li><li>Адаптивная вёрстка</li><li>Форма для обращений</li><li>Подготовка к продвижению</li></ul>
         <small>Расчёт не является юридическим предложением. Итог фиксируется после обсуждения.</small>
       `;
       return { min, max, days };
@@ -1834,7 +1895,7 @@
         if (!leadId) {
           const message = $("[data-status-message]", form.closest(".status-lookup") || form.closest(".status-lookup-card") || document);
           if (message) {
-            message.textContent = "Введите номер заявки.";
+            message.textContent = "Введите номер проекта.";
             message.classList.add("is-error");
           }
           return;
@@ -1850,7 +1911,7 @@
         }
         const message = $("[data-status-message]", form.closest(".status-lookup") || form.closest(".status-lookup-card") || document);
         if (message) {
-          message.textContent = "Заявка не найдена. Проверьте номер и контакт или свяжитесь с поддержкой.";
+          message.textContent = "Проект не найден. Проверьте номер или свяжитесь с поддержкой.";
           message.classList.add("is-error");
         } else {
           window.location.href = `status.html?id=${encodeURIComponent(data.leadId || "")}&notFound=1`;
@@ -1876,6 +1937,16 @@
     const tariff = pricingByTitle(params.get("tariff") || draft.tariff);
     const service = params.get("service") || draft.service || (tariff ? `Тариф ${tariff.title}` : "");
     const estimate = params.get("estimate") || draft.estimate || "";
+    const backLink = $("[data-brief-back]");
+    if (backLink) {
+      if (solution) {
+        backLink.href = "solutions.html";
+        backLink.textContent = "Назад к каталогу";
+      } else if (tariff) {
+        backLink.href = "pricing.html";
+        backLink.textContent = "Назад к тарифам";
+      }
+    }
     renderLeadForm({
       mode: "page",
       solution,
@@ -1889,22 +1960,72 @@
   function initMessageForm() {
     const form = $("[data-message-form]");
     if (!form) return;
+    const startedAt = Date.now();
+    const startField = form.elements.formStartTime;
+    if (startField) startField.value = String(startedAt);
     form.addEventListener("submit", (event) => {
       event.preventDefault();
-      openLeadModal({ service: "Сообщение из контактов" });
+      const data = Object.fromEntries(new FormData(form).entries());
+      const messageBox = $("[data-message-result]", form) || $(".form-message", form);
+      if (data.companySite) return;
+      const errors = [];
+      ["name", "contact", "topic", "message"].forEach((name) => {
+        const field = form.elements[name];
+        if (field && !String(data[name] || "").trim()) {
+          field.classList.add("is-invalid");
+          errors.push(name);
+        }
+      });
+      if (form.elements.consent && !form.elements.consent.checked) {
+        form.elements.consent.classList.add("is-invalid");
+        errors.push("consent");
+      }
+      if (errors.length) {
+        if (messageBox) {
+          messageBox.textContent = "Заполните обязательные поля и подтвердите согласие.";
+          messageBox.classList.add("is-error");
+        }
+        return;
+      }
+      try {
+        const message = DATA.createSupportMessage({
+          name: data.name.trim(),
+          contact: data.contact.trim(),
+          topic: data.topic,
+          message: data.message.trim(),
+          formStartTime: data.formStartTime || "",
+        });
+        form.reset();
+        if (form.elements.formStartTime) form.elements.formStartTime.value = String(Date.now());
+        if (messageBox) {
+          messageBox.textContent = `Сообщение отправлено. Номер обращения: ${message.id}. Мы ответим в выбранный канал связи.`;
+          messageBox.classList.remove("is-error");
+          messageBox.classList.add("is-success");
+        }
+      } catch (error) {
+        if (messageBox) {
+          messageBox.textContent = "Не удалось отправить сообщение автоматически. Попробуйте ещё раз или напишите в поддержку.";
+          messageBox.classList.add("is-error");
+        }
+      }
+    });
+    form.addEventListener("input", (event) => {
+      event.target.classList?.remove("is-invalid");
+      const messageBox = $("[data-message-result]", form) || $(".form-message", form);
+      messageBox?.classList.remove("is-error");
     });
   }
 
   function statusSteps(active) {
     const labels = [
-      ["Анкета получена", "Анкета сохранена"],
-      ["Уточняем детали", "Формат и объём"],
-      ["Материалы", "Контент и доступы"],
-      ["Сайт в работе", "Структура и сборка"],
+      ["Анкета получена", "Данные проекта сохранены"],
+      ["Проверяем материалы", "Контент и пожелания"],
+      ["Сайт настраивается", "Структура и сборка"],
       ["Проверка качества", "Адаптив и формы"],
-      ["Согласование", "Комментарии клиента"],
-      ["Публикация", "Финальный запуск"],
-      ["Поддержка", "После старта"],
+      ["Ожидает согласования", "Комментарии клиента"],
+      ["Готов к запуску", "Финальная проверка"],
+      ["Сайт запущен", "Публикация"],
+      ["Поддержка после запуска", "Сопровождение"],
     ];
     const current = Math.max(1, Math.min(Number(active) || 1, labels.length));
     return labels.map(([label, note], index) => {
@@ -1918,14 +2039,14 @@
     const map = {
       new: 1,
       clarification_needed: 2,
-      proposal_ready: 3,
-      waiting_client_confirmation: 3,
-      in_progress: 4,
-      revision_in_progress: 6,
-      demo_ready: 5,
-      delayed: 5,
-      ready_to_launch: 7,
-      launched: 8,
+      proposal_ready: 5,
+      waiting_client_confirmation: 5,
+      in_progress: 3,
+      revision_in_progress: 5,
+      demo_ready: 4,
+      delayed: 2,
+      ready_to_launch: 6,
+      launched: 7,
       completed: 8,
     };
     return map[statusKey] || Math.max(1, Math.min(Number(status?.progress) || 1, 8));
@@ -1975,12 +2096,12 @@
     root.innerHTML = `
       <section class="status-lookup-page">
         <div class="status-lookup-card">
-          <p class="status-kicker"><span></span>WEB00 · кабинет клиента</p>
-          <h1>Проверить статус заявки</h1>
-          <p>Введите номер заявки, чтобы открыть статус проекта и следующий шаг по запуску сайта.</p>
+          <p class="status-kicker"><span></span>WEB00 · статус проекта</p>
+          <h1>Статус проекта</h1>
+          <p>Введите номер проекта, чтобы открыть текущий статус и следующий шаг по запуску сайта.</p>
           <form data-status-lookup="direct">
             <label>
-              <span>Номер заявки</span>
+              <span>Номер проекта</span>
               <input name="leadId" type="text" placeholder="WEB00-2026-0001" autocomplete="off">
             </label>
             <button class="btn btn--primary" type="submit">Открыть статус</button>
@@ -1988,7 +2109,7 @@
           <p class="status-form-message" data-status-message></p>
           <div class="status-lookup-actions">
             <a class="btn btn--secondary" href="solutions.html">Вернуться в каталог</a>
-            <button class="btn btn--secondary" type="button" data-open-lead>Оставить заявку</button>
+            <a class="btn btn--secondary" href="brief.html">Заполнить анкету</a>
           </div>
         </div>
       </section>
@@ -2033,21 +2154,21 @@
     ].join("");
     const summaryItems = [
       statusFact("Статус проекта", status.label),
-      statusFact("Дата заявки", statusCompactDate(lead.createdAt)),
+      statusFact("Дата анкеты", statusCompactDate(lead.createdAt)),
       statusFact("Контакт", lead.contact),
       statusFact("Бизнес", lead.businessName || lead.name),
     ].join("");
     const includedItems = [
       ...(solution?.features || []),
       "Адаптивная вёрстка",
-      "Форма заявки",
-      "Базовая SEO-подготовка",
+      "Форма для обращений",
+      "Подготовка к продвижению",
       "Техническая поддержка после запуска",
     ].slice(0, 7);
     const integrationItems = [
       ["Форма обратной связи", "Подключается"],
       [channels, "По анкете"],
-      ["Почта для заявок", lead.contact ? "Уточняется" : "Ожидает"],
+      ["Почта для обращений", lead.contact ? "Уточняется" : "Ожидает"],
     ];
     const supportItems = [
       ["Техническая поддержка", "Включено"],
@@ -2057,7 +2178,7 @@
     ];
     const historyItems = [
       ["Анкета отправлена", formatStatusDate(lead.createdAt)],
-      ["Заявка зарегистрирована", `Номер ${lead.id}`],
+      ["Проект зарегистрирован", `Номер ${lead.id}`],
       ["Текущий статус обновлён", status.update],
     ];
     const notificationItems = [
@@ -2075,11 +2196,11 @@
     root.innerHTML = `
       <section class="status-hero status-hero--cabinet">
         <div>
-          <p class="status-kicker"><span></span>WEB00 · frontend-preview cabinet</p>
-          <h1>Кабинет проекта</h1>
-          <p>Следите за статусом заявки, сохранёнными данными анкеты и следующим шагом по запуску сайта.</p>
+          <p class="status-kicker"><span></span>WEB00 · статус проекта</p>
+          <h1>Статус проекта</h1>
+          <p>Следите за статусом проекта, данными анкеты и следующим шагом по запуску сайта.</p>
         </div>
-        <button class="btn btn--secondary" type="button" data-open-lead>Задать вопрос</button>
+        <a class="btn btn--secondary" href="cabinet.html?id=${encodeURIComponent(lead.id)}">Открыть Мой проект</a>
       </section>
 
       <div class="status-dashboard" aria-label="Кабинет проекта">
@@ -2104,7 +2225,7 @@
             <h3>${statusKey === "new" ? "Ожидайте связи" : esc(status.action || "Уточнить детали")}</h3>
             <p>${esc(status.clientAction)}</p>
             <button class="btn btn--primary" type="button" data-open-lead>Уточнить детали</button>
-            <small>Это frontend-preview статус: данные сохранены локально, без реальных уведомлений.</small>
+            <small>Раздел показывает понятный формат статуса проекта. Сообщения и загрузка материалов появятся позже.</small>
           </aside>
         </section>
 
@@ -2136,7 +2257,7 @@
 
           <aside class="status-integrations-card status-card">
             <div class="status-section-head">
-              <span>Заявки и интеграции</span>
+              <span>Обращения и интеграции</span>
               <h2>Куда пойдут обращения</h2>
             </div>
             <ul class="status-support-list">
@@ -2159,7 +2280,7 @@
           <article class="status-history-card status-card">
             <div class="status-section-head">
               <span>История</span>
-              <h2>События заявки</h2>
+              <h2>События проекта</h2>
             </div>
             <ul class="status-history">
               ${historyItems.map(([title, text]) => `<li><strong>${esc(title)}</strong><small>${esc(text)}</small></li>`).join("")}
@@ -2177,7 +2298,29 @@
           </article>
         </section>
 
-        <section class="status-meta-strip status-card" aria-label="Сводка заявки">
+        <section class="mobile-access-card status-card">
+          <div>
+            <span>Открывать статус с телефона</span>
+            <h2>WEB00 всегда под рукой</h2>
+            <p>Добавьте WEB00 на главный экран, чтобы возвращаться к статусу проекта и разделу “Мой проект” в один тап.</p>
+          </div>
+          <a class="btn btn--secondary" href="install.html">Установить WEB00 на телефон</a>
+        </section>
+
+        <section class="status-help-actions status-card">
+          <div>
+            <span class="status-card-label">Нужна помощь по проекту?</span>
+            <h2>Связь и поддержка</h2>
+            <p>Напишите в поддержку, сообщите о проблеме или добавьте WEB00 на телефон для быстрого доступа к статусу.</p>
+          </div>
+          <div class="status-help-actions__buttons">
+            <a class="btn btn--secondary" href="contacts.html">Написать в поддержку</a>
+            <button class="btn btn--secondary" type="button" data-open-bug>Сообщить об ошибке</button>
+            <a class="btn btn--secondary" href="install.html">Установить на телефон</a>
+          </div>
+        </section>
+
+        <section class="status-meta-strip status-card" aria-label="Сводка проекта">
           ${projectFacts}
         </section>
       </div>
@@ -2188,12 +2331,12 @@
     root.innerHTML = `
       <section class="not-found-layout status-not-found-page">
         <div class="not-found-card status-lookup-card">
-          <p class="status-kicker"><span></span>WEB00 · статус заявки</p>
-          <h1>Заявка не найдена</h1>
-          <p>Мы не нашли заявку с номером ${id ? `<strong>${esc(id)}</strong>` : "без номера"}. Проверьте номер из письма, сообщения или success-экрана.</p>
+          <p class="status-kicker"><span></span>WEB00 · статус проекта</p>
+          <h1>Проект не найден</h1>
+          <p>Мы не нашли проект с номером ${id ? `<strong>${esc(id)}</strong>` : "без номера"}. Проверьте номер с экрана “Анкета отправлена” или напишите в поддержку.</p>
           <form data-status-lookup="direct">
             <label>
-              <span>Номер заявки</span>
+              <span>Номер проекта</span>
               <input name="leadId" type="text" value="${esc(id || "")}" placeholder="WEB00-2026-0001" autocomplete="off">
             </label>
             <button class="btn btn--primary btn--full" type="submit">Проверить ещё раз</button>
@@ -2201,7 +2344,7 @@
           <p class="status-form-message" data-status-message></p>
           <div class="status-lookup-actions">
             <a class="btn btn--secondary" href="solutions.html">Вернуться в каталог</a>
-            <button class="btn btn--secondary" type="button" data-open-lead>Оставить заявку</button>
+            <button class="btn btn--secondary" type="button" data-open-lead>Написать в поддержку</button>
           </div>
         </div>
         <aside class="status-help-card">
@@ -2209,7 +2352,7 @@
           <ul>
             <li>Проверьте, что номер введён без лишних пробелов.</li>
             <li>Откройте ссылку из экрана “Анкета отправлена”.</li>
-            <li>Если номер потерян, оставьте заявку повторно.</li>
+            <li>Если номер потерян, напишите в поддержку.</li>
           </ul>
         </aside>
       </section>
@@ -2302,6 +2445,16 @@
     initHomeLanguageSwitcher();
   }
 
+  function registerServiceWorker() {
+    if (!("serviceWorker" in navigator)) return;
+    const { protocol, hostname } = window.location;
+    const canRegister = protocol === "https:" || hostname === "localhost" || hostname === "127.0.0.1";
+    if (!canRegister) return;
+    navigator.serviceWorker.register("sw.js").catch((error) => {
+      console.warn("WEB00 service worker registration skipped.", error);
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     initShell();
     if (page === "status") {
@@ -2312,5 +2465,6 @@
     } else {
       initHome();
     }
+    registerServiceWorker();
   });
 })();

@@ -3,12 +3,17 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Контакты - WEB00 Pro</title>
-    <meta name="description" content="Контакты WEB00 Pro: Telegram, MAX, VK, телефон, форма связи, проверка статуса заявки и быстрый старт проекта.">
+    <title>Связаться с WEB00 - WEB00 Pro</title>
+    <meta name="description" content="Центр связи WEB00 Pro: быстрые каналы, сообщение в поддержку, проверка статуса проекта и сообщение об ошибке.">
     <link rel="canonical" href="https://web00.pro/contacts.html">
-    <meta name="theme-color" content="#050812">
+    <meta name="theme-color" content="#8E0F13">
+    <link rel="manifest" href="manifest.webmanifest">
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/css/tokens.css">
+    <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/shell.css">
+    <link rel="stylesheet" href="assets/css/components.css">
     <link rel="stylesheet" href="assets/css/public-premium.css">
     <link rel="stylesheet" href="assets/css/web00-tabs-standard.css">
     <script defer src="assets/js/data.js?v=multi-page-1"></script>
@@ -35,9 +40,9 @@
         <div class="container">
           <div class="contacts-hero">
             <div class="contacts-hero__content">
-              <p class="ui-kicker"><span></span>WEB00 · связь и заявки</p>
-              <h1>Контакты</h1>
-              <p>Напишите в удобный канал, чтобы начать проект, подобрать готовый сайт или проверить статус заявки. Мы предложим формат, срок и следующий шаг без давления.</p>
+              <p class="ui-kicker"><span></span>WEB00 · связь и поддержка</p>
+              <h1>Связаться с WEB00</h1>
+              <p>Выберите удобный способ связи, проверьте статус проекта или сообщите о проблеме.</p>
               <div class="contacts-trust" aria-label="Преимущества обращения">
                 <span>Ответ по задаче</span>
                 <span>Демо до оплаты</span>
@@ -47,14 +52,14 @@
               <div class="contacts-actions">
                 <a class="btn btn--primary" href="brief.html">Выбрать сайт</a>
                 <a class="btn btn--secondary" href="https://t.me/GarantiyWeb00bot" target="_blank" rel="noopener">Написать в Telegram</a>
-                <a class="btn btn--ghost" href="solutions.html">Посмотреть готовые сайты</a>
+                <button class="btn btn--ghost" type="button" data-open-bug>Сообщить об ошибке</button>
               </div>
             </div>
 
             <aside class="contact-hub glow-panel" aria-label="Каналы связи WEB00">
               <div class="contact-hub__head">
                 <span>Выберите удобный канал</span>
-                <strong>WEB00 на связи</strong>
+                <strong>Быстрая связь</strong>
               </div>
               <div class="contact-channel-grid">
                 <a class="contact-channel contact-channel--telegram" href="https://t.me/GarantiyWeb00bot" target="_blank" rel="noopener">
@@ -81,13 +86,18 @@
                   <strong>Телефон</strong>
                   <small>+7 (905) 861-52-31</small>
                 </a>
+                <div class="contact-channel contact-channel--email" aria-label="Email WEB00">
+                  <span class="contact-channel__icon" aria-hidden="true">@</span>
+                  <strong>Email</strong>
+                  <small>email уточняется</small>
+                </div>
               </div>
               <div class="contact-next">
-                <h2>Что будет после обращения</h2>
+                <h2>Режим ответа</h2>
                 <ol>
-                  <li><span>1</span><p><strong>Посмотрим задачу</strong><small>Разберём нишу, цель и текущую ситуацию.</small></p></li>
-                  <li><span>2</span><p><strong>Предложим формат</strong><small>Готовое решение, сайт под заказ или доработка.</small></p></li>
-                  <li><span>3</span><p><strong>Назовём срок и цену</strong><small>Без давления и без оплаты вслепую.</small></p></li>
+                  <li><span>1</span><p><strong>Принимаем обращение</strong><small>Выберите канал или оставьте сообщение через форму.</small></p></li>
+                  <li><span>2</span><p><strong>Уточняем детали</strong><small>Если нужно, попросим дополнить описание или прислать скриншот.</small></p></li>
+                  <li><span>3</span><p><strong>Возвращаемся с ответом</strong><small>Ответим в выбранный контакт в рабочий интервал.</small></p></li>
                 </ol>
               </div>
             </aside>
@@ -96,15 +106,19 @@
           <div class="contact-workspace">
             <form class="message-form contact-form-card glow-panel" data-message-form>
               <div class="contact-card-head">
-                <span>Сообщение</span>
+                <span>Оставить сообщение</span>
                 <h2>Напишите нам</h2>
-                <p>Опишите задачу своими словами. Если не знаете, какой сайт нужен, достаточно указать нишу и желаемый результат.</p>
+                <p>Опишите задачу или вопрос своими словами. Мы предложим следующий шаг без лишней технической сложности.</p>
               </div>
-              <label><span class="field-label">Ваше имя <b>*</b></span><input name="name" type="text" placeholder="Введите ваше имя" required></label>
-              <label><span class="field-label">Контакт для связи <b>*</b></span><input name="contact" type="text" placeholder="Телефон, Telegram или email" required></label>
-              <label><span class="field-label">Тема обращения</span><select name="task"><option>Подобрать формат сайта</option><option>Готовое решение</option><option>Сайт под заказ</option><option>Доработка сайта</option><option>Заявки / Telegram / таблица</option><option>Поддержка после запуска</option></select></label>
-              <label><span class="field-label">Комментарий <b>*</b></span><textarea name="message" rows="5" placeholder="Например: нужен сайт для услуг, заявки в Telegram, запуск в ближайшие дни..." required></textarea></label>
+              <input class="form-honeypot" name="companySite" type="text" autocomplete="off" tabindex="-1" aria-hidden="true">
+              <input name="formStartTime" type="hidden" value="">
+              <label><span class="field-label">Имя <b>*</b></span><input name="name" type="text" placeholder="Введите ваше имя" required></label>
+              <label><span class="field-label">Контакт <b>*</b></span><input name="contact" type="text" placeholder="Телефон, Telegram или email" required></label>
+              <label><span class="field-label">Тема <b>*</b></span><select name="topic" required><option value="">Выберите тему</option><option>Хочу выбрать сайт</option><option>Вопрос по тарифам</option><option>Вопрос по проекту</option><option>Поддержка</option><option>Другое</option></select></label>
+              <label><span class="field-label">Сообщение <b>*</b></span><textarea name="message" rows="5" placeholder="Например: нужен сайт для услуг, заявки в Telegram, запуск в ближайшие дни..." required></textarea></label>
+              <label class="consent-line"><input name="consent" type="checkbox" required><span>Я согласен на обработку данных для ответа на обращение.</span></label>
               <button class="btn btn--primary btn--full" type="submit">Отправить сообщение</button>
+              <p class="form-message" data-message-result></p>
               <small>После сообщения мы уточним задачу и предложим удобный следующий шаг.</small>
             </form>
 
@@ -123,6 +137,15 @@
                 <p class="form-message" data-status-message></p>
               </div>
 
+              <div class="contact-error-card glow-panel">
+                <div class="contact-card-head">
+                  <span>Сообщить об ошибке</span>
+                  <h2>Что-то пошло не так?</h2>
+                  <p>Опишите проблему и, если можете, приложите скриншот. Это поможет быстрее всё исправить.</p>
+                </div>
+                <button class="btn btn--secondary btn--full" type="button" data-open-bug>Открыть форму ошибки</button>
+              </div>
+
               <div class="contact-schedule-card glow-panel">
                 <div>
                   <span class="contact-mini-label">Режим работы</span>
@@ -134,6 +157,12 @@
                   <strong>email уточняется</strong>
                   <small>Основные каналы связи сейчас: Telegram, MAX, VK и телефон.</small>
                 </div>
+              </div>
+              <div class="contact-install-card glow-panel">
+                <span class="contact-mini-label">Телефон</span>
+                <h2>Хотите открыть WEB00 с телефона?</h2>
+                <p>Добавьте WEB00 на главный экран и открывайте статус проекта в один тап.</p>
+                <a class="btn btn--secondary btn--full" href="install.html">Установить на телефон</a>
               </div>
             </aside>
           </div>

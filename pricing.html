@@ -4,11 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Тарифы - WEB00 Pro</title>
-    <meta name="description" content="Тарифы WEB00 Pro: Start, Business и Pro для запуска адаптивного сайта с SEO-базой, заявками и поддержкой после запуска.">
+    <meta name="description" content="Тарифы WEB00 Pro: Start, Business и Pro для запуска адаптивного сайта с подготовкой к продвижению, заявками и поддержкой после запуска.">
     <link rel="canonical" href="https://web00.pro/pricing.html">
-    <meta name="theme-color" content="#f8f7f4">
+    <meta name="theme-color" content="#8E0F13">
+    <link rel="manifest" href="manifest.webmanifest">
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/css/tokens.css">
+    <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/shell.css">
+    <link rel="stylesheet" href="assets/css/components.css">
     <link rel="stylesheet" href="assets/css/pricing-premium.css?v=pricing-typography-unify-1">
     <link rel="stylesheet" href="assets/css/web00-tabs-standard.css">
     <script defer src="assets/js/data.js?v=multi-page-1"></script>
@@ -43,7 +48,7 @@
                 <span>без скрытых платежей</span>
               </div>
               <div class="pricing-actions">
-                <a class="btn btn--primary" href="brief.html?service=Подбор тарифа">Подобрать тариф</a>
+                <a class="btn btn--primary" href="#pricing-plans">Выбрать тариф</a>
                 <a class="btn btn--secondary" href="solutions.html">Посмотреть каталог</a>
               </div>
             </div>
@@ -60,8 +65,8 @@
                   <small>минимальный срок старта</small>
                 </article>
                 <article>
-                  <span>SEO</span>
-                  <small>базовая подготовка включена</small>
+                  <span>Поиск</span>
+                  <small>подготовка к продвижению включена</small>
                 </article>
               </div>
               <ul class="pricing-panel__list">
@@ -72,14 +77,14 @@
             </aside>
           </div>
 
-          <div class="pricing-tariffs">
+          <div class="pricing-tariffs" id="pricing-plans">
             <div class="pricing-section-head pricing-section-head--split">
               <div>
                 <p class="pricing-kicker"><span></span>WEB00 · пакеты запуска</p>
                 <h2>Выберите подходящий пакет</h2>
                 <p>Start подходит для быстрого запуска, Business — для роста и управления, Pro — для сложных задач и масштабирования.</p>
               </div>
-              <a class="btn btn--secondary" href="brief.html?service=Подбор тарифа">Подобрать формат</a>
+              <a class="btn btn--secondary" href="brief.html?service=Подбор тарифа">Выбрать тариф</a>
             </div>
             <div class="pricing-grid" data-pricing-grid></div>
           </div>
@@ -102,7 +107,7 @@
                 <tbody>
                   <tr><th>Шаблон</th><td>Готовый</td><td>Готовый или адаптированный</td><td>Персональная структура</td></tr>
                   <tr><th>Адаптация под ваш бренд</th><td>Базовая</td><td>Расширенная</td><td>Индивидуальная</td></tr>
-                  <tr><th>SEO-база</th><td>Да</td><td>Да</td><td>Да</td></tr>
+                  <tr><th>Готов к продвижению</th><td>Да</td><td>Да</td><td>Да</td></tr>
                   <tr><th>Формы и заявки</th><td>Да</td><td>Да</td><td>Расширенные сценарии</td></tr>
                   <tr><th>Аналитика</th><td>Базово</td><td>Да</td><td>Да</td></tr>
                   <tr><th>Интеграции</th><td>По задаче</td><td>Расширенные</td><td>Приоритетные</td></tr>
@@ -151,7 +156,7 @@
               <fieldset><legend>Поддержка</legend><label><input type="radio" name="support" value="none" checked> Не требуется</label><label><input type="radio" name="support" value="1"> 1 месяц</label><label><input type="radio" name="support" value="3"> 3 месяца</label></fieldset>
               <fieldset><legend>Срочность</legend><label><input type="radio" name="urgency" value="standard" checked> Стандартный</label><label><input type="radio" name="urgency" value="fast"> Срочный</label></fieldset>
               <fieldset><legend>Сложность дизайна</legend><label><input type="radio" name="design" value="base" checked> Базовый</label><label><input type="radio" name="design" value="standard"> Стандартный</label><label><input type="radio" name="design" value="premium"> Премиум</label></fieldset>
-              <div class="calc-actions"><button class="btn btn--primary" type="submit">Рассчитать стоимость</button><button class="btn btn--secondary" type="button" data-open-lead data-service="Расчёт из калькулятора">Получить расчёт</button></div>
+              <div class="calc-actions"><button class="btn btn--primary" type="submit">Рассчитать стоимость</button><button class="btn btn--secondary" type="button" data-open-lead data-service="Расчёт из калькулятора">Заполнить анкету</button></div>
             </form>
           </div>
           <aside class="calc-result" data-calc-result>
@@ -159,7 +164,7 @@
             <p>Стоимость проекта <span>ориентировочно</span></p>
             <strong>от 20 000 ₽ до 35 000 ₽</strong>
             <p>Срок запуска: от 7 до 12 рабочих дней</p>
-            <ul><li>Проектирование и структура</li><li>Адаптивная вёрстка</li><li>Форма заявки</li><li>Базовая SEO-подготовка</li></ul>
+            <ul><li>Проектирование и структура</li><li>Адаптивная вёрстка</li><li>Форма заявки</li><li>Подготовка к продвижению</li></ul>
             <small>Расчёт ни к чему не обязывает. Итог фиксируется после обсуждения.</small>
           </aside>
         </div>
