@@ -2735,3 +2735,82 @@ body[data-page="home"] .hero-matryoshka img {
     filter: drop-shadow(0 16px 24px rgba(38, 29, 24, 0.11));
   }
 }
+
+/* Matryoshka hero mobile composition V2: premium rhythm, not desktop shrink. */
+@media (max-width: 767px) {
+  body[data-page="home"] .mock-hero__grid {
+    gap: 12px !important;
+    padding-top: 20px !important;
+  }
+
+  body[data-page="home"] .mock-hero__copy {
+    padding-top: 14px !important;
+  }
+
+  body[data-page="home"] .mock-badge {
+    margin-bottom: 10px;
+    padding: 5px 9px;
+  }
+
+  body[data-page="home"] .mock-hero h1 {
+    width: min(100%, 12.7ch) !important;
+    max-width: 12.7ch !important;
+    font-size: clamp(1.62rem, 7.1vw, 2.02rem) !important;
+    line-height: 1.04 !important;
+    letter-spacing: -0.025em !important;
+  }
+
+  body[data-page="home"] .mock-hero p {
+    width: min(100%, 320px) !important;
+    max-width: 320px !important;
+    margin-top: 12px !important;
+    font-size: clamp(0.9rem, 3.35vw, 0.98rem) !important;
+    line-height: 1.5;
+  }
+
+  body[data-page="home"] .mock-actions {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    justify-items: initial !important;
+    margin: 18px 0 0 !important;
+    gap: 10px !important;
+  }
+
+  body[data-page="home"] .mock-btn {
+    width: min(100%, 320px) !important;
+    max-width: calc(100vw - 32px) !important;
+    min-width: 0 !important;
+    min-height: 45px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 4px;
+    padding-inline: 14px;
+    font-size: clamp(0.8rem, 3.25vw, 0.9rem);
+    transform: none !important;
+  }
+
+  body[data-page="home"] .hero-matryoshka {
+    width: min(78vw, 340px);
+    margin-top: 20px;
+    margin-bottom: 6px;
+  }
+}
+
+@media (max-width: 374px) {
+  body[data-page="home"] .mock-actions {
+    width: 100% !important;
+  }
+
+  body[data-page="home"] .mock-btn {
+    width: min(100%, 312px) !important;
+  }
+
+  body[data-page="home"] .hero-matryoshka {
+    width: min(76vw, 310px);
+  }
+}
