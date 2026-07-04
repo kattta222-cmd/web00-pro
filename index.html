@@ -56,29 +56,26 @@
             </div>
           </div>
 
-          <div class="mock-device" aria-label="Пример готового сайта и мобильной версии">
-            <div class="mock-laptop" role="img" aria-label="Превью готового сайта для консультаций">
-              <div class="mock-site">
-                <div class="mock-site-nav"><i></i><span data-i18n="device.nav.about">Каталог</span><span data-i18n="device.nav.services">Тарифы</span><span data-i18n="device.nav.reviews">Кейсы</span><span data-i18n="device.nav.contacts">FAQ</span><b>48ч</b></div>
-                <div class="mock-site-hero">
-                  <div>
-                    <strong data-i18n-html="device.title">WEB00 Pro<br>готовые сайты</strong>
-                    <small data-i18n="device.text">Каталог, тарифы и запуск сайта под ключ</small>
-                    <em data-i18n="device.cta">Выбрать сайт</em>
-                  </div>
-                  <figure></figure>
-                </div>
-              </div>
-            </div>
-            <div class="mock-phone" role="img" aria-label="Мобильное превью готового сайта">
-              <div class="mock-phone__screen">
-                <i></i><b></b>
-                <strong data-i18n-html="device.title">WEB00 Pro<br>готовые сайты</strong>
-                <small data-i18n="device.mobileText">Запуск сайта под ключ</small>
-                <em data-i18n="device.mobileCta">Выбрать</em>
-              </div>
-            </div>
-          </div>
+          <picture class="hero-matryoshka">
+            <source
+              type="image/webp"
+              srcset="
+                assets/img/matryoshka-hero-720.webp 720w,
+                assets/img/matryoshka-hero-1200.webp 1200w,
+                assets/img/matryoshka-hero-1600.webp 1600w
+              "
+              sizes="(max-width: 767px) 92vw, (max-width: 1024px) 70vw, 760px"
+            >
+            <img
+              src="assets/img/matryoshka-clean-final.png"
+              alt="WEB00 на ноутбуке и телефоне"
+              width="1448"
+              height="1086"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+            >
+          </picture>
         </div>
       </section>
 

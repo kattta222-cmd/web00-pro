@@ -2626,3 +2626,112 @@ body[data-page="home"] .mock-phone__screen > * {
     width: min(100% - 32px, 680px) !important;
   }
 }
+
+/* Matryoshka hero asset integration. */
+body[data-page="home"] .hero-matryoshka {
+  display: block;
+  width: min(100%, 760px);
+  max-width: 100%;
+  align-self: center;
+  justify-self: end;
+  line-height: 0;
+  overflow: visible;
+}
+
+body[data-page="home"] .hero-matryoshka img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 34px rgba(38, 29, 24, 0.12));
+}
+
+@media (min-width: 1025px) {
+  body[data-page="home"] .mock-hero__grid {
+    grid-template-columns: minmax(0, 56%) minmax(420px, 44%);
+    align-items: center;
+    gap: clamp(24px, 2.6vw, 42px);
+  }
+
+  body[data-page="home"] .mock-hero h1,
+  body[data-page="home"] .mock-hero p {
+    max-width: 100%;
+  }
+
+  body[data-page="home"] .hero-matryoshka {
+    width: min(100%, 760px);
+    transform: translateY(2px);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  body[data-page="home"] .mock-hero__grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  body[data-page="home"] .hero-matryoshka {
+    width: min(70vw, 760px);
+    margin: 0 auto 8px;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 767px), (hover: none) and (pointer: coarse) and (max-width: 1180px) {
+  body[data-page="home"] .mock-wrap {
+    width: auto !important;
+    max-width: none !important;
+    margin-inline: 16px !important;
+  }
+
+  body[data-page="home"] .mock-hero__grid {
+    gap: 16px !important;
+    padding-top: 24px !important;
+  }
+
+  body[data-page="home"] .mock-hero h1 {
+    width: min(100%, 318px) !important;
+    max-width: 318px !important;
+    font-size: clamp(1.56rem, 6.75vw, 1.95rem) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.02em !important;
+    overflow-wrap: break-word;
+    word-break: normal;
+    text-wrap: auto;
+  }
+
+  body[data-page="home"] .mock-hero p {
+    width: min(100%, 350px) !important;
+    max-width: 350px !important;
+    font-size: clamp(0.92rem, 3.55vw, 1rem) !important;
+    line-height: 1.58;
+  }
+
+  body[data-page="home"] .mock-actions {
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+  }
+
+  body[data-page="home"] .mock-btn {
+    min-height: 48px !important;
+    padding-inline: 12px;
+    font-size: clamp(0.82rem, 3.6vw, 0.92rem);
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+
+  body[data-page="home"] .hero-matryoshka {
+    width: min(86vw, 390px);
+    max-width: 100%;
+    margin: 2px auto 8px;
+    justify-self: center;
+    overflow: visible;
+  }
+
+  body[data-page="home"] .hero-matryoshka img {
+    filter: drop-shadow(0 16px 24px rgba(38, 29, 24, 0.11));
+  }
+}
