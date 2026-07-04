@@ -2666,6 +2666,20 @@ body[data-page="home"] .hero-matryoshka img {
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
+  body[data-page="home"] .mock-page,
+  body[data-page="home"] .mock-header,
+  body[data-page="home"] .mock-hero,
+  body[data-page="home"] .mock-trust,
+  body[data-page="home"] .mock-footer {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  body[data-page="home"] .mock-wrap {
+    width: min(calc(100% - 32px), 920px);
+    max-width: 100%;
+  }
+
   body[data-page="home"] .mock-hero__grid {
     grid-template-columns: 1fr;
     gap: 22px;

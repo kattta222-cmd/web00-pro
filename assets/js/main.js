@@ -860,6 +860,10 @@
   }
 
   function closeModals() {
+    const demoContent = $("[data-demo-modal-content]");
+    const demoIframe = demoContent ? $("[data-demo-iframe]", demoContent) : null;
+    if (demoIframe) demoIframe.removeAttribute("src");
+    if (demoContent) demoContent.innerHTML = "";
     $$(".modal").forEach((modal) => {
       modal.classList.remove("is-open");
       modal.setAttribute("aria-hidden", "true");
@@ -901,7 +905,7 @@
       });
     });
 
-    $$("[data-close-modal]").forEach((item) => item.addEventListener("click", closeModals));
+    $$("[data-close-modal], .modal__overlay").forEach((item) => item.addEventListener("click", closeModals));
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") closeModals();
     });
@@ -1252,6 +1256,7 @@
     const isExternalFrame = solution?.demoMode === "external-iframe";
     setDemoDialogMode(solution);
     const target = $("[data-demo-modal-content]");
+    if (!target) return;
     const features = solutionFeatures(solution);
     const price = solutionPrice(solution);
     const time = solutionTime(solution);
@@ -1259,7 +1264,7 @@
     target.innerHTML = `
       <div class="demo-modal ${isExternalFrame ? "demo-modal--external" : ""}">
         <div class="demo-modal__head">
-          <div><h2 id="demo-title">${esc(isExternalFrame ? solution.title : `Демо: ${solution.title}`)}</h2><p>${isExternalFrame ? "Настоящий сайт открывается внутри demo viewer." : "Локальная демо-страница открывается внутри WEB00 Pro."}</p></div>
+          <div><h2 id="demo-title">${esc(isExternalFrame ? solution.title : `Демо: ${solution.title}`)}</h2><p>${isExternalFrame ? "Полный просмотр открывается отдельно." : "Локальная демо-страница открывается внутри WEB00 Pro."}</p></div>
           ${isExternalFrame ? "" : `<div class="segmented"><button class="is-active" type="button" data-demo-device="desktop">Desktop</button><button type="button" data-demo-device="mobile">Mobile</button></div>`}
           ${externalLink(originalDemoUrl, isExternalFrame ? "Открыть отдельно" : "Открыть оригинал")}
           <a class="btn btn--primary btn--small" href="${attr(briefUrl({ solution: solution.id }))}">Хочу такой сайт</a>
@@ -1271,17 +1276,16 @@
             <ul class="check-list">${features.map((item) => `<li>${esc(item)}</li>`).join("")}</ul>
             <div class="mini-meta"><span>${esc(price)}</span><span>${esc(time)}</span></div>
           </aside>
-          <div class="demo-frame ${demoUrl ? "demo-frame--live" : ""}" data-demo-frame ${isExternalFrame ? "data-demo-desktop-canvas" : ""}>
-            ${demoUrl ? `
-              <iframe data-demo-iframe src="${attr(demoUrl)}" title="Демо: ${attr(solution.title)}" loading="lazy"></iframe>
-              ${solution.demoMode === "external-iframe" ? `
-                <div class="demo-frame__external-fallback" data-demo-external-fallback hidden>
-                  <span>▤</span>
-                  <h3>Откройте демо в отдельном окне</h3>
-                  <p>Если сайт не отобразился внутри окна, откройте его отдельно.</p>
-                  ${externalLink(originalDemoUrl, "Открыть отдельно", "btn btn--primary btn--small")}
-                </div>
-              ` : ""}
+          <div class="demo-frame ${demoUrl ? "demo-frame--live" : ""}" data-demo-frame>
+            ${isExternalFrame ? `
+              <div class="demo-frame__external-fallback" data-demo-external-fallback>
+                <span>▤</span>
+                <h3>Полный просмотр открывается отдельно</h3>
+                <p>Откройте сайт в отдельном окне для полного просмотра.</p>
+                ${externalLink(originalDemoUrl, "Открыть отдельно", "btn btn--primary btn--small")}
+              </div>
+            ` : demoUrl ? `
+              <iframe data-demo-iframe src="${attr(demoUrl)}" title="Демо: ${attr(solution.title)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             ` : `
               <div class="demo-frame__fallback">
                 <span>▤</span>
@@ -1306,7 +1310,8 @@
     $$("[data-demo-device]", target).forEach((button) => {
       button.addEventListener("click", () => {
         $$("[data-demo-device]", target).forEach((item) => item.classList.toggle("is-active", item === button));
-        $("[data-demo-frame]", target).classList.toggle("is-mobile", button.dataset.demoDevice === "mobile");
+        const frame = $("[data-demo-frame]", target);
+        if (frame) frame.classList.toggle("is-mobile", button.dataset.demoDevice === "mobile");
       });
     });
     const iframe = $("[data-demo-iframe]", target);
@@ -1727,45 +1732,54 @@
       </div>
     `;
     const form = $("[data-bug-form]", target);
+    if (!form) return;
     const fileInput = form.elements.screenshot;
     const info = $("[data-attachment-info]", form);
-    fileInput.addEventListener("change", () => setBugAttachment(fileInput.files[0], info));
+    fileInput?.addEventListener("change", () => setBugAttachment(fileInput.files[0], info));
     form.addEventListener("paste", (event) => {
       const file = Array.from(event.clipboardData?.files || []).find((item) => item.type.startsWith("image/"));
       if (file) setBugAttachment(file, info);
     });
     const zone = $("[data-upload-zone]", form);
-    zone.addEventListener("dragover", (event) => {
-      event.preventDefault();
-      zone.classList.add("is-dragover");
-    });
-    zone.addEventListener("dragleave", () => zone.classList.remove("is-dragover"));
-    zone.addEventListener("drop", (event) => {
-      event.preventDefault();
-      zone.classList.remove("is-dragover");
-      setBugAttachment(event.dataTransfer.files[0], info);
-    });
+    if (zone) {
+      zone.addEventListener("dragover", (event) => {
+        event.preventDefault();
+        zone.classList.add("is-dragover");
+      });
+      zone.addEventListener("dragleave", () => zone.classList.remove("is-dragover"));
+      zone.addEventListener("drop", (event) => {
+        event.preventDefault();
+        zone.classList.remove("is-dragover");
+        setBugAttachment(event.dataTransfer.files[0], info);
+      });
+    }
     bindBugErrorCleanup(form);
     form.addEventListener("submit", submitBugReport);
-    $("[data-close-modal]", target).addEventListener("click", closeModals);
+    $("[data-close-modal]", target)?.addEventListener("click", closeModals);
   }
 
   function setBugAttachment(file, info) {
     if (!file) return;
     const allowed = ["image/png", "image/jpeg", "image/webp"];
     if (!allowed.includes(file.type)) {
-      info.textContent = "Можно приложить PNG, JPG, JPEG или WEBP.";
-      info.classList.add("is-error");
+      if (info) {
+        info.textContent = "Можно приложить PNG, JPG, JPEG или WEBP.";
+        info.classList.add("is-error");
+      }
       return;
     }
     if (file.size > 10 * 1024 * 1024) {
-      info.textContent = "Файл больше 10 МБ. Выберите файл меньшего размера.";
-      info.classList.add("is-error");
+      if (info) {
+        info.textContent = "Файл больше 10 МБ. Выберите файл меньшего размера.";
+        info.classList.add("is-error");
+      }
       return;
     }
     bugAttachment = file;
-    info.textContent = `Прикреплён файл: ${file.name}`;
-    info.classList.remove("is-error");
+    if (info) {
+      info.textContent = `Прикреплён файл: ${file.name}`;
+      info.classList.remove("is-error");
+    }
   }
 
   function submitBugReport(event) {
@@ -1802,6 +1816,7 @@
 
   function renderBugSuccess(report) {
     const target = $("[data-bug-modal-content]");
+    if (!target) return;
     target.innerHTML = `
       <div class="success-state">
         <div class="success-icon">✓</div>
@@ -1811,11 +1826,12 @@
         <div class="modal-actions"><button class="btn btn--primary" type="button" data-close-modal>Вернуться на сайт</button><a class="btn btn--secondary" href="contacts.html">Написать в поддержку</a></div>
       </div>
     `;
-    $("[data-close-modal]", target).addEventListener("click", closeModals);
+    $("[data-close-modal]", target)?.addEventListener("click", closeModals);
   }
 
   function renderBugFallback() {
     const target = $("[data-bug-modal-content]");
+    if (!target) return;
     target.innerHTML = `
       <div class="success-state">
         <div class="success-icon">!</div>
@@ -1824,7 +1840,7 @@
         <div class="modal-actions"><button class="btn btn--primary" type="button" data-open-bug>Попробовать ещё раз</button><a class="btn btn--secondary" href="contacts.html">Написать в поддержку</a></div>
       </div>
     `;
-    $("[data-open-bug]", target).addEventListener("click", openBugModal);
+    $("[data-open-bug]", target)?.addEventListener("click", openBugModal);
   }
 
   function bindBugErrorCleanup(form) {
