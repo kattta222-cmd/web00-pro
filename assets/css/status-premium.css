@@ -1379,3 +1379,89 @@ body[data-page="status"] .status-description {
     width: 100%;
   }
 }
+
+/* Wave 10.1: real mobile guard for status/cabinet screens. */
+@media (max-width: 767px), (hover: none) and (pointer: coarse) and (max-width: 1180px) {
+  body[data-page="status"],
+  body[data-page="cabinet"] {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  body[data-page="status"] .container,
+  body[data-page="cabinet"] .container {
+    width: min(100% - 32px, 680px) !important;
+    max-width: 100% !important;
+  }
+
+  body[data-page="status"] .header__inner,
+  body[data-page="cabinet"] .header__inner {
+    min-height: 64px !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    gap: 12px !important;
+  }
+
+  body[data-page="status"] .header__cta,
+  body[data-page="cabinet"] .header__cta {
+    display: none !important;
+  }
+
+  body[data-page="status"] .menu-toggle,
+  body[data-page="cabinet"] .menu-toggle {
+    display: inline-flex !important;
+  }
+
+  body[data-page="status"] .nav,
+  body[data-page="cabinet"] .nav {
+    position: fixed !important;
+    top: 70px !important;
+    left: 16px !important;
+    right: 16px !important;
+    z-index: 70;
+    display: none !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    padding: 10px !important;
+  }
+
+  body[data-page="status"] .nav.is-open,
+  body[data-page="cabinet"] .nav.is-open {
+    display: flex !important;
+  }
+
+  body[data-page="status"] .status-cabinet,
+  body[data-page="status"] .status-detail-grid,
+  body[data-page="status"] .status-support-grid,
+  body[data-page="status"] .status-not-found-page,
+  body[data-page="status"] .status-hero,
+  body[data-page="status"] .status-progress,
+  body[data-page="status"] .status-progress--cabinet,
+  body[data-page="status"] .status-summary-card__head,
+  body[data-page="status"] .status-summary-grid,
+  body[data-page="status"] .status-summary-grid--compact,
+  body[data-page="status"] .status-passport-grid,
+  body[data-page="status"] .status-template-meta,
+  body[data-page="status"] .status-meta-strip,
+  body[data-page="status"] .status-lookup-card form,
+  body[data-page="cabinet"] .cabinet-hero__grid,
+  body[data-page="cabinet"] .cabinet-grid,
+  body[data-page="cabinet"] .cabinet-progress,
+  body[data-page="cabinet"] .cabinet-facts {
+    grid-template-columns: 1fr !important;
+    min-width: 0 !important;
+  }
+
+  body[data-page="status"] .status-summary-card,
+  body[data-page="status"] .status-next-card,
+  body[data-page="status"] .status-timeline-card,
+  body[data-page="status"] .status-passport-card,
+  body[data-page="status"] .status-template-card,
+  body[data-page="status"] .status-support-grid article,
+  body[data-page="status"] .status-lookup-card,
+  body[data-page="status"] .status-help-card,
+  body[data-page="cabinet"] .cabinet-card,
+  body[data-page="cabinet"] .mobile-access-card {
+    max-width: 100%;
+  }
+}

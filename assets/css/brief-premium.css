@@ -1032,3 +1032,76 @@ body[data-page="brief"] .brief-summary__trust {
     padding: 16px;
   }
 }
+
+/* Wave 10.1: real mobile guard for the questionnaire page. */
+@media (max-width: 767px), (hover: none) and (pointer: coarse) and (max-width: 1180px) {
+  body[data-page="brief"] {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  body[data-page="brief"] .container {
+    width: min(100% - 32px, 680px) !important;
+    max-width: 100% !important;
+  }
+
+  body[data-page="brief"] .header__inner {
+    min-height: 64px !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    gap: 12px !important;
+  }
+
+  body[data-page="brief"] .header__cta {
+    display: none !important;
+  }
+
+  body[data-page="brief"] .menu-toggle {
+    display: inline-flex !important;
+  }
+
+  body[data-page="brief"] .nav {
+    position: fixed !important;
+    top: 70px !important;
+    left: 16px !important;
+    right: 16px !important;
+    z-index: 70;
+    display: none !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    padding: 10px !important;
+  }
+
+  body[data-page="brief"] .nav.is-open {
+    display: flex !important;
+  }
+
+  body[data-page="brief"] .brief-page-ui,
+  body[data-page="brief"] .brief-page-stepper,
+  body[data-page="brief"] .brief-grid,
+  body[data-page="brief"] .brief-grid--compact,
+  body[data-page="brief"] .brief-context-grid,
+  body[data-page="brief"] .brief-upload-grid,
+  body[data-page="brief"] .brief-actions,
+  body[data-page="brief"] .modal-actions {
+    grid-template-columns: 1fr !important;
+    min-width: 0 !important;
+  }
+
+  body[data-page="brief"] .brief-content [data-brief-page-content] {
+    min-height: 0 !important;
+  }
+
+  body[data-page="brief"] .brief-form,
+  body[data-page="brief"] .brief-summary,
+  body[data-page="brief"] .success-state,
+  body[data-page="brief"] .fallback-state {
+    max-width: 100%;
+  }
+
+  body[data-page="brief"] .brief-actions .btn,
+  body[data-page="brief"] .modal-actions .btn,
+  body[data-page="brief"] .success-actions .btn {
+    width: 100%;
+  }
+}

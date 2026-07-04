@@ -2755,3 +2755,86 @@ body[data-page="pricing"] .price-card h3 {
     white-space: inherit !important;
   }
 }
+
+/* Wave 10.1: real mobile guard for pricing, including Android desktop-site mode. */
+@media (max-width: 767px), (hover: none) and (pointer: coarse) and (max-width: 1180px) {
+  body[data-page="pricing"] {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  body[data-page="pricing"] .container,
+  body[data-page="pricing"] .pricing-page > .container,
+  body[data-page="pricing"] .calculator-section > .container {
+    width: min(100% - 32px, 680px) !important;
+    max-width: 100% !important;
+  }
+
+  body[data-page="pricing"] .header__inner {
+    min-height: 64px !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    gap: 12px !important;
+  }
+
+  body[data-page="pricing"] .header__cta {
+    display: none !important;
+  }
+
+  body[data-page="pricing"] .menu-toggle {
+    display: inline-flex !important;
+  }
+
+  body[data-page="pricing"] .nav {
+    position: fixed !important;
+    top: 70px !important;
+    left: 16px !important;
+    right: 16px !important;
+    z-index: 70;
+    display: none !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    padding: 10px !important;
+  }
+
+  body[data-page="pricing"] .nav.is-open {
+    display: flex !important;
+  }
+
+  body[data-page="pricing"] .pricing-hero,
+  body[data-page="pricing"] .pricing-grid,
+  body[data-page="pricing"] .after-payment__grid,
+  body[data-page="pricing"] .pricing-trust-block,
+  body[data-page="pricing"] .price-card__actions {
+    grid-template-columns: 1fr !important;
+    min-width: 0 !important;
+  }
+
+  body[data-page="pricing"] .pricing-hero h1 {
+    font-size: clamp(2.15rem, 11vw, 3.25rem) !important;
+    line-height: 1.05 !important;
+  }
+
+  body[data-page="pricing"] .pricing-panel,
+  body[data-page="pricing"] .price-card,
+  body[data-page="pricing"] .after-payment__grid article,
+  body[data-page="pricing"] .pricing-trust-block {
+    max-width: 100%;
+  }
+
+  body[data-page="pricing"] .price-card__actions .btn {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  body[data-page="pricing"] .comparison-table-wrap {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body[data-page="pricing"] .comparison-table {
+    max-width: none;
+  }
+}

@@ -1989,3 +1989,138 @@ body[data-page="legal"] .mock-language-list button[aria-checked="true"] i {
     gap: 10px !important;
   }
 }
+
+/* Wave 10.1: final mobile footer overflow guard after tab patch layer. */
+@media (max-width: 767px), (hover: none) and (pointer: coarse) and (max-width: 1180px) {
+  body:is(
+    [data-page="solutions"],
+    [data-page="pricing"],
+    [data-page="brief"],
+    [data-page="status"],
+    [data-page="services"],
+    [data-page="how-it-works"],
+    [data-page="faq"],
+    [data-page="contacts"],
+    [data-page="cases"],
+    [data-page="legal"]
+  ) .footer__inner,
+  body[data-page="pricing"] .pricing-footer__inner,
+  body[data-page="solutions"] .catalog-footer__inner {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto auto 1px auto !important;
+    justify-items: center !important;
+    align-items: start !important;
+    width: min(100% - 32px, 680px) !important;
+    max-width: 100% !important;
+    margin-inline: auto !important;
+    text-align: center !important;
+  }
+
+  body:is(
+    [data-page="solutions"],
+    [data-page="pricing"],
+    [data-page="brief"],
+    [data-page="status"],
+    [data-page="services"],
+    [data-page="how-it-works"],
+    [data-page="faq"],
+    [data-page="contacts"],
+    [data-page="cases"],
+    [data-page="legal"]
+  ) .footer__inner::before {
+    grid-column: 1 !important;
+  }
+
+  body:is(
+    [data-page="solutions"],
+    [data-page="pricing"],
+    [data-page="brief"],
+    [data-page="status"],
+    [data-page="services"],
+    [data-page="how-it-works"],
+    [data-page="faq"],
+    [data-page="contacts"],
+    [data-page="cases"],
+    [data-page="legal"]
+  ) .footer .logo,
+  body:is(
+    [data-page="solutions"],
+    [data-page="pricing"],
+    [data-page="brief"],
+    [data-page="status"],
+    [data-page="services"],
+    [data-page="how-it-works"],
+    [data-page="faq"],
+    [data-page="contacts"],
+    [data-page="cases"],
+    [data-page="legal"]
+  ) .mock-language-trigger,
+  body:is(
+    [data-page="solutions"],
+    [data-page="pricing"],
+    [data-page="brief"],
+    [data-page="status"],
+    [data-page="services"],
+    [data-page="how-it-works"],
+    [data-page="faq"],
+    [data-page="contacts"],
+    [data-page="cases"],
+    [data-page="legal"]
+  ) .footer__links,
+  body:is(
+    [data-page="solutions"],
+    [data-page="pricing"],
+    [data-page="brief"],
+    [data-page="status"],
+    [data-page="services"],
+    [data-page="how-it-works"],
+    [data-page="faq"],
+    [data-page="contacts"],
+    [data-page="cases"],
+    [data-page="legal"]
+  ) .footer-credit {
+    grid-column: 1 !important;
+    justify-self: center !important;
+  }
+
+  body:is(
+    [data-page="solutions"],
+    [data-page="pricing"],
+    [data-page="brief"],
+    [data-page="status"],
+    [data-page="services"],
+    [data-page="how-it-works"],
+    [data-page="faq"],
+    [data-page="contacts"],
+    [data-page="cases"],
+    [data-page="legal"]
+  ) .footer__links,
+  body[data-page="pricing"] .pricing-footer__links,
+  body[data-page="solutions"] .catalog-footer__links {
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-items: center !important;
+    text-align: center !important;
+  }
+
+  body:is(
+    [data-page="solutions"],
+    [data-page="pricing"],
+    [data-page="brief"],
+    [data-page="status"],
+    [data-page="services"],
+    [data-page="how-it-works"],
+    [data-page="faq"],
+    [data-page="contacts"],
+    [data-page="cases"],
+    [data-page="legal"]
+  ) .footer__links a,
+  body[data-page="pricing"] .pricing-footer__links a,
+  body[data-page="solutions"] .catalog-footer__links a {
+    width: auto !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    overflow-wrap: anywhere !important;
+  }
+}

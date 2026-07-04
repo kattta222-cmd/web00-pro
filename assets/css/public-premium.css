@@ -2143,3 +2143,161 @@ body[data-page="cases"] .mobile-cta {
     padding: 28px 0;
   }
 }
+
+/* Wave 10.1: real mobile guard for remaining public pages. */
+@media (max-width: 767px), (hover: none) and (pointer: coarse) and (max-width: 1180px) {
+  body[data-page="services"],
+  body[data-page="how-it-works"],
+  body[data-page="legal"],
+  body[data-page="faq"],
+  body[data-page="contacts"],
+  body[data-page="cases"] {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  body[data-page="services"] .container,
+  body[data-page="how-it-works"] .container,
+  body[data-page="legal"] .container,
+  body[data-page="faq"] .container,
+  body[data-page="contacts"] .container,
+  body[data-page="cases"] .container {
+    width: min(100% - 32px, 680px) !important;
+    max-width: 100% !important;
+  }
+
+  body[data-page="services"] .header__inner,
+  body[data-page="how-it-works"] .header__inner,
+  body[data-page="legal"] .header__inner,
+  body[data-page="faq"] .header__inner,
+  body[data-page="contacts"] .header__inner,
+  body[data-page="cases"] .header__inner {
+    min-height: 64px !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    gap: 12px !important;
+  }
+
+  body[data-page="services"] .header__cta,
+  body[data-page="how-it-works"] .header__cta,
+  body[data-page="legal"] .header__cta,
+  body[data-page="faq"] .header__cta,
+  body[data-page="contacts"] .header__cta,
+  body[data-page="cases"] .header__cta {
+    display: none !important;
+  }
+
+  body[data-page="services"] .menu-toggle,
+  body[data-page="how-it-works"] .menu-toggle,
+  body[data-page="legal"] .menu-toggle,
+  body[data-page="faq"] .menu-toggle,
+  body[data-page="contacts"] .menu-toggle,
+  body[data-page="cases"] .menu-toggle {
+    display: inline-flex !important;
+  }
+
+  body[data-page="services"] .nav,
+  body[data-page="how-it-works"] .nav,
+  body[data-page="legal"] .nav,
+  body[data-page="faq"] .nav,
+  body[data-page="contacts"] .nav,
+  body[data-page="cases"] .nav {
+    position: fixed !important;
+    top: 70px !important;
+    left: 16px !important;
+    right: 16px !important;
+    z-index: 70;
+    display: none !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    padding: 10px !important;
+  }
+
+  body[data-page="services"] .nav.is-open,
+  body[data-page="how-it-works"] .nav.is-open,
+  body[data-page="legal"] .nav.is-open,
+  body[data-page="faq"] .nav.is-open,
+  body[data-page="contacts"] .nav.is-open,
+  body[data-page="cases"] .nav.is-open {
+    display: flex !important;
+  }
+
+  body[data-page="services"] [class*="grid"],
+  body[data-page="how-it-works"] [class*="grid"],
+  body[data-page="faq"] [class*="grid"],
+  body[data-page="contacts"] [class*="grid"],
+  body[data-page="cases"] [class*="grid"],
+  body[data-page="services"] .service-route-cards article,
+  body[data-page="services"] .service-decision,
+  body[data-page="services"] .choice-panel,
+  body[data-page="services"] .question-cta,
+  body[data-page="how-it-works"] .work-flow-card,
+  body[data-page="legal"] .legal-content {
+    grid-template-columns: 1fr !important;
+    max-width: 100%;
+    min-width: 0 !important;
+  }
+
+  body[data-page="faq"] .faq-filter-row,
+  body[data-page="contacts"] .contact-actions,
+  body[data-page="cases"] .cases-actions {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    min-width: 0;
+  }
+
+  body[data-page="services"] .footer__inner,
+  body[data-page="how-it-works"] .footer__inner,
+  body[data-page="legal"] .footer__inner,
+  body[data-page="faq"] .footer__inner,
+  body[data-page="contacts"] .footer__inner,
+  body[data-page="cases"] .footer__inner {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    justify-items: center;
+    text-align: center;
+    gap: 18px;
+    width: 100%;
+  }
+
+  body[data-page="services"] .footer__links,
+  body[data-page="how-it-works"] .footer__links,
+  body[data-page="legal"] .footer__links,
+  body[data-page="faq"] .footer__links,
+  body[data-page="contacts"] .footer__links,
+  body[data-page="cases"] .footer__links {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    justify-items: center !important;
+    gap: 12px !important;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    margin: 0;
+    text-align: center;
+  }
+
+  body[data-page="services"] .footer__links a,
+  body[data-page="how-it-works"] .footer__links a,
+  body[data-page="legal"] .footer__links a,
+  body[data-page="faq"] .footer__links a,
+  body[data-page="contacts"] .footer__links a,
+  body[data-page="cases"] .footer__links a {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    text-align: center;
+  }
+
+  body[data-page="services"] .footer-credit,
+  body[data-page="how-it-works"] .footer-credit,
+  body[data-page="legal"] .footer-credit,
+  body[data-page="faq"] .footer-credit,
+  body[data-page="contacts"] .footer-credit,
+  body[data-page="cases"] .footer-credit {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    text-align: center;
+    white-space: normal;
+  }
+}

@@ -3394,3 +3394,109 @@ body[data-page="solutions"] .catalog-help .btn {
     border-radius: 8px;
   }
 }
+
+/* Wave 10.1: real mobile guard for catalog, including Android desktop-site mode. */
+@media (max-width: 767px), (hover: none) and (pointer: coarse) and (max-width: 1180px) {
+  body[data-page="solutions"] {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  body[data-page="solutions"] .container,
+  body[data-page="solutions"] .screen-section[data-section="solutions"] .container {
+    width: min(100% - 32px, 680px) !important;
+    max-width: 100% !important;
+  }
+
+  body[data-page="solutions"] .site-header {
+    width: 100%;
+  }
+
+  body[data-page="solutions"] .header__inner {
+    min-height: 64px !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    gap: 12px !important;
+  }
+
+  body[data-page="solutions"] .header__cta {
+    display: none !important;
+  }
+
+  body[data-page="solutions"] .menu-toggle {
+    display: inline-flex !important;
+  }
+
+  body[data-page="solutions"] .nav {
+    position: fixed !important;
+    top: 70px !important;
+    left: 16px !important;
+    right: 16px !important;
+    z-index: 70;
+    display: none !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    padding: 10px !important;
+  }
+
+  body[data-page="solutions"] .nav.is-open {
+    display: flex !important;
+  }
+
+  body[data-page="solutions"] .catalog-top,
+  body[data-page="solutions"] .catalog-filterbar,
+  body[data-page="solutions"] .catalog-workspace,
+  body[data-page="solutions"] .solutions-grid,
+  body[data-page="solutions"] .catalog-help,
+  body[data-page="solutions"] .solution-card__actions {
+    grid-template-columns: 1fr !important;
+    min-width: 0 !important;
+  }
+
+  body[data-page="solutions"] .catalog-filterbar {
+    padding: 12px !important;
+  }
+
+  body[data-page="solutions"] .filters {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    overflow: visible !important;
+  }
+
+  body[data-page="solutions"] .filter-btn {
+    min-width: 0 !important;
+    width: 100% !important;
+    white-space: normal !important;
+  }
+
+  body[data-page="solutions"] .solution-card,
+  body[data-page="solutions"] .catalog-summary,
+  body[data-page="solutions"] .catalog-help {
+    max-width: 100%;
+  }
+
+  body[data-page="solutions"] .solution-card__action {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  body[data-page="solutions"] .modal__dialog,
+  body[data-page="solutions"] [data-modal="solution"] .modal__dialog,
+  body[data-page="solutions"] .modal__dialog--demo-2 {
+    width: calc(100vw - 24px) !important;
+    max-width: calc(100vw - 24px) !important;
+    max-height: calc(100dvh - 24px) !important;
+    overflow-x: hidden !important;
+  }
+
+  body[data-page="solutions"] .demo-layout,
+  body[data-page="solutions"] .demo-modal--external .demo-layout {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 359px) {
+  body[data-page="solutions"] .filters {
+    grid-template-columns: 1fr !important;
+  }
+}

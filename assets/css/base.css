@@ -10,7 +10,10 @@
 }
 
 html {
+  width: 100%;
+  max-width: 100%;
   min-height: 100%;
+  overflow-x: hidden;
   background: var(--color-bg);
   color-scheme: light;
   scroll-behavior: smooth;
@@ -25,9 +28,12 @@ body.is-modal-open {
 }
 
 body {
+  width: 100%;
+  max-width: 100%;
   min-height: 100%;
   min-width: 320px;
   margin: 0;
+  overflow-x: hidden;
   background: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-sans);
