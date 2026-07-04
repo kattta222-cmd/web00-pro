@@ -552,12 +552,17 @@ body[data-page="cabinet"] {
 
 body[data-page="cabinet"] .site-header {
   border-bottom: 1px solid var(--cabinet-line);
-  background: rgba(251, 248, 242, 0.9);
+  background: rgba(255, 253, 249, 0.96);
   backdrop-filter: blur(18px);
+  color: var(--cabinet-ink);
 }
 
 body[data-page="cabinet"] .logo,
 body[data-page="cabinet"] .nav a {
+  color: var(--cabinet-ink);
+}
+
+body[data-page="cabinet"] .logo span {
   color: var(--cabinet-ink);
 }
 
@@ -576,6 +581,23 @@ body[data-page="cabinet"] .btn--secondary {
   border-color: var(--cabinet-line);
   background: #fff;
   color: var(--cabinet-ink);
+}
+
+body[data-page="cabinet"] .cabinet-support-link,
+body[data-page="status"] .status-help-actions__quiet {
+  border-color: transparent;
+  background: transparent;
+  color: var(--cabinet-muted, var(--status-muted));
+  box-shadow: none;
+}
+
+body[data-page="cabinet"] .cabinet-support-link:hover,
+body[data-page="cabinet"] .cabinet-support-link:focus-visible,
+body[data-page="status"] .status-help-actions__quiet:hover,
+body[data-page="status"] .status-help-actions__quiet:focus-visible {
+  border-color: var(--cabinet-line, var(--status-line));
+  background: rgba(142, 15, 19, 0.05);
+  color: var(--cabinet-accent-dark, var(--status-accent));
 }
 
 body[data-page="cabinet"] .cabinet-page {
@@ -1409,6 +1431,26 @@ body[data-page="status"] .status-description {
   body[data-page="status"] .menu-toggle,
   body[data-page="cabinet"] .menu-toggle {
     display: inline-flex !important;
+    border-color: var(--cabinet-line, var(--status-line)) !important;
+    background: #fffdf9 !important;
+    color: var(--cabinet-ink, var(--status-ink)) !important;
+  }
+
+  body[data-page="cabinet"] .site-header {
+    background: #fffdf9 !important;
+  }
+
+  body[data-page="cabinet"] .logo,
+  body[data-page="cabinet"] .logo span {
+    color: var(--cabinet-ink) !important;
+  }
+
+  body[data-page="cabinet"] .logo b {
+    color: var(--cabinet-accent) !important;
+  }
+
+  body[data-page="cabinet"] .menu-toggle span {
+    background: var(--cabinet-ink) !important;
   }
 
   body[data-page="status"] .nav,

@@ -660,7 +660,7 @@
     "trust.launch.text": "品質を落とさず素早く開始",
     "trust.performance.title": "高速表示",
     "trust.performance.text": "高速で安定した動作",
-    "trust.seo.title": "SEO対応",
+    "trust.seo.title": "集客対応",
     "trust.seo.text": "検索対策の準備済み",
     "trust.support.title": "サポートと運用",
     "trust.support.text": "公開後もサポートします",
@@ -2311,11 +2311,11 @@
           <div>
             <span class="status-card-label">Нужна помощь по проекту?</span>
             <h2>Связь и поддержка</h2>
-            <p>Напишите в поддержку, сообщите о проблеме или добавьте WEB00 на телефон для быстрого доступа к статусу.</p>
+            <p>Напишите в поддержку или добавьте WEB00 на телефон для быстрого доступа к статусу. Если что-то пошло не так, можно кратко описать проблему.</p>
           </div>
           <div class="status-help-actions__buttons">
             <a class="btn btn--secondary" href="contacts.html">Написать в поддержку</a>
-            <button class="btn btn--secondary" type="button" data-open-bug>Сообщить об ошибке</button>
+            <button class="btn btn--secondary status-help-actions__quiet" type="button" data-open-bug>Описать проблему</button>
             <a class="btn btn--secondary" href="install.html">Установить на телефон</a>
           </div>
         </section>
