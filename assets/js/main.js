@@ -36,8 +36,8 @@
       "nav.cta": "Выбрать сайт",
       "hero.badge": "Премиум-платформа готовых сайтов для бизнеса",
       "hero.title": "Готовый сайт для бизнеса — запуск без хаоса",
-      "hero.text": "Выберите шаблон, заполните анкету проекта — и мы запустим ваш сайт под ключ. Быстро, прозрачно и с поддержкой на каждом этапе.",
-      "hero.primary": "Выбрать шаблон",
+      "hero.text": "Выберите готовый сайт, заполните анкету проекта — и мы запустим ваш сайт под ключ. Быстро, прозрачно и с поддержкой на каждом этапе.",
+      "hero.primary": "Выбрать готовый сайт",
       "hero.demo": "Смотреть демо",
       "device.nav.about": "Каталог",
       "device.nav.services": "Тарифы",
@@ -63,7 +63,7 @@
       "steps.two.text": "Смотрите демо, уточняете детали, мы готовим под вашу анкету.",
       "steps.three.title": "Запустить",
       "steps.three.text": "Запускаем сайт от 48 часов и остаёмся на связи.",
-      "templates.title": "Популярные шаблоны",
+      "templates.title": "Популярные готовые сайты",
       "templates.all": "Смотреть все в каталоге →",
       "card.mebel.title": "Мебельный магазин",
       "card.mebel.price": "от 15 000 ₽",
@@ -101,7 +101,7 @@
       "pricing.title": "Тарифы",
       "pricing.compare": "Сравнить все тарифы →",
       "pricing.start.text": "Быстрый старт для малого бизнеса и экспертов.",
-      "pricing.start.item1": "Готовый шаблон",
+      "pricing.start.item1": "Готовый сайт",
       "pricing.start.item2": "Базовая настройка и контент",
       "pricing.start.item3": "Запуск от 48 часов",
       "pricing.start.price": "от 39 000 ₽",
@@ -1050,7 +1050,7 @@
       const isRecommended = item.title === "Pro";
       const detailId = `tariff-details-${item.title.toLowerCase()}`;
       const detailTextByTitle = {
-        Start: "Для быстрого запуска по готовому шаблону: структура, базовая настройка, форма заявки и адаптация под ваши данные.",
+        Start: "Для быстрого запуска по готовому сайту: структура, базовая настройка, форма заявки и адаптация под ваши данные.",
         Business: "Для бизнеса, которому важны рост и управление: больше страниц, индивидуальная настройка, аналитика и поддержка после запуска.",
         Pro: "Для сложных проектов: персональная структура, расширенные интеграции, приоритетная поддержка и подготовка к масштабированию.",
       };
@@ -1158,14 +1158,14 @@
       "Медицина": "медицинским услугам и кабинетам, где важны аккуратная подача, доверие и запись на консультацию.",
       "Недвижимость": "аренде, объектам и локальным предложениям, где нужно показать условия, фото и форму бронирования.",
       "Доставка": "локальному бизнесу с доставкой, прайсом и быстрым заказом через форму.",
-      "Индивидуально": "бизнесу с нестандартной задачей, где готовый шаблон нужно адаптировать под особый сценарий.",
+      "Индивидуально": "бизнесу с нестандартной задачей, где готовое решение нужно адаптировать под особый сценарий.",
     };
     const included = [...new Set([...features, "Адаптивная версия", "Форма для обращений", "Подготовка к запуску"])].slice(0, 7);
     const quality = ["Скорость 90+", "Готово к поиску", "Адаптивность", "Поддержка после запуска"];
     const launchSteps = ["Анкета", "Подготовка", "Согласование", "Запуск", "Поддержка"];
     target.innerHTML = `
       <div class="solution-modal solution-modal--premium template-detail">
-        <section class="template-detail__hero" aria-label="Подробности шаблона ${esc(solution.title)}">
+        <section class="template-detail__hero" aria-label="Подробности сайта ${esc(solution.title)}">
           <div class="template-detail__visual">
             <div class="template-detail__eyebrow">Готовый сайт · ${esc(category)}</div>
             <section class="solution-gallery template-detail__gallery" aria-label="Галерея решения ${esc(solution.title)}">
@@ -1185,7 +1185,7 @@
           </div>
 
           <aside class="solution-detail template-detail__summary">
-            <span class="solution-detail__tag">Шаблон готов к адаптации</span>
+            <span class="solution-detail__tag">Сайт готов к адаптации</span>
             <h2 id="solution-title">${esc(solution.title)}</h2>
             <p class="solution-detail__description">${esc(solution.description)}</p>
             <div class="solution-detail__meta template-detail__meta">
@@ -1204,7 +1204,7 @@
           </aside>
         </section>
 
-        <section class="template-detail__sections" aria-label="Состав и запуск шаблона">
+        <section class="template-detail__sections" aria-label="Состав и запуск сайта">
           <article class="template-detail__panel template-detail__panel--included">
             <span>Что входит</span>
             <h3>Основа для запуска сайта</h3>
@@ -1266,7 +1266,7 @@
         </div>
         <div class="demo-layout">
           <aside>
-            <h3>О шаблоне</h3>
+            <h3>О сайте</h3>
             <p>${esc(solution.description)}</p>
             <ul class="check-list">${features.map((item) => `<li>${esc(item)}</li>`).join("")}</ul>
             <div class="mini-meta"><span>${esc(price)}</span><span>${esc(time)}</span></div>
